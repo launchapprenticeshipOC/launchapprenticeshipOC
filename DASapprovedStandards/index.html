@@ -1,0 +1,321 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LAUNCH Apprenticeship Standards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky:#29AAE1; --blue:#247EB2; --deep:#1F4171; --navy:#032F6E; --orange:#FAAB1A;
+  --bg:#ffffff; --ink:#032F6E; --head:#1F4171; --muted:#4A5C78; --card:#ffffff; --line:#D3E2EE; --tint:#EAF5FC; --tint2:#CFE8F7;
+  --display:"Barlow Condensed","Arial Narrow","Roboto Condensed",Impact,sans-serif;
+  --body:"Barlow","Segoe UI",Roboto,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#06162C;--ink:#FFFFFF;--head:#FFFFFF;--muted:#B7C8DE;--card:#0C2441;--line:#274A74;--tint:#10305A;--tint2:#18457D}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14.5px;line-height:1.4}
+button,input{font-family:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:18px 28px 28px}
+.bar{height:6px;border-radius:3px;background:linear-gradient(90deg,#29AAE1,#247EB2,#1F4171);margin-bottom:14px}
+.top{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:flex-end;justify-content:space-between}
+.eyebrow{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--blue)}
+@media (prefers-color-scheme: dark){.eyebrow{color:var(--sky)}}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(32px,5vw,46px);line-height:1;margin:2px 0 0;color:var(--head)}
+.stats{display:flex;flex-wrap:wrap;gap:8px}
+.stat{border-left:5px solid var(--orange);padding:2px 12px 2px 10px}
+.stat b{font-family:var(--display);font-size:28px;line-height:1;color:var(--head);margin-right:6px}
+.stat span{font-size:12.5px;color:var(--muted)}
+.tools{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:14px 0 12px}
+.tog{display:inline-flex;border:2px solid var(--deep);border-radius:10px;overflow:hidden}
+@media (prefers-color-scheme: dark){.tog{border-color:var(--sky)}}
+.tog button{font-weight:700;font-size:14.5px;padding:7px 16px;border:0;background:transparent;color:var(--head);cursor:pointer}
+.tog button[aria-pressed="true"]{background:var(--deep);color:#fff}
+@media (prefers-color-scheme: dark){.tog button[aria-pressed="true"]{background:var(--blue)}}
+button:focus-visible,input:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.tog button:focus-visible{outline-offset:-3px}
+.search{flex:1 1 220px;max-width:340px}
+.search input{width:100%;font-size:14.5px;padding:8px 12px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.flt{display:flex;gap:6px;flex-wrap:wrap}
+.flt button{font-weight:700;font-size:13px;padding:5px 12px;border-radius:999px;border:2px solid var(--line);background:transparent;color:var(--head);cursor:pointer}
+.flt button[aria-pressed="true"]{border-color:var(--orange);background:var(--orange);color:var(--navy)}
+.pill{font-weight:700;font-size:12px;padding:3px 10px;border-radius:999px;white-space:nowrap;display:inline-block;border:2px solid transparent}
+.pill.Approved{background:var(--sky);color:var(--navy)}
+.pill.P{background:var(--orange);color:var(--navy)}
+.pill.New{background:#fff;color:var(--navy);border-color:var(--blue)}
+@media (prefers-color-scheme: dark){.pill.New{background:transparent;color:#fff;border-color:var(--sky)}}
+
+.sec{margin:0 0 14px}
+.sec h3{font-family:var(--display);font-weight:700;font-size:22px;margin:0 0 6px;color:var(--head);display:flex;align-items:center;gap:10px}
+.sec h3::after{content:"";flex:1;height:2px;background:var(--line)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(262px,1fr));gap:10px}
+.tile{display:block;text-align:left;width:100%;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--deep);border-radius:0 10px 10px 0;padding:8px 12px 9px;cursor:pointer;color:var(--ink)}
+.tile:hover{background:var(--tint)}
+.tile.fo{border-left-color:var(--orange);box-shadow:0 0 0 2px var(--orange) inset}
+.tile b{display:block;font-size:14px;line-height:1.2;color:var(--head)}
+.tile .m{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;color:var(--muted);margin-top:3px}
+.seg{display:flex;height:7px;border-radius:4px;overflow:hidden;background:var(--line);margin-top:6px}
+.seg i{display:block;height:100%}
+.seg .a{background:var(--sky)}.seg .p{background:var(--orange)}.seg .n{background:var(--blue);opacity:.45}
+
+.split{display:grid;grid-template-columns:250px minmax(0,1fr);gap:16px;align-items:start}
+.rail{border:1px solid var(--line);border-radius:12px;padding:6px;background:var(--card);max-height:calc(100vh - 230px);min-height:260px;overflow:auto}
+.rail h4{margin:8px 6px 3px;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rail h4:first-child{margin-top:2px}
+.rail button{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;text-align:left;background:transparent;border:0;border-left:5px solid transparent;border-radius:0 8px 8px 0;padding:5px 8px;font-size:13px;color:var(--head);cursor:pointer}
+.rail button:hover{background:var(--tint)}
+.rail button[aria-current="true"]{background:var(--deep);color:#fff;border-left-color:var(--orange);font-weight:700}
+.rail .n{font-family:var(--display);font-size:16px;font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.band{background:var(--deep);color:#fff;padding:11px 16px 10px}
+.band h2{font-family:var(--display);font-weight:700;font-size:28px;line-height:1.05;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:2px 20px;margin-top:6px;font-size:12.5px;color:#DCE9F5;align-items:center}
+.meta em{font-style:normal;font-weight:700;color:#fff;margin-right:4px}
+.pb{display:inline-block;width:80px;height:8px;border-radius:4px;background:rgba(255,255,255,.25);vertical-align:middle;margin:0 6px 0 2px;overflow:hidden}
+.pb i{display:block;height:100%;background:var(--sky)}
+.rows{padding:2px 16px 8px}
+.row,.hd{display:grid;grid-template-columns:minmax(0,1.5fr) 92px 74px 100px 96px minmax(0,2fr);gap:10px;align-items:center;padding:6px 0}
+.hd{font-weight:700;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--head);padding:8px 0 5px}
+.row{border-top:1px solid var(--line)}
+.hd+.row{border-top:0}
+.row .oc{font-weight:700;color:var(--head)}
+.row .oc small{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.code{font-family:"Barlow",Consolas,monospace;font-size:13.5px}
+.nl{color:var(--muted)}
+.pr{display:flex;align-items:center;gap:6px;font-weight:700;color:var(--head);font-size:13px}
+.pr span.t{display:inline-block;width:46px;height:7px;border-radius:4px;background:var(--line);overflow:hidden}
+.pr span.t i{display:block;height:100%}
+.pr .Approved i{background:var(--sky)}.pr .P i{background:var(--orange)}.pr .New i{background:var(--blue)}
+.lea{font-size:13px}
+.note{padding:7px 16px 9px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line)}
+.empty{padding:18px 16px;color:var(--muted)}
+.cnt{margin:0 0 8px;font-weight:700;color:var(--head)}
+details{margin-top:14px;max-width:100ch;font-size:13px;color:var(--muted)}
+summary{cursor:pointer;font-weight:700;color:var(--head)}
+details p{margin:6px 0}
+@media (max-width:860px){
+  .wrap{padding:14px 14px 24px}
+  .split{grid-template-columns:1fr}
+  .rail{max-height:200px}
+  .row,.hd{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"o s" "n r" "l l"}
+  .hd{display:none}
+  .row .oc{grid-area:o}.row .st{grid-area:s;justify-self:end}.row .on{grid-area:n}.row .rp{grid-area:r;justify-self:end}.row .pr{display:none}.row .lea{grid-area:l}
+}
+</style>
+<div class="wrap">
+  <div class="bar" role="presentation"></div>
+  <div class="top">
+    <div><div class="eyebrow">LAUNCH Apprenticeship Network</div><h1>Apprenticeship Standards</h1></div>
+    <div class="stats" id="stats"></div>
+  </div>
+  <div class="tools">
+    <div class="tog" role="group" aria-label="View">
+      <button type="button" data-v="ov" aria-pressed="true">Overview</button>
+      <button type="button" data-v="pr" aria-pressed="false">By program</button>
+      <button type="button" data-v="co" aria-pressed="false">By LEA college</button>
+    </div>
+    <div class="search"><input type="search" id="q" placeholder="Search occupation, O*NET, RAPIDS, DAS, or college" aria-label="Search standards"></div>
+    <div class="flt" role="group" aria-label="Filter by occupation status">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="Approved" aria-pressed="false">Approved</button>
+      <button type="button" data-f="In progress" aria-pressed="false">In progress</button>
+      <button type="button" data-f="New" aria-pressed="false">New</button>
+    </div>
+  </div>
+  <div id="view"></div>
+  <details>
+    <summary>Sources and notes</summary>
+    <p>Built from the LAUNCH Standards sheet in Smartsheet (124 rows), read on October 28, 2026. Each program is a DAS standard with its occupations. Status, O*NET and RAPIDS codes, progress, and LEA colleges are as listed on the sheet. Progress is the occupation's DAS approval progress.</p>
+    <p>Sector groups are for navigation only and are not on the sheet. LEA names include a few school districts and one university. Blank O*NET or RAPIDS codes are shown as not listed. Three programs have no occupations listed yet. Industrial Technology and Manufacturing also lists Cabinetmaker, HVAC Installer, and Guitar Builder at the program level, with no occupation rows.</p>
+    <p>This board does not reproduce the LAUNCH wordmark. Place the official logo file on white.</p>
+  </details>
+</div>
+<script>
+var A="Approved",P="In progress",N="New";
+var SEC={h:"Healthcare and human services",e:"Education",b:"IT, business, food, and hospitality",i:"Industrial, automotive, and manufacturing"};
+var PR=[
+{id:"chw",n:"LAUNCH Community Colleges CHW",s:"h",das:"101417",pp:100,d:"2026-10-22",fo:1,o:[["Community Health Worker","21-1094.00","2002CB",A,100,["Berkeley City College","Cabrillo College"]]]},
+{id:"hc",n:"LAUNCH Healthcare",s:"h",das:"100627",pp:100,d:"2021-02-23",o:[
+["Registered Nurse","29-1141.00","0837CB",A,100,["Bakersfield College","College of the Sequoias","Victor Valley College","Riverside City College","San Bernardino Valley College"]],
+["Licensed Vocational Nurse","29-2061.00","0837CB",A,100,["Riverside City College"]],
+["Community Health Worker","21-1094.00","2002CB",A,100,["San Bernardino City Unified School District"]],
+["Social and Human Services Assistant","21-1093.00","1040CB",P,80,["San Bernardino Valley College","Moreno Valley College","Los Angeles City College"]],
+["Certified Nursing Assistant","31-1131.00","",P,80,["Bakersfield College"]],
+["Personal Care Aide","31-1122.00","",P,80,[]],
+["Pharmacy Technician","29-2052.00","",P,80,[]],
+["Medical Assistant","31-9092.00","1085CB",P,80,[]],
+["Direct Support Professional","31-2012.00","",P,80,["American River College"]],
+["Psychiatric Technician","29-2053.00","3054CB",P,80,["Coalinga College"]],
+["Phlebotomist","31-9097.00","2036",P,80,["Los Angeles Mission College"]],
+["Substance Use Disorder Counselor","21-1011.00","2068",P,80,["San Diego City College"]],
+["Public Health Informatics","15-1211.01","",P,20,["Bakersfield College"]],
+["Physical Therapy Assistant","31-2021.00","",P,80,["College of the Desert"]]]},
+{id:"ms",n:"Mt. SAC Healthcare",s:"h",das:"101048",pp:100,d:"2023-05-30",o:[
+["Medical Assistant","31-9092.00","1085CB",A,100,["Mt. San Antonio College"]],
+["Pharmacy Technician","29-2052.00","0844CB",A,100,["Mt. San Antonio College"]],
+["Emergency Medical Technician","29-2042.00","0730CB",A,100,["Mt. San Antonio College"]],
+["Personal Care Aide","31-1121.00","1086CB",A,100,["Mt. San Antonio College"]],
+["Certified Nurse","29-2061.00","0837CB",A,100,["Mt. San Antonio College"]],
+["Physical Therapy Aide","31-2022.00","2011CB",A,100,["Mt. San Antonio College"]]]},
+{id:"cvs",n:"CVS Health Pharmacy Technician",s:"h",das:"100760",pp:100,d:"2021-09-07",o:[["Pharmacy Technician","29-2052.00","0844CB",A,100,["San Bernardino Valley College"]]]},
+{id:"amr",n:"American Medical Response Paramedic",s:"h",das:"101049",pp:100,d:"2023-10-24",o:[
+["Paramedic","29-2043.00","543",P,40,["Crafton Hills College"]],
+["Emergency Medical Technician","29-2042.00","730",A,100,[]],
+["Vehicle Service Technician","53-3011.00","724",A,100,[]]]},
+{id:"pm",n:"LAUNCH Paramedic",s:"h",das:"101641",pp:40,d:"",o:[["Paramedic","29-2043.00","0543CB",P,40,["Lemoore College","College of the Sequoias","Crafton Hills College"]]]},
+{id:"cbh",n:"California Behavioral Health",s:"h",das:"101079",pp:40,d:"",o:[["Wellness Coach","21-1093.00","1039CB",P,40,["West Los Angeles College","Lemoore College","Chabot College"]]]},
+{id:"ec",n:"LAUNCH Employment Coach",s:"h",das:"101445",pp:100,d:"2026-07-15",o:[["Employment Coach","21-1093.00","2039CB",P,100,["Chabot College"],"Status reads In progress while DAS approval shows 100% and a July 15, 2026 approval date. Confirm on the sheet."]]},
+{id:"edu",n:"LAUNCH Educators",s:"e",das:"100898",pp:100,d:"2022-04-12",o:[
+["Associate Teacher","25-9042.00","0657CB",A,100,["College of the Canyons","Corona-Norco Unified School District","Riverside City College"]],
+["Teacher","25-2011.00","3004CB",A,100,["Riverside City College"]],
+["Master Teacher","25-2011.00","3004CB",A,100,["Riverside City College"]],
+["Site Supervisor","25-2011.00","3004CB",A,100,["Riverside City College"]],
+["Registered Behavior Technician","29-2053.00","",N,0,["Los Angeles Pierce College"]]]},
+{id:"brg",n:"Bay Region Invests in Developing Great Educators (BRIDGE)",s:"e",das:"101186",pp:100,d:"2024-10-23",o:[["Teacher Aide I","25-9042.00","0657CB",A,100,["Cabrillo College","College of the Canyons","Hartnell College","San Jose City College"]]]},
+{id:"it",n:"LAUNCH IT, Business, Hospitality and Professional Services",s:"b",das:"100629",pp:100,d:"2021-01-26",o:[
+["Information Technology Support Technician","15-1232.00","1059CB",A,100,["Cabrillo College","Moreno Valley College","Mt. San Jacinto College","Los Angeles Valley College","Riverside City College","Chaffey College","Palo Verde College","San Bernardino Valley College","California State University, San Bernardino","Moreno Valley Unified School District","Compton Unified School District"]],
+["Cybersecurity Specialist","15-1212.00","2050CB",A,100,["Cabrillo College","Moreno Valley College","Mt. San Jacinto College","Los Angeles Valley College","Riverside City College","California State University, San Bernardino","Merced College","Palo Verde College","San Bernardino Valley College","Chaffey College"]],
+["Cybersecurity Professional","15-1212.00","2050CB",A,100,["Moreno Valley College","California State University, San Bernardino","Cabrillo College","Merritt College","Los Angeles Valley College","Chaffey College"]],
+["Public Relations Specialist","27-3031.00","1076CB",A,100,["Compton Unified School District"]],
+["Cook","35-2014.00","0663CB",A,100,["Los Angeles Mission College"]],
+["Multimedia Specialist","27-4011.00","0970CB",A,100,["Compton Unified School District"]],
+["Accounting Associate","43-3031.00","1125CB",A,100,["Moreno Valley College","Riverside City College"]],
+["Hospitality Manager","11-1021.00","2060CB",P,40,["Los Angeles Pierce College"]],
+["Software Developer","15-1252.00","1129CB",P,40,["Evergreen Valley College"]],
+["Information Security Engineer","15-1299.05","3032CB",P,40,["Evergreen Valley College"]],
+["Business Data Analyst","15-2051.01","3039CB",P,40,["Evergreen Valley College"]],
+["Network and Computer Systems Administrator","15-1244.00","1132CB",P,40,["Evergreen Valley College"]],
+["Data Scientist","15-2051.00","2079CB",P,40,["Evergreen Valley College"]],
+["Software Tester","15-1253.00","3070",N,0,[]]]},
+{id:"xr",n:"Extended Reality & Digital Marketing",s:"b",das:"100545",pp:40,d:"",o:[
+["Extended Reality Developer","15-1255.01","",P,60,["Cañada College"]],
+["Quality Assurance Tester","15-1253.00","",P,60,["Cañada College"]],
+["Digital Marketer","13-1161.01","",P,60,["Cañada College"]]]},
+{id:"hbm",n:"Homeward Bound of Marin",s:"b",das:"101660",pp:20,d:"",o:[
+["Cook","35-2014.00","90",P,20,["Santa Rosa Junior College"]],
+["Sous Chef","35-2012.00","",P,20,["Santa Rosa Junior College"]]]},
+{id:"svh",n:"South Valley Hospitality and Culinary",s:"b",das:"101065",pp:100,d:"",o:[["Chef/Head Cook","35-1011.00","",A,100,[]]]},
+{id:"caf",n:"CA League of Food Producers Food Safety",s:"b",das:"100465",pp:100,d:"2020-03-02",o:[["Food Science & Safety Technician","","",A,100,[]]]},
+{id:"ret",n:"Retail Operations Apprenticeship Program",s:"b",das:"101119",pp:40,d:"",o:[["Retail Operations Specialist","41-1011.00","",P,40,["Foothill College"]]]},
+{id:"sjd",n:"San Jose City College Data Analytics Technician",s:"b",das:"100578",pp:0,d:"",o:[["Mechanical Engineering Technologist","","",N,0,[]]]},
+{id:"sjg",n:"San Jose City College Internet Technician (Google IT)",s:"b",das:"100577",pp:0,d:"",o:[]},
+{id:"tn",n:"The Technest Apprenticeship for San Jose Evergreen Community College District",s:"b",das:"100488",pp:0,d:"",o:[]},
+{id:"au",n:"LAUNCH Automotive",s:"i",das:"100663",pp:100,d:"2021-02-16",o:[
+["Automotive Service Technician and Mechanic","49-3023.00","0592CB",A,100,["Chaffey College","Los Angeles Pierce College","Long Beach City College","Moreno Valley Unified School District","Mt. San Jacinto College","Palo Verde College","Riverside City College","San Bernardino Valley College"]],
+["Heavy and Medium Duty Mechanic Helper","49-3031.00","0124CB",A,100,["San Bernardino Valley College","Moreno Valley Unified School District"]],
+["Master Automotive Technician","49-3023.00","0592CB",A,100,["Chaffey College","Los Angeles Pierce College","Moreno Valley Unified School District","Mt. San Jacinto College","Riverside City College","San Bernardino Valley College"]]]},
+{id:"itm",n:"LAUNCH Industrial Technology & Manufacturing",s:"i",das:"99764",pp:100,d:"2020-01-17",pn:"Also listed at the program level with no occupation rows: Cabinetmaker, HVAC Installer, Guitar Builder.",o:[
+["Avionics/Electronic Technician","49-2091.00","0464CB",A,100,["Victor Valley College"]],
+["CNC Operator","51-9161.00","0845CB",A,100,["Norco College"]],
+["CNC Programmer","51-9162.00","0690CB",A,100,["Norco College"]],
+["Electro-Mechanical Technician","17-3024.00","0167CB",A,100,["Chaffey College","Norco College"]],
+["Industrial Automation & Mechatronics Technician","49-2094.00","2014CB",A,100,["Chaffey College","Lemoore College","Norco College","San Diego City College"]],
+["Machine Operator","51-4081.00","0511CB",A,100,["College of the Canyons","Norco College"]],
+["Manufacturing Engineering Technician","17-3026.00","2031CB",A,100,["Lemoore College"]],
+["Manufacturing Production Technician","17-3026.00","2031CB",A,100,["Ohlone College","Bakersfield College","Chaffey College","Norco College"]],
+["Quality Control Technician","17-3026.00","0462CB",A,100,["Lemoore College"]]]},
+{id:"idea",n:"Inland/Desert Employers (IDEA)",s:"i",das:"5256",pp:100,d:"2021-10-07",o:[
+["Industrial Maintenance Electrician","49-2094.00","643",A,100,["Chaffey College","Victor Valley College"]],
+["Industrial Mechanic","49-9041.00","0308HY",A,100,["Chaffey College","Victor Valley College"]]]},
+{id:"mech",n:"Inland/Desert Employers (IDEA) Mechatronics",s:"i",das:"100709",pp:100,d:"2021-09-07",o:[["Mechatronics Technician","17-3024.00","167",A,100,["Chaffey College","Victor Valley College"]]]},
+{id:"arc",n:"Architecture & Civil Drafters",s:"i",das:"",pp:0,d:"",o:[]}
+];
+var S={v:"ov",p:"chw",c:"",f:"all",q:""},V=document.getElementById("view");
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function sc(st){return st===P?"P":st}
+function fd(d){if(!d)return"";var m=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],x=d.split("-");return m[+x[1]-1]+" "+(+x[2])+", "+x[0]}
+function fok(o){return S.f==="all"||o[3]===S.f}
+function qok(p,o){var q=S.q.trim().toLowerCase();if(!q)return true;return (p.n+" "+p.das+" "+o[0]+" "+o[1]+" "+o[2]+" "+o[5].join(" ")).toLowerCase().indexOf(q)>-1}
+function occs(p){return p.o.filter(function(o){return fok(o)&&qok(p,o)})}
+function progOK(p){
+  var q=S.q.trim().toLowerCase();
+  if(!p.o.length)return S.f==="all"&&(!q||(p.n+" "+p.das).toLowerCase().indexOf(q)>-1);
+  return occs(p).length>0;
+}
+function cell(o,first){
+  return '<div class="row"><div class="oc">'+(first?esc(first)+'<small>'+esc(o[0])+'</small>':esc(o[0]))+(o[6]?'<small>'+esc(o[6])+'</small>':'')+'</div><div class="on code">'+(o[1]?esc(o[1]):'<span class="nl">Not listed</span>')+'</div><div class="rp code">'+(o[2]?esc(o[2]):'<span class="nl">Not listed</span>')+'</div><div class="st"><span class="pill '+sc(o[3])+'">'+o[3]+'</span></div><div class="pr"><span class="t '+sc(o[3])+'"><i style="width:'+o[4]+'%"></i></span>'+o[4]+'%</div><div class="lea">'+(o[5].length?esc(o[5].join(", ")):'<span class="nl">None listed</span>')+'</div></div>';
+}
+function hd(first){return '<div class="hd"><div>'+first+'</div><div class="on">O*NET</div><div class="rp">RAPIDS</div><div>Status</div><div>Progress</div><div>LEA colleges</div></div>'}
+function stats(){
+  var c={Approved:0,"In progress":0,New:0},n=0;
+  PR.forEach(function(p){p.o.forEach(function(o){c[o[3]]++;n++})});
+  var s=[[PR.length,"programs"],[n,"occupations"],[c.Approved,"approved"],[c["In progress"],"in progress"],[c.New,"new"]];
+  document.getElementById("stats").innerHTML=s.map(function(x){return '<div class="stat"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>'}).join("");
+}
+function ov(){
+  var h="";
+  Object.keys(SEC).forEach(function(k){
+    var ps=PR.filter(function(p){return p.s===k&&progOK(p)});
+    if(!ps.length)return;
+    h+='<div class="sec"><h3>'+SEC[k]+'</h3><div class="tiles">';
+    ps.forEach(function(p){
+      var a=p.o.filter(function(o){return o[3]===A}).length,pr=p.o.filter(function(o){return o[3]===P}).length,nw=p.o.filter(function(o){return o[3]===N}).length,t=p.o.length||1;
+      h+='<button type="button" class="tile'+(p.fo?' fo':'')+'" data-p="'+p.id+'"><b>'+esc(p.n)+'</b><div class="m"><span>DAS '+(p.das||"not assigned")+'</span><span>'+(p.o.length?p.o.length+(p.o.length===1?' occupation':' occupations'):'No occupations yet')+'</span></div><div class="seg" role="img" aria-label="'+a+' approved, '+pr+' in progress, '+nw+' new"><i class="a" style="width:'+(a/t*100)+'%"></i><i class="p" style="width:'+(pr/t*100)+'%"></i><i class="n" style="width:'+(nw/t*100)+'%"></i></div></button>';
+    });
+    h+='</div></div>';
+  });
+  return h||'<div class="empty">Nothing matches. Clear the search or the status filter.</div>';
+}
+function pv(){
+  var ps=PR.filter(progOK);
+  if(!ps.length)return '<div class="empty">Nothing matches. Clear the search or the status filter.</div>';
+  if(!ps.some(function(p){return p.id===S.p}))S.p=ps[0].id;
+  var rail='<nav class="rail" aria-label="Programs">';
+  Object.keys(SEC).forEach(function(k){
+    var g=ps.filter(function(p){return p.s===k});
+    if(!g.length)return;
+    rail+='<h4>'+SEC[k]+'</h4>';
+    g.forEach(function(p){rail+='<button type="button" data-p="'+p.id+'"'+(p.id===S.p?' aria-current="true"':'')+'><span>'+esc(p.n)+'</span><span class="n">'+occs(p).length+'</span></button>'});
+  });
+  rail+='</nav>';
+  var p=PR.filter(function(x){return x.id===S.p})[0],os=occs(p);
+  var h='<section class="card"><div class="band"><h2>'+esc(p.n)+'</h2><div class="meta"><span><em>DAS file</em>'+(p.das||"Not assigned")+'</span><span><em>Program approval</em><span class="pb"><i style="width:'+p.pp+'%"></i></span>'+p.pp+'%</span>'+(p.d?'<span><em>DAS approved</em>'+fd(p.d)+'</span>':'')+'<span><em>Sector</em>'+SEC[p.s]+'</span></div></div>';
+  if(os.length){h+='<div class="rows">'+hd("Occupation");os.forEach(function(o){h+=cell(o)});h+='</div>'}
+  else h+='<div class="empty">'+(p.o.length?'No occupations match the current filter.':'No occupations are listed for this program yet.')+'</div>';
+  if(p.pn)h+='<div class="note">'+esc(p.pn)+'</div>';
+  h+='</section>';
+  return '<div class="split">'+rail+h+'</div>';
+}
+function colMap(){
+  var m={};
+  PR.forEach(function(p){occs(p).forEach(function(o){o[5].forEach(function(c){(m[c]=m[c]||[]).push([p,o])})})});
+  return m;
+}
+function co(){
+  var m=colMap(),names=Object.keys(m).sort();
+  if(!names.length)return '<div class="empty">Nothing matches. Clear the search or the status filter.</div>';
+  if(!m[S.c])S.c=names[0];
+  var rail='<nav class="rail" aria-label="LEA colleges">';
+  names.forEach(function(c){rail+='<button type="button" data-c="'+esc(c)+'"'+(c===S.c?' aria-current="true"':'')+'><span>'+esc(c)+'</span><span class="n">'+m[c].length+'</span></button>'});
+  rail+='</nav>';
+  var it=m[S.c],h='<section class="card"><div class="band"><h2>'+esc(S.c)+'</h2><div class="meta"><span><em>LEA on</em>'+it.length+(it.length===1?' occupation':' occupations')+'</span></div></div><div class="rows">'+hd("Program");
+  it.forEach(function(x){h+=cell(x[1],x[0].n)});
+  h+='</div><div class="note">None of the 10 Orange County colleges is listed as an LEA on any standard.</div></section>';
+  return '<div class="split">'+rail+h+'</div>';
+}
+function res(){
+  var rows=[];
+  PR.forEach(function(p){occs(p).forEach(function(o){rows.push([p,o])})});
+  var h='<p class="cnt">'+rows.length+(rows.length===1?' match':' matches')+'</p>';
+  if(!rows.length)return h+'<div class="empty">Nothing matches. Try an O*NET code, a college, or part of an occupation name.</div>';
+  h+='<section class="card"><div class="rows">'+hd("Program and occupation");
+  rows.forEach(function(r){h+=cell(r[1],r[0].n)});
+  return h+'</div></section>';
+}
+function render(){
+  stats();
+  V.innerHTML=S.q.trim()?res():S.v==="ov"?ov():S.v==="pr"?pv():co();
+  document.querySelectorAll(".tog button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===S.v)});
+  document.querySelectorAll(".flt button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.f===S.f)});
+}
+document.querySelector(".tog").addEventListener("click",function(e){var b=e.target.closest("button");if(b){S.v=b.dataset.v;render()}});
+document.querySelector(".flt").addEventListener("click",function(e){var b=e.target.closest("button");if(b){S.f=b.dataset.f;render()}});
+document.getElementById("q").addEventListener("input",function(e){S.q=e.target.value;render()});
+V.addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;
+  if(b.dataset.p){S.p=b.dataset.p;S.v="pr";render()}
+  else if(b.dataset.c){S.c=b.dataset.c;render()}
+});
+render();
+</script>
