@@ -1,0 +1,1118 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saddleback Course Mapper | LAUNCH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky:#29AAE1; --blue:#247EB2; --deep:#1F4171; --navy:#032F6E; --orange:#FAAB1A;
+  --bg:#ffffff; --ink:#032F6E; --head:#1F4171; --muted:#4A5C78; --card:#ffffff; --line:#D3E2EE; --tint:#EAF5FC; --tint2:#CFE8F7;
+  --o0:#1F4171; --o1:#247EB2; --o2:#29AAE1; --o2t:#032F6E;
+  --display:"Barlow Condensed","Arial Narrow","Roboto Condensed",Impact,sans-serif;
+  --body:"Barlow","Segoe UI",Roboto,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#06162C;--ink:#FFFFFF;--head:#FFFFFF;--muted:#B7C8DE;--card:#0C2441;--line:#274A74;--tint:#10305A;--tint2:#18457D;--o0:#29AAE1;--o1:#247EB2;--o2:#8CCBEA;--o0t:#032F6E}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14.5px;line-height:1.4}
+button,input,select{font-family:inherit}
+.wrap{max-width:1400px;margin:0 auto;padding:18px 28px 28px}
+.bar{height:6px;border-radius:3px;background:linear-gradient(90deg,#29AAE1,#247EB2,#1F4171);margin-bottom:14px}
+.top{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:flex-end;justify-content:space-between}
+.eyebrow{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--blue)}
+@media (prefers-color-scheme: dark){.eyebrow{color:var(--sky)}}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(32px,5vw,46px);line-height:1;margin:2px 0 0;color:var(--head)}
+.sub{margin:4px 0 0;color:var(--muted);max-width:75ch}
+.stats{display:flex;flex-wrap:wrap;gap:8px}
+.stat{border-left:5px solid var(--orange);padding:2px 12px 2px 10px}
+.stat b{font-family:var(--display);font-size:28px;line-height:1;color:var(--head);margin-right:6px}
+.stat span{font-size:12.5px;color:var(--muted)}
+button:focus-visible,input:focus-visible,select:focus-visible,.dh:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.hint{margin:12px 0 10px;font-size:13px;color:var(--muted)}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;align-items:start}
+.oc{border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden;min-height:140px}
+.oc.over{outline:3px dashed var(--orange);outline-offset:-3px}
+.oc header{color:#fff;padding:9px 14px 8px}
+.oc.k0 header{background:var(--deep)}.oc.k1 header{background:var(--blue)}.oc.k2 header{background:#1b6f99}
+@media (prefers-color-scheme: dark){.oc.k0 header{background:var(--deep)}.oc.k1 header{background:#1c5f87}.oc.k2 header{background:#1b6f99}}
+.oc h2{font-family:var(--display);font-weight:700;font-size:23px;line-height:1.05;margin:0}
+.oc header p{margin:3px 0 0;font-size:12.5px;color:#DCE9F5}
+.drop{padding:22px 14px;text-align:center;color:var(--muted);border:2px dashed var(--line);margin:10px;border-radius:10px}
+.gc{margin:8px;border:1px solid var(--line);border-left:6px solid var(--blue);border-radius:0 10px 10px 0;padding:8px 10px;background:var(--card)}
+.gt{display:flex;gap:8px;align-items:flex-start}
+.dh{cursor:grab;user-select:none;font-size:18px;line-height:1.1;color:var(--muted);padding:0 2px;border-radius:4px}
+.gt .tt{flex:1;min-width:0}
+.gt b{display:block;color:var(--head);font-size:14.5px;line-height:1.2}
+.gt span.m{font-size:12.5px;color:var(--muted)}
+.gt em{font-style:normal;font-weight:700;background:var(--orange);color:var(--navy);border-radius:999px;padding:0 7px;margin-left:4px}
+.chs{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 6px}
+.ch{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--line);border-radius:999px;padding:1px 4px 1px 2px;background:var(--tint)}
+.ch.nc{border-color:var(--orange)}
+.ch select{font-weight:700;font-size:12.5px;border:0;background:transparent;color:var(--head);padding:2px 0;max-width:118px;cursor:pointer}
+.ch .hh{font-size:11.5px;color:var(--muted);padding-right:6px;white-space:nowrap}
+.ch .rm{border:0;background:transparent;color:var(--muted);font-weight:700;font-size:15px;line-height:1;cursor:pointer;width:20px;height:20px;border-radius:50%;padding:0}
+.ch .rm:hover,.ch .rm:focus-visible{background:var(--orange);color:var(--navy)}
+.ch .hh{padding-right:2px}
+.ch.ojt{padding:3px 10px;font-size:12px;color:var(--muted);background:transparent;border-style:dashed}
+.nl{font-size:12.5px;color:var(--muted)}
+.ga{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12px;color:var(--muted)}
+.ga label{display:flex;align-items:center;gap:5px}
+.ga select{font-size:12.5px;padding:3px 4px;border:1.5px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);max-width:170px}
+.panel{border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden;position:sticky;top:10px;max-height:calc(100vh - 24px);display:flex;flex-direction:column}
+.ph{background:var(--deep);color:#fff;padding:11px 16px 10px}
+.ph h2{font-family:var(--display);font-weight:700;font-size:34px;line-height:1;margin:0}
+.ph p{margin:4px 0 0;font-size:13px;color:#DCE9F5}
+.pb{overflow:auto;padding:6px 14px 12px}
+.tgl{display:flex;gap:10px;align-items:center;font-weight:700;color:var(--head);font-size:13px;margin-top:6px}
+.tgl input[type=number]{width:84px;font-size:15px;padding:5px 8px;border:2px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.gb{height:12px;border-radius:6px;background:var(--line);position:relative;margin:12px 0 10px}
+.gb i{display:block;height:100%;border-radius:6px;background:var(--sky)}
+.gb i.over{background:var(--orange)}
+.gb .tgm{position:absolute;top:-4px;width:3px;height:20px;background:var(--navy)}
+@media (prefers-color-scheme: dark){.gb .tgm{background:#fff}}
+.sec{margin:10px 0 4px;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.oh{list-style:none;margin:0;padding:0}
+.oh li{display:flex;justify-content:space-between;gap:8px;padding:4px 0;border-top:1px solid var(--line);font-size:13px}
+.oh li b{color:var(--head)}
+.bs{font-size:13px;margin:6px 0}
+.bs b{color:var(--head)}
+.btn{font-weight:700;font-size:13px;padding:6px 12px;border-radius:8px;border:2px solid var(--deep);background:transparent;color:var(--head);cursor:pointer}
+@media (prefers-color-scheme: dark){.btn{border-color:var(--sky)}}
+.btn.pri{background:var(--orange);border-color:var(--orange);color:var(--navy)}
+.btn:disabled{opacity:.45;cursor:default}
+.acts{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.mig{display:flex;flex-direction:column;gap:6px;margin:8px 0;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--tint)}
+.mig select{font-size:13px;padding:5px;border:1.5px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}
+.every{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--head);margin:8px 0}
+.every input{width:18px;height:18px;accent-color:var(--blue)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;color:var(--muted);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:4px 4px;border-bottom:2px solid var(--head)}
+td{padding:4px;border-top:1px solid var(--line);vertical-align:top}
+td.n{text-align:right;font-weight:700;color:var(--head);white-space:nowrap}
+.tg{font-weight:700;font-size:11px;padding:0 6px;border-radius:999px;background:var(--orange);color:var(--navy);white-space:nowrap}
+.op{font-weight:700;font-size:11px;padding:0 7px;border-radius:999px;white-space:nowrap;display:inline-block;margin:0 3px 3px 0;max-width:150px;overflow:hidden;text-overflow:ellipsis;vertical-align:top}
+.op.k0{background:var(--deep);color:#fff}
+.op.k1{background:#1b6f99;color:#fff}
+.op.k2{background:var(--sky);color:var(--navy)}
+@media (prefers-color-scheme: dark){.op.k0{background:var(--sky);color:var(--navy)}.op.k1{background:#1c5f87}.op.k2{background:#8CCBEA;color:var(--navy)}}
+.op.un{background:transparent;border:1.5px dashed var(--muted);color:var(--muted);padding:0 6px}
+.wn{margin:6px 0;padding:7px 9px;border-left:5px solid var(--orange);background:var(--tint);border-radius:0 8px 8px 0;font-size:12.5px}
+#msg{font-size:12.5px;font-weight:700;color:var(--head);min-height:1.2em}
+#msg.err{color:#B3261E}
+@media (prefers-color-scheme: dark){#msg.err{color:#FF9C95}}
+textarea{width:100%;height:90px;font:12px Consolas,monospace;border:1.5px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+details{margin-top:14px;max-width:100ch;font-size:13px;color:var(--muted)}
+summary{cursor:pointer;font-weight:700;color:var(--head)}
+details p{margin:6px 0}
+.tools{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:14px 0 4px}
+.tog{display:inline-flex;border:2px solid var(--deep);border-radius:10px;overflow:hidden}
+@media (prefers-color-scheme: dark){.tog{border-color:var(--sky)}}
+.tog button{font-weight:700;font-size:14.5px;padding:7px 16px;border:0;background:transparent;color:var(--head);cursor:pointer}
+.tog button[aria-pressed="true"]{background:var(--deep);color:#fff}
+@media (prefers-color-scheme: dark){.tog button[aria-pressed="true"]{background:var(--blue)}}
+.tog button:focus-visible{outline:3px solid var(--orange);outline-offset:-3px}
+.vis{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:8px;overflow-x:auto}
+svg{display:block;width:100%;min-width:900px;height:auto}
+svg text{font-family:var(--body);fill:var(--ink)}
+.nd{cursor:pointer}
+.nd rect{stroke:var(--bg);stroke-width:1}
+.nd.o0 rect{fill:var(--o0)}.nd.o1 rect{fill:var(--o1)}.nd.o2 rect{fill:var(--o2)}
+.nd.c rect{fill:var(--navy)}
+@media (prefers-color-scheme: dark){.nd.c rect{fill:#B7C8DE}}
+.nd.x rect{fill:var(--orange);stroke:var(--navy);stroke-width:2}
+.nd.w rect{fill:var(--card);stroke:var(--orange);stroke-width:3;stroke-dasharray:4 2}
+.nd:focus{outline:none}
+.nd:focus-visible rect{stroke:var(--orange);stroke-width:3}
+.nd.sel rect{stroke:var(--orange);stroke-width:3}
+.nd text{font-size:14px;paint-order:stroke;stroke:var(--card);stroke-width:3.5px;stroke-linejoin:round}
+.nd.sel text{font-weight:700}
+.nd.dim{opacity:.35}
+.lk{fill:none;stroke-opacity:.34;transition:stroke-opacity .15s}
+.lk.l0{stroke:var(--o0)}.lk.l1{stroke:var(--o1)}.lk.l2{stroke:var(--o2)}.lk.lw{stroke:var(--orange);stroke-opacity:.6}
+.lk.on{stroke-opacity:.8}
+.lk.off{stroke-opacity:.07}
+.colh{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;fill:var(--muted)}
+.cl{list-style:none;margin:0;padding:0}
+.cl li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:8px;padding:7px 0;border-top:1px solid var(--line)}
+.cl li:first-child{border-top:0}
+.nb{font-family:var(--display);font-weight:700;font-size:17px;text-align:center;border-radius:6px;padding:1px 0;height:fit-content;color:#fff}
+.nb.o0{background:var(--o0)}.nb.o1{background:var(--o1)}.nb.o2{background:var(--o2);color:var(--navy)}
+@media (prefers-color-scheme: dark){.nb.o0,.nb.o1{color:var(--navy)}.nb.o1{background:var(--sky)}}
+.ct{font-size:13.5px}
+.cm{display:flex;flex-wrap:wrap;gap:4px 6px;margin-top:3px;font-size:12px;color:var(--muted);align-items:center}
+.cc{font-weight:700;font-size:11.5px;padding:1px 8px;border-radius:999px;background:var(--tint2);color:var(--head)}
+.cc.x{background:var(--orange);color:var(--navy)}
+.occs{list-style:none;margin:0;padding:0}
+.occs li{padding:8px 0;border-top:1px solid var(--line);font-size:13px}
+.occs li:first-child{border-top:0}
+.occs b{color:var(--head)}
+.live{display:grid;grid-template-columns:minmax(360px,.85fr) minmax(0,1.3fr);gap:14px;align-items:start;margin-top:10px}
+.lcol .cols{grid-template-columns:minmax(0,1fr)}
+.lsk{position:sticky;top:10px}
+.lsk svg{min-width:640px}
+.cap{margin:6px 2px 0;font-size:13px;color:var(--muted)}
+.cap b{color:var(--head)}
+.gc.hl{outline:3px solid var(--orange);outline-offset:-1px}
+.gt .tt[data-t]{cursor:pointer}
+.bar2{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:10px 14px}
+.bar2 .big{font-family:var(--display);font-weight:700;font-size:38px;line-height:1;color:var(--head)}
+.bar2 .big small{font-family:var(--body);font-size:13px;font-weight:700;color:var(--muted);margin-left:8px}
+.bar2 .tgl{margin:0}
+.bar2 .mig2{display:flex;gap:6px;align-items:center;font-size:13px;font-weight:700;color:var(--head)}
+.bar2 .mig2 select{font-size:13px;padding:5px;border:1.5px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);max-width:220px}
+.bar2 .every{margin:0}
+.bar2 .acts{margin:0}
+.bar2 .gb{flex:1 1 160px;min-width:140px;margin:6px 0}
+.ch.un{border-style:dashed}
+.ch.un .hh{font-style:italic}
+.hcn{margin:6px 8px 10px;padding:6px 8px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.hcn b{color:var(--head)}
+.opsel{font-weight:700;font-size:11.5px;border-radius:999px;border:1.5px solid var(--line);padding:2px 4px;max-width:150px;cursor:pointer;background:var(--card);color:var(--head)}
+.opsel.k0{background:var(--deep);color:#fff;border-color:var(--deep)}
+.opsel.k1{background:#1b6f99;color:#fff;border-color:#1b6f99}
+.opsel.k2{background:var(--sky);color:var(--navy);border-color:var(--sky)}
+@media (prefers-color-scheme: dark){.opsel.k0{background:var(--sky);color:var(--navy);border-color:var(--sky)}.opsel.k1{background:#1c5f87;border-color:#1c5f87}.opsel.k2{background:#8CCBEA;color:var(--navy);border-color:#8CCBEA}}
+.opsel.un{background:transparent;border:1.5px dashed var(--muted);color:var(--muted)}
+.opsel option{background:var(--card);color:var(--ink)}
+.tog.sm{margin:0 0 10px}
+.tog.sm button{font-size:13px;padding:5px 12px}
+.lcard{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:8px 12px 12px}
+.addl{display:flex;flex-direction:column;gap:4px;margin-top:10px;font-size:12.5px;font-weight:700;color:var(--head)}
+.addl select{font-size:13px;padding:5px;border:1.5px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);max-width:100%}
+.nd.wu rect{fill:var(--card);stroke:var(--muted);stroke-width:3;stroke-dasharray:4 2}
+.ctl{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin:10px 0}
+.ctl select,.ctl input[type=search]{font-size:13.5px;padding:6px 8px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);max-width:240px}
+.ctl .cnt{font-size:13px;color:var(--muted)}
+.bulk{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;border:1px solid var(--line);border-left:6px solid var(--orange);border-radius:0 10px 10px 0;padding:8px 12px;background:var(--tint);margin:8px 0}
+.bulk b{color:var(--head)}
+.bulk select{font-size:13px;padding:5px;border:1.5px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);max-width:260px}
+.ctw{border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:auto;max-height:calc(100vh - 360px);min-height:260px}
+.ctw table{min-width:860px;width:100%;border-collapse:collapse}
+.ctw th{position:sticky;top:0;background:var(--deep);color:#fff;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:7px 8px;text-align:left;z-index:2;border:0}
+.ctw td{padding:6px 8px;border-top:1px solid var(--line);vertical-align:top;font-size:13.5px}
+.ctw td.pk{width:34px}
+.ctw td.n{width:44px;font-family:var(--display);font-weight:700;font-size:17px;color:var(--head)}
+.ctw td.gk{width:190px;font-size:12.5px;color:var(--muted)}
+.ctw td.gk b{display:block;color:var(--head)}
+.ctw td.cs{width:290px}
+.cchips{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px}
+.cchip{display:inline-flex;align-items:center;gap:2px;font-weight:700;font-size:11.5px;padding:0 2px 0 8px;border-radius:999px;background:var(--tint2);color:var(--head)}
+.cchip.x{background:var(--orange);color:var(--navy)}
+.cchip.none{background:transparent;border:1.5px dashed var(--orange);color:var(--muted);padding:0 8px}
+.cchip button{border:0;background:transparent;color:inherit;font-weight:700;cursor:pointer;width:18px;height:18px;border-radius:50%;line-height:1;padding:0}
+.cchip button:hover,.cchip button:focus-visible{background:var(--navy);color:#fff}
+.ctw select{font-size:12.5px;padding:3px 4px;border:1.5px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);max-width:260px}
+.ctw input[type=checkbox]{width:18px;height:18px;accent-color:var(--blue)}
+.ga .lnk{font-size:12px;padding:2px 10px}
+@media (max-width:1000px){.live{grid-template-columns:minmax(0,1fr)}.lsk{position:static}}
+@media (max-width:1000px){
+  .wrap{padding:14px 14px 24px}
+  .main{grid-template-columns:minmax(0,1fr)}
+  .panel{position:static;max-height:none}
+}
+</style>
+<div class="wrap">
+  <div class="bar" role="presentation"></div>
+  <div class="top">
+    <div>
+      <div class="eyebrow">Saddleback College</div>
+      <h1>Automotive Course Mapper</h1>
+      <p class="sub">Skill groups stay with their occupation. Swap the courses they use, assign courses to individual competencies, choose which occupation counts each course's hours, and watch program hours update on the spot.</p>
+    </div>
+    <div class="stats" id="stats"></div>
+  </div>
+  <div class="tools"><div class="tog" role="group" aria-label="View"><button type="button" data-v="live" aria-pressed="true">Live view</button><button type="button" data-v="map" aria-pressed="false">Course mapper</button><button type="button" data-v="flow" aria-pressed="false">Sankey flow</button><button type="button" data-v="comp" aria-pressed="false">Competencies</button></div></div>
+  <p class="hint" id="hint"></p>
+  <div id="view"></div>
+  <details>
+    <summary>Notes and loading a new export</summary>
+    <p>Starting data is the Saddleback CourseMapping sheet in Smartsheet, read on November 16, 2026, with Master Technician and Helper rows already realigned. Course units come from the Saddleback General Automotive Technician A.S. catalog page. AUTO 208 is not in that page, so its 3 units come from your module pivot. AUTO 104A and 104B are separate 5-unit, 90-hour courses.</p>
+    <p>Skill groups cannot be moved between occupations. They stay where the sheet puts them. What moves is the course: each course counts toward exactly one occupation, chosen in the course ledger, and its hours count once. Courses that are unassigned are not counted. Because each course counts once, the hours by occupation always add up to the program total.</p>
+    <p>A course is bound to a skill group when its competencies point to it, and that is separate from which occupation counts its hours. Removing a course from the last group that uses it also unassigns it. Replacing a course assigns the new one to the group's occupation if it was unassigned. Assigning every course to one occupation is the migration.</p>
+    <p>The Competencies tab sets the course for each competency on its own. A change there overrides the group-level course for that competency only, and a later group-level replace or remove still applies to it. The sheet CSV carries these per-competency courses.</p>
+    <p>The Live view puts the mapper and the Sankey side by side and animates every change. The last Sankey column shows which occupation counts each course. A competency taught by two cross-listed courses counts half toward each in the flow. A course counted without any competencies, such as AUTO 207, shows as a thin band.</p>
+    <p>The sheet CSV keeps the sheet's five columns. The course list CSV has the columns of the CID form: course code, title, occupation, and total course hours.</p>
+    <p>To load a fresh export, use File, Export, Export sheet to CSV in Smartsheet. The sheet needs the columns Occupation, Occupational Skills, Competency #, Competency, and Course.</p>
+    <p><input type="file" id="csv" accept=".csv,text/csv" aria-label="Load Smartsheet CSV export"> <span id="lmsg" role="status"></span></p>
+  </details>
+</div>
+<script>
+var SAMPLE_OCC=["Automotive Service Technician","Automotive Master Technician","Heavy and Medium Duty Mechanic Helper"];
+var SAMPLE=[
+[0,"Suspension and Steering","AUTO 106A",[
+"Research vehicle service information including fluid type.",
+"Supplemental restraint system (SRS) verify indicator lamp operation.",
+"Diagnose steering column noises, looseness, and binding concerns (including tilt/telescoping mechanisms).",
+"Inspect rack and pinion steering gear inner tie rod ends (sockets) and bellows boots; replace as needed.",
+"Inspect power steering fluid level and condition.",
+"Flush, fill, and bleed power steering system; use proper fluid type per manufacturer specification.",
+"Remove, inspect, replace, and adjust power steering pump drive belt.",
+"Inspect, remove, and replace power steering hoses and fittings.",
+"Inspect, remove, and replace pitman arm, relay (centerlink/intermediate) rod, idler arm, mountings, and steering linkage damper.",
+"Inspect, replace, and adjust tie rod ends (sockets), tie rod sleeves, and clamps.",
+"Inspect, test and diagnose electrically assisted power steering systems.",
+"Test power steering system pressure; determine needed action.",
+"Inspect, remove, and replace upper and lower control arms, bushings, shafts, and rebound bumpers.",
+"Inspect, remove, and replace strut rods and bushings.",
+"Inspect, remove, and replace upper and/or lower ball joints (with or without wear indicators).",
+"Inspect, remove, and replace steering knuckle assemblies.",
+"Inspect, remove, and replace short and long arm suspension system coil springs and spring insulators.",
+"Inspect, remove, and replace torsion bars and mounts.",
+"Inspect, remove, and replace front/rear stabilizer bar (sway bar) bushings, brackets, and links.",
+"Inspect, remove, and replace strut cartridge or assembly, strut coil spring, insulators (silencers), and upper strut bearing mount.",
+"Inspect, remove, and replace track bar, strut rods/radius arms, and related mounts and bushings.",
+"Inspect rear suspension system leaf spring(s), spring insulators (silencers), shackles, brackets, bushings, center pins/bolts, and mounts.",
+"Inspect, remove, and replace shock absorbers; inspect mounts and bushings.",
+"Remove, inspect, service, and replace front and rear wheel bearings.",
+["Describe the function of suspension and steering control systems and components, (i.e., active suspension and stability control).","AUTO 106A/208"],
+"Check steering axis inclination (SAI).",
+"Inspect tire condition; identify tire wear patterns; check for correct tire size, application (load and speed ratings), and air pressure as listed on the tire information placard/label.",
+"Rotate tires according to manufacturers\u2019 recommendation including vehicles equipped with tire pressure monitoring systems (TPMS).",
+"Diagnose tire pull problems; determine needed action.",
+"Dismount, inspect, and remount tire on wheel equipped with tire pressure monitoring system sensor.",
+"Repair tire following vehicle manufacturer approved procedure.",
+"Identify indirect and direct tire pressure monitoring system (TPMS); calibrate system; verify operation of instrument panel lamps.",
+"Demonstrate knowledge of steps required to remove and replace sensors in a tire pressure monitoring system (TPMS) including relearn procedure."]],
+[0,"Brakes","AUTO 106B",[
+"Research vehicle service information including fluid type.",
+"Diagnose poor stopping, pulling or dragging concerns caused by malfunctions in the hydraulic system; determine needed action.",
+"Inspect brake lines, flexible hoses, and fittings for leaks, dents, kinks, rust, cracks, bulging, wear, and loose fittings/supports; determine needed action.",
+"Select, handle, store, and fill brake fluids to proper level; use proper fluid type per manufacturer specification.",
+"Identify components of hydraulic brake warning light system.",
+"Remove, clean, and inspect brake drum; measure brake drum diameter; determine serviceability.",
+"Remove, clean, inspect, and/or replace brake shoes, springs, pins, clips, levers, adjusters/self-adjusters, other related brake hardware, and backing support plates; lubricate and reassemble.",
+"Pre-adjust brake shoes and parking brake; install brake drums or drum/hub assemblies and wheel bearings; perform final checks and adjustments.",
+"Remove and clean caliper assembly; inspect for leaks, damage, and wear; determine needed action.",
+"Inspect caliper mounting and slides/pins for proper operation, wear, and damage; determine needed action.",
+"Remove, inspect, and replace brake pads and retaining hardware; determine needed action.",
+"Lubricate and reinstall caliper, brake pads, and related hardware; seat brake pads; inspect for leaks.",
+"Clean and inspect rotor and mounting surface; measure rotor thickness, thickness variation, and lateral runout; determine needed action.",
+"Remove and replace rotor. Demonstrate use of on car lathe. Machine rotor.",
+"Retract and re-adjust caliper piston on an integrated parking brake system.",
+"Check brake pad wear indicator; determine needed action.",
+"Identify components of the brake power assist system (vacuum and hydraulic); check vacuum supply (manifold or auxiliary pump) to vacuum-type power booster.",
+"Diagnose wheel bearing noises, wheel shimmy, and vibration concerns; determine needed action.",
+"Remove, clean, inspect, repack, and install wheel bearings; replace seals; install hub and adjust bearings.",
+"Check parking brake system and components for wear, binding, and corrosion; clean, lubricate, adjust and/or replace as needed.",
+"Replace wheel bearing and race.",
+"Remove and replace sealed wheel bearing assembly.",
+["Identify and inspect electronic brake control system components (ABS, TCS, ESC); determine needed action.","AUTO 106B/208"],
+"Depressurize high-pressure components of an electronic brake control system.",
+"Test, diagnose, and service electronic brake control system speed sensors, toothed ring (tone wheel), and circuits using a graphing multimeter (GMM)/digital storage oscilloscope (DSO).",
+"Diagnose electronic brake control system braking concerns caused by vehicle modifications (tire size, curb height, final drive ratio, etc.)."]],
+[0,"Electrical | Electronic Systems","AUTO 101",[
+"Demonstrate proper use of a test light on an electrical circuit.",
+"Use fused jumper wires to check operation of electrical circuits.",
+"Inspect, test, repair, and/or replace components, connectors, terminals, harnesses, and wiring in electrical/electronic systems (including solder repairs); determine needed action. Demonstrate use of digital multimeter.",
+"Repair data bus wiring harness.",
+"Confirm proper battery capacity for vehicle application; perform battery capacity and load test; determine needed action.",
+["Identify safety precautions for high voltage systems on electric, hybrid, hybrid-electric, and diesel vehicles.","AUTO 231"],
+"Identify electrical/electronic modules, security systems, radios, and other accessories that require reinitialization or code entry after reconnecting vehicle battery.",
+["Identify hybrid vehicle auxiliary (12v) battery service, repair, and test procedures.","AUTO 231"],
+["Demonstrate knowledge of an automatic idle-stop/start-stop system.","AUTO 231"],
+"Inspect, replace, and adjust generator (alternator) drive belts; check pulleys and tensioners for wear; check pulley and belt alignment.",
+"Remove, inspect, and replace generator (alternator).",
+"Reset maintenance indicators as required.",
+"Diagnose operation of comfort and convenience accessories and related circuits (such as: power window, power seats, pedal height, power locks; determine needed repairs.",
+"Diagnose operation of security/anti-theft systems and related circuits (such as: theft deterrent, door locks, remote keyless entry, remote start, and starter/fuel disable); determine needed repairs.",
+"Diagnose operation of entertainment and related circuits (such as: radio, DVD, remote CD changer, navigation, amplifiers, speakers, antennas, and voice-activated accessories); determine needed repairs.",
+"Diagnose operation of safety systems and related circuits (such as: horn, airbags, seat belt pretensioners; determine needed repairs.",
+["Diagnose body electronic systems circuits using a scan tool; check for module communication errors (data communication bus systems); determine needed action.","AUTO 101/208"],
+"Describe the process for software transfer, software updates, or reprogramming of electronic modules."]],
+[0,"Engine Performance","AUTO 102",[
+"Research vehicle service information including vehicle service history.",
+"Diagnose the cause of excessive oil consumption, coolant consumption, unusual exhaust color, odor, and sound; determine needed action.",
+"Perform engine absolute manifold pressure tests (vacuum/boost); determine needed action.",
+"Verify correct camshaft timing including engines equipped with variable valve timing systems (VVT).",
+"Retrieve and record diagnostic trouble codes (DTC), OBD monitor status, and freeze frame data; clear codes when applicable.",
+"Perform active tests of actuators using a scan tool; determine needed action.",
+"Describe the use of OBD monitors for repair verification.",
+"Diagnose the causes of emissions or drivability concerns with stored or active diagnostic trouble codes (DTC); obtain, graph, and interpret scan tool data.",
+"Diagnose emissions or drivability concerns without stored or active diagnostic trouble codes; determine needed action.",
+"Diagnose drivability and emissions problems resulting from malfunctions of interrelated systems (cruise control, security alarms, suspension controls, traction controls; determine needed action.",
+"Inspect, test, and/or replace ignition control module, powertrain/engine control module; reprogram/initialize as needed.",
+["Replace fuel filter(s).","AUTO 103"],
+["Inspect, test, and replace fuel injectors.","AUTO 103"],
+["Inspect condition of exhaust system hangers, brackets, clamps, and heat shields; determine needed action.","AUTO 103"],
+["Check and refill diesel exhaust fluid (DEF).","AUTO 103"],
+["Test the operation of turbocharger/supercharger systems; determine needed action.","AUTO 103"],
+["Inspect, test, service, and replace positive crankcase ventilation (PCV) filter/breather, valve, tubes, orifices, and hoses; perform needed action.","AUTO 103"],
+["Diagnose emissions and drivability concerns caused by the exhaust gas recirculation (EGR) system; inspect, test, service, and replace the components of the EGR system; determine needed action.","AUTO 103"],
+["Diagnose emissions and drivability concerns caused by the secondary air injection system; inspect, test, repair, and replace electrical/electronically-operated components and circuits of secondary air injection systems; determine needed action.","AUTO 103"],
+["Diagnose emissions and drivability concerns caused by the evaporative emissions control (EVAP) system; determine needed action.","AUTO 103"],
+["Diagnose emission and drivability concerns caused by catalytic converter system; determine needed action.","AUTO 103"],
+["Interpret diagnostic trouble codes (DTCs) and scan tool data related to the emissions control systems; determine needed action.","AUTO 103"]]],
+[1,"Engine Operation and Service","AUTO 104A/104B",[
+"Diagnose the cause of excessive oil consumption, coolant consumption, unusual engine exhaust color and odor; determine needed action.",
+"Perform cylinder power balance tests, compression test, and leak down test and determine needed action.",
+"Inspect and replace water pump(s) (including electrical water pumps), thermostat, coolant by-pass, and thermostat housing.",
+"Inspect and test coolant; drain, flush, and refill cooling cistern with recommended coolant; bleed air as required,",
+"Inspect and diagnose all engine starting systems including ignition system, starter, battery, and related components.",
+"Inspect, disassemble, diagnose and replace engine cylinder head and all related components."]],
+[1,"Manual Automatic Transmission","AUTO 105",[
+["Diagnose noise, vibration, harshness, and shift quality problems; determine necessary action.","AUTO 105/107"],
+["Diagnose fluid loss, type, level, and condition problems; determine necessary action.","AUTO 105/107"],
+["Diagnose shift quality concerns resulting from problems in the electronic transmission control system; determine necessary action.","AUTO 107"],
+"Inspect, replace, and/or align powertrain mounts.",
+["Replace fluid and filter(s); verify proper fluid level and type (for transmission with, or without, a dipstick).","AUTO 107"],
+"Diagnose clutch noise, binding, slippage, pulsation, chatter, pedal feel/effort, and release problems; determine needed repairs.",
+"Inspect, adjust, replace, and bleed hydraulic clutch slave/release cylinder, master cylinder, lines, and hoses; clean and flush hydraulic system; refill with proper fluid.",
+"Diagnose transmission noise, difficult shifting, gear clash, jumping out of gear, fluid condition and type, and fluid leakage problems; determine needed repairs.",
+"Check fluid level; refill with proper fluid. (Manual transmission and differential)",
+"Inspect, service, and replace shafts, yokes, boots, and universal/CV joints; verify proper phasing.",
+"Diagnose, inspect, service, and replace wheel bearings, seals, and hubs.",
+"Inspect, drain, and refill with proper lubricant. (limited slip differential)"]],
+[1,"Advanced Electrical","AUTO 201",[
+"Check voltages, voltage drops, and current flow in electrical/electronic circuits; interpret readings and determine needed repairs.",
+["Use scan tool data, bidirectional controls, and/or diagnose trouble codes (DTCs) to diagnose electronic systems; interpret readings and determine necessary action.","AUTO 202/208"],
+"Find shorts, grounds, opens, and resistance problems in electrical/electronic circuits; determine needed repairs.",
+"Measure and diagnose the cause(s) of abnormal key-off battery drain (parasitic draw); determine needed repairs.",
+"Read and interpret electrical schematic diagrams and symbols.",
+"Differentiate between electrical and engine mechanical problems that cause a slow crank, no-crank, extended cranking, or a cranking noise condition."]],
+[1,"Engine Performance","AUTO 202",[
+"Prepare and inspect vehicle for HC, CO, NOx, CO2, and O2 exhaust gas analysis; perform test and interpret exhaust gas readings.",
+"Verify driver\u2019s complaint, perform visual inspection, and/or road test vehicle; determine needed action.",
+"Diagnose engine mechanical, electrical, electronic, fuel, and ignition problems with an oscilloscope, engine analyzer, and/or scan tool; determine needed action.",
+"Diagnose emissions or drivability problems caused by oil related issues, such as incorrect pressure, poor quality, incorrect type used for the application.",
+"Test and diagnose emissions or drivability problems caused by batterycondition, connections, or excessive key-off battery drain; determine needed action.",
+"Diagnose ignition system related problems such as no-starting, hard starting, poor drivability, spark knock, power loss, poor mileage, and emissions problems; determine root cause; determine needed action.",
+"Diagnose fuel system related problems, including hot or cold no-starting, hard starting, poor drivability, incorrect idle speed, poor idle, flooding, hesitation, surging, engine misfire, power loss, stalling, poor mileage, and emissions problems determine root cause; determine needed action.",
+"Interpret fuel or induction system related diagnostic trouble codes (DTCs); analyze fuel trim and other scan tool data; determine needed action.",
+"Interpret evaporative emissions-related scan tool data and diagnostic trouble codes (DTCs); determine needed action.",
+"Use a scan tool, digital multimeter (DMM), or digital storage oscilloscope (DSO) to inspect or test computerized engine control system sensors, actuators, circuits, and powertrain/engine control module (PCM/ECM); determine needed action.",
+"Diagnose drivability and emissions problems resulting from failures of interrelated systems (for example: cruise control, security alarms/theft deterrent, torque management, traction controls, A/C, non-OEM installed accessories).",
+"Clear diagnostic trouble codes (DTCs), run all OBD II monitors, and verify the repair.",
+"Test and diagnose emissions or drivability problems caused by positive crankcase ventilation (PCV) system."]],
+[2,"Work Processes","AUTO 100",[
+"Servicing vehicles by changing oil and oil filters, lubricates chassis",
+"Inspecting vehicles for such defects as damaged or worn exhaust systems, leaking hoses, seals, pinion and rear axle seals, faulty wheel bearings, defective vehicle lighting brakes, windshield wipers and glass, and makes necessary repairs.",
+["Removing and replacing radiators, radiator hoses, fan belts, water pumps, batteries, battery cables, alternators, voltage regulators, starters, and various other components","AUTO 101"],
+["Inspecting, and replacing, wheel bearings, brake linings and pads, springs and all brake hardware as required.","AUTO 106B"],
+["Replacing fuses, mirrors and head, tail, clearance and parking lights, adjusts doors, windows and hoods.","AUTO 101"],
+["Keeping record of work performed, parts used, and time worked.","N/A - On-the-Job Training"],
+["Assisting Equipment Mechanic in higher level mechanical","N/A - On-the-Job Training"],
+["Working with alternate fuel.","AUTO 220"],
+"Performing equipment inspections.",
+"Demonstrates safe working practices related to all assigned job duties."]]
+];
+
+var CAT={
+"AUTO 100":{t:"Automotive Fundamentals",u:3,lec:2.5,lab:1.5,pre:[],rec:[],s:"Introduction to how modern automobile systems work, with a first look at tools and diagnostic equipment. Written for non-technical students."},
+"AUTO 101":{t:"Automotive Electrical Systems",u:3,lec:2.5,lab:1.5,pre:[],rec:["AUTO 100"],s:"Battery, starter, charging, accessory, and lighting systems, with emphasis on scan tool and digital multimeter use."},
+"AUTO 102":{t:"Engine Performance: Electronics and Ignition",u:3,lec:2.5,lab:1.5,pre:["AUTO 100"],rec:["AUTO 101","AUTO 207"],s:"Troubleshooting and repair of engine performance systems, focused on battery, charging, and ignition, using oscilloscopes on live vehicles."},
+"AUTO 103":{t:"Engine Performance: Fuel and Emission Systems",u:3,lec:2.5,lab:1.5,pre:["AUTO 100"],rec:["AUTO 101","AUTO 207"],s:"Troubleshooting and repair of fuel and emission control systems on live vehicles."},
+"AUTO 104A":{t:"Automotive Engines",u:5,lec:3.5,lab:4.5,pre:["AUTO 100"],rec:["AUTO 101","AUTO 207"],s:"First half of the two-semester engine rebuild: block boring and honing, bearings, pistons and rings, and basic block assembly."},
+"AUTO 104B":{t:"Automotive Engines",u:5,lec:3.5,lab:4.5,pre:["AUTO 104A"],rec:["AUTO 100","AUTO 207"],s:"Second half of the engine rebuild: cylinder head overhaul, camshaft selection, and full engine assembly. Requires 104A."},
+"AUTO 105":{t:"Automotive Power Train",u:3,lec:2.5,lab:1.5,pre:["AUTO 100"],rec:["AUTO 101","AUTO 207"],s:"Overhaul and repair of clutches, manual transmissions, drive lines, differentials, and axles."},
+"AUTO 106A":{t:"Automotive Suspension and Alignment",u:3,lec:2.5,lab:1.5,pre:["AUTO 100"],rec:[],s:"Diagnosis and overhaul of suspension systems, plus two- and four-wheel alignments on live vehicles."},
+"AUTO 106B":{t:"Automotive Brake Systems",u:3,lec:2.5,lab:1.5,pre:["AUTO 100"],rec:[],s:"Disc and drum brakes, ABS theory and scan-tool analysis, machining, and preparation for the California brake inspection license."},
+"AUTO 107":{t:"Automatic Transmission",u:3,lec:2.5,lab:1.5,pre:["AUTO 100"],rec:[],s:"Operation, overhaul, and servicing of front- and rear-wheel-drive automatic transmissions, including scan-tool diagnosis."},
+"AUTO 108":{t:"Automotive Air Conditioning",u:3,lec:2.5,lab:1.5,pre:["AUTO 100"],rec:[],s:"Heating and A/C operation and diagnosis on live vehicles. Students must complete EPA Section A609 certification within two weeks of the start."},
+"AUTO 109":{t:"California B.A.R. Basic Area Clean Air Car Course",u:5,lec:4.5,lab:1.5,pre:[],rec:["AUTO 100"],s:"Bureau of Automotive Repair certified Level I course for the smog check inspector exam. Recommended with or after AUTO 102, 103, or 202."},
+"AUTO 180WE":{t:"Automotive Work Experience",u:2,lec:0,lab:0,pre:[],rec:[],s:"Supervised work experience in an automotive industry job, 6 hours a week in the learning center. Take after at least 9 units in the program.",wk:"6.0 learning center hours per week"},
+"AUTO 200":{t:"Enhanced Area Clean Air Car Course",u:1,lec:1,lab:1,pre:[],rec:["AUTO 100","AUTO 109"],s:"Level II smog course: ASM emissions testing and data acquisition device operation."},
+"AUTO 201":{t:"Advanced Automotive Electrical",u:3,lec:2.5,lab:1.5,pre:["AUTO 101"],rec:["AUTO 100"],s:"Strategy-based diagnosis of lighting, instrumentation, engine and body controls, air bags, and fuel system operation."},
+"AUTO 202":{t:"Advanced Engine Performance Diagnosis",u:3,lec:2.5,lab:1.5,pre:[],rec:["AUTO 100","AUTO 102"],s:"Advanced engine and driveline diagnosis using a chassis dynamometer, digital storage oscilloscope, and five-gas analyzer. Recommended preparation is AUTO 100 and either 102 or 103."},
+"AUTO 205":{t:"Advanced Smog Update Training",u:0.5,lec:0.5,lab:1,pre:[],rec:["AUTO 100","AUTO 102","AUTO 103","AUTO 109"],s:"BAR-approved smog update covering current regulations, ASM testing, and emissions diagnostics."},
+"AUTO 207":{t:"Automotive Engineering Fundamentals",u:3,lec:3,lab:0,pre:[],rec:["AUTO 100"],s:"Physics and math concepts taught through the automobile. Lecture only."},
+"AUTO 208":{t:"Not in the catalog extract",u:3,lec:null,lab:null,pre:[],rec:[],s:"Hours come from the module pivot. The sheet cross-lists this course with AUTO 101, 106A, 106B, and 202."},
+"AUTO 220":{t:"Alternative Propulsion Systems",u:3,lec:2.5,lab:1.5,pre:[],rec:["AUTO 100","AUTO 207"],s:"CNG, propane, diesel, hydrogen fuel cell, hybrid, and electric propulsion, with lab work on safety, operation, and maintenance."},
+"AUTO 226":{t:"Automotive Service Consultant",u:2,lec:2,lab:0,pre:[],rec:["AUTO 100"],s:"How service consultants process work, write repair orders, and schedule vehicles."},
+"AUTO 227":{t:"Automotive Service Management",u:3,lec:3,lab:0,pre:[],rec:["AUTO 100"],s:"Running an automotive service department, including regulations and communication."},
+"AUTO 229":{t:"Diesel Technology",u:3,lec:2.5,lab:1.5,pre:["AUTO 100"],rec:[],s:"Design, operation, diagnosis, and repair of mobile and stationary diesel engines and their controls."},
+"AUTO 231":{t:"Hybrid and Electrical Vehicle Technology",u:3,lec:2.5,lab:1.5,pre:[],rec:["AUTO 100","AUTO 207"],s:"Hybrid, plug-in hybrid, and electric vehicle powertrains, with lab work on safety, maintenance, and repair."},
+"AUTO 232":{t:"Diesel Systems Technology",u:3,lec:2.5,lab:1.5,pre:["AUTO 100"],rec:[],s:"Diesel vehicle systems and equipment, including engine controls, fuel management, braking, and powertrain."},
+"AUTO 235":{t:"Basic Automotive Tire Service (ATS) and TPMS Monitoring",u:2,lec:1,lab:3,pre:[],rec:["AUTO 100"],s:"Tire Industry Association tire service and TPMS training: lifting, demounting, mounting, balancing, and repair."}
+};
+var OTHER=["AUTO 108","AUTO 109","AUTO 200","AUTO 205","AUTO 226","AUTO 227","AUTO 229","AUTO 232","AUTO 235","AUTO 180WE"];
+
+
+var CIDSET=["AUTO 100","AUTO 101","AUTO 102","AUTO 103","AUTO 104A","AUTO 104B","AUTO 105","AUTO 106A","AUTO 106B","AUTO 207"],CIDTOT=612;
+var OJT="On-the-job training",NOC="No course";
+var OCCS=[],GRPS=[],ROWS=[];
+var S={occOf:[],rep:{},xtra:{},home:{},cmap:{},pick:{},cf:{o:"",g:"",c:"",q:""},bc:"",every:false,target:558,mt:0,hist:[],sample:true,v:"live",lt:"groups",sel:null};
+var V=document.getElementById("view");
+function $(i){return document.getElementById(i)}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
+function tokens(c){
+  c=String(c||"").trim();
+  if(!c)return[];
+  if(/^n\/a/i.test(c)||/on-the-job/i.test(c))return[OJT];
+  var m=/^([A-Za-z]+)\s+(.+)$/.exec(c),dept="",rest=c;
+  if(m){dept=m[1].toUpperCase()+" ";rest=m[2]}
+  return rest.split("/").map(function(x){return x.trim()}).filter(Boolean).map(function(p){return dept+p});
+}
+function ckey(code){
+  if(code===OJT)return[9999,"~",0,""];
+  var m=/^(\D*?)\s*(\d+)([A-Za-z]?)/.exec(code);
+  return m?[0,m[1],parseInt(m[2],10),m[3]]:[1,code,0,""];
+}
+function ccmp(a,b){var x=ckey(a),y=ckey(b);for(var i=0;i<4;i++){if(x[i]<y[i])return-1;if(x[i]>y[i])return 1}return 0}
+function ctitle(c){return CAT[c]?CAT[c].t:""}
+function clabel(c,hrs){return c+(ctitle(c)?" \u00b7 "+ctitle(c):"")+(hrs?" \u00b7 "+hoursOf(c)+" hrs":"")}
+function short(n){return n.replace(/^Automotive /,"")}
+/* ---------- data ---------- */
+function setData(raw){
+  OCCS=[];GRPS=[];ROWS=[];
+  var om={},gm={};
+  raw.forEach(function(r){
+    var oi=om[r.o];if(oi==null){oi=OCCS.length;om[r.o]=oi;OCCS.push({n:r.o})}
+    var gk=oi+"|"+r.g,gi=gm[gk];if(gi==null){gi=GRPS.length;gm[gk]=gi;GRPS.push({oi:oi,n:r.g})}
+    ROWS.push({i:ROWS.length,gi:gi,n:r.n,t:r.t,cs:tokens(r.c)});
+  });
+  S.occOf=GRPS.map(function(g){return g.oi});
+  S.rep={};S.xtra={};S.cmap={};S.pick={};S.cf={o:"",g:"",c:"",q:""};S.hist=[];S.mt=0;S.sel=null;
+  S.home=defaultHomes();
+}
+function defaultHomes(){
+  var h={};
+  OCCS.forEach(function(o,oi){
+    ROWS.forEach(function(r){
+      if(S.occOf[r.gi]!==oi)return;
+      r.cs.forEach(function(c){if(c!==OJT&&!(c in h))h[c]=oi});
+    });
+  });
+  if(S.sample)CIDSET.forEach(function(c){if(!(c in h))h[c]=null});
+  return h;
+}
+function fromSample(){
+  var raw=[];
+  SAMPLE.forEach(function(g){
+    g[3].forEach(function(it,i){
+      var t=typeof it==="string"?it:it[0],c=typeof it==="string"?g[2]:it[1];
+      raw.push({o:SAMPLE_OCC[g[0]],g:g[1],n:(i+1)+".0",t:t,c:c});
+    });
+  });
+  return raw;
+}
+/* ---------- model ---------- */
+function effTokens(r){
+  var cm=S.cmap[r.i];
+  if(cm)return cm.slice();
+  var m=S.rep[r.gi]||{},out=[];
+  r.cs.forEach(function(c){var v=(c in m)?m[c]:c;if(v&&out.indexOf(v)<0)out.push(v)});
+  return out;
+}
+function groupCodes(gi){
+  var set={};
+  ROWS.forEach(function(r){if(r.gi===gi)effTokens(r).forEach(function(c){if(c!==OJT)set[c]=1})});
+  (S.xtra[gi]||[]).forEach(function(c){set[c]=1});
+  return Object.keys(set).sort(ccmp);
+}
+function hasOJT(gi){return ROWS.some(function(r){return r.gi===gi&&effTokens(r).indexOf(OJT)>-1})}
+function hoursOf(c){return CAT[c]?CAT[c].u*18:0}
+function allGroups(){return GRPS.map(function(g,i){return i})}
+function occGroups(oi){var o=[];GRPS.forEach(function(g,i){if(S.occOf[i]===oi)o.push(i)});return o}
+function boundIn(c){return allGroups().filter(function(gi){return groupCodes(gi).indexOf(c)>-1})}
+function homeOf(c){var v=S.home[c];return typeof v==="number"?v:null}
+function ledgerCodes(){
+  var set={};
+  Object.keys(S.home).forEach(function(c){set[c]=1});
+  allGroups().forEach(function(gi){groupCodes(gi).forEach(function(c){set[c]=1})});
+  return Object.keys(set).sort(ccmp);
+}
+function homeCodes(oi){return ledgerCodes().filter(function(c){return homeOf(c)===oi})}
+function sumH(cs){return cs.reduce(function(a,c){return a+hoursOf(c)},0)}
+function occHours(oi){return sumH(homeCodes(oi))}
+function totalHours(){return sumH(ledgerCodes().filter(function(c){return homeOf(c)!==null}))}
+function uncovered(){return ROWS.filter(function(r){return effTokens(r).length===0})}
+function gName(gi){
+  var g=GRPS[gi],oi=S.occOf[gi];
+  var dup=GRPS.some(function(h,j){return j!==gi&&S.occOf[j]===oi&&h.n===g.n});
+  return dup?g.n+" ("+short(OCCS[g.oi].n)+")":g.n;
+}
+function courseList(){
+  var set={};
+  Object.keys(CAT).forEach(function(c){set[c]=1});
+  ROWS.forEach(function(r){r.cs.forEach(function(c){if(c!==OJT)set[c]=1})});
+  Object.keys(S.rep).forEach(function(g){Object.keys(S.rep[g]).forEach(function(o){var v=S.rep[g][o];if(v&&v!==OJT)set[v]=1})});
+  Object.keys(S.xtra).forEach(function(g){S.xtra[g].forEach(function(c){set[c]=1})});
+  Object.keys(S.home).forEach(function(c){set[c]=1});
+  return Object.keys(set).sort(ccmp);
+}
+/* ---------- edits ---------- */
+function snap(){return JSON.stringify({rep:S.rep,xtra:S.xtra,home:S.home,cmap:S.cmap})}
+function push(){S.hist.push(snap());if(S.hist.length>80)S.hist.shift()}
+function restore(j){var o=JSON.parse(j);S.rep=o.rep;S.xtra=o.xtra;S.home=o.home;S.cmap=o.cmap||{}}
+function save(){if(!S.sample)return;try{localStorage.setItem("launch-auto-mapper-v3",JSON.stringify({r:S.rep,x:S.xtra,h:S.home,c:S.cmap,t:S.target,e:S.every}))}catch(e){}}
+function load(){
+  try{
+    var b=JSON.parse(localStorage.getItem("launch-auto-mapper-v3")||"null");
+    if(b&&b.h){S.rep=b.r||{};S.xtra=b.x||{};S.home=b.h;S.cmap=b.c||{};S.target=+b.t||558;S.every=!!b.e}
+  }catch(e){}
+}
+function replaceCode(gi,x,y){
+  if(x===y)return;
+  var gis=S.every?allGroups().filter(function(i){return groupCodes(i).indexOf(x)>-1}):[gi];
+  if(!gis.length)gis=[gi];
+  gis.forEach(function(g){
+    var m=S.rep[g]||(S.rep[g]={});
+    ROWS.forEach(function(r){
+      if(r.gi!==g)return;
+      r.cs.forEach(function(o){var cur=(o in m)?m[o]:o;if(cur===x)m[o]=y});
+    });
+    ROWS.forEach(function(r){
+      if(r.gi!==g)return;
+      var cm=S.cmap[r.i];
+      if(cm){var nt=[];cm.forEach(function(t){var v=t===x?y:t;if(v&&nt.indexOf(v)<0)nt.push(v)});S.cmap[r.i]=nt}
+    });
+    var xs=S.xtra[g]||[],i=xs.indexOf(x);
+    if(i>-1){xs.splice(i,1);if(y&&xs.indexOf(y)<0&&groupCodes(g).indexOf(y)<0)xs.push(y);S.xtra[g]=xs}
+  });
+  if(!boundIn(x).length)S.home[x]=null;
+  if(y&&y!==OJT&&homeOf(y)===null)S.home[y]=S.occOf[gis[0]];
+}
+function addCode(gi,c){
+  if(groupCodes(gi).indexOf(c)>-1)return;
+  (S.xtra[gi]=S.xtra[gi]||[]).push(c);
+  if(homeOf(c)===null)S.home[c]=S.occOf[gi];
+}
+function setRow(ri,toks){
+  var r=ROWS[ri],before=effTokens(r),seen=[];
+  toks.forEach(function(t){if(t&&seen.indexOf(t)<0)seen.push(t)});
+  S.cmap[ri]=seen;
+  before.forEach(function(x){if(x!==OJT&&seen.indexOf(x)<0&&!boundIn(x).length)S.home[x]=null});
+  seen.forEach(function(y){if(y!==OJT&&homeOf(y)===null)S.home[y]=S.occOf[r.gi]});
+}
+function pickedRows(){return Object.keys(S.pick).filter(function(k){return S.pick[k]}).map(Number)}
+function bulkApply(op,course){
+  pickedRows().forEach(function(ri){
+    var cur=effTokens(ROWS[ri]);
+    if(op==="set")setRow(ri,[course]);
+    else if(op==="add")setRow(ri,cur.concat([course]));
+    else if(op==="remove")setRow(ri,cur.filter(function(c){return c!==course}));
+    else if(op==="clear")setRow(ri,[]);
+  });
+}
+function assignAll(oi){
+  ledgerCodes().forEach(function(c){
+    if(homeOf(c)!==null||boundIn(c).length)S.home[c]=oi;
+  });
+}
+function removeEverywhere(code){var prev=S.every;S.every=true;replaceCode(0,code,"");S.every=prev}
+/* ---------- groups and ledger ---------- */
+function opts(cur){
+  var h='<option value="'+esc(cur)+'" selected>'+esc(cur)+'</option><optgroup label="Replace with">';
+  courseList().forEach(function(c){if(c!==cur)h+='<option value="'+esc(c)+'">'+esc(clabel(c,true))+'</option>'});
+  return h+'</optgroup><optgroup label="Other"><option value="'+esc(OJT)+'">On-the-job training (no hours)</option><option value="__rm">Remove from group</option></optgroup>';
+}
+function chip(gi,c){
+  var nc=S.sample&&CIDSET.indexOf(c)<0,hm=homeOf(c),lone=!ROWS.some(function(r){return r.gi===gi&&effTokens(r).indexOf(c)>-1});
+  var tt=ctitle(c)+(nc?" \u00b7 not on the CID form":"")+(hm===null?" \u00b7 unassigned, hours not counted":" \u00b7 hours counted in "+OCCS[hm].n)+(lone?" \u00b7 no competencies mapped in this group":"");
+  return '<span class="ch'+(nc?' nc':'')+(hm===null?' un':'')+'" title="'+esc(tt)+'"><select data-rep="'+gi+'" data-code="'+esc(c)+'" data-fk="rp'+gi+'-'+esc(c)+'" aria-label="Replace '+esc(c)+' in '+esc(gName(gi))+'">'+opts(c)+'</select><span class="hh">'+(hm===null?'not counted':hoursOf(c)+' hrs')+'</span><button type="button" class="rm" data-rmc="'+gi+'" data-code="'+esc(c)+'" title="Remove '+esc(c)+(S.every?' from every group':' from this group')+'" aria-label="Remove '+esc(c)+(S.every?' from every group':' from '+esc(gName(gi)))+'">\u00d7</button></span>';
+}
+function isHl(gi){
+  var s=S.sel;if(S.v!=="live"||!s)return false;
+  if(s.t==="o")return S.occOf[gi]===+s.k;
+  if(s.t==="g")return gi===+s.k;
+  if(s.t==="h")return groupCodes(gi).some(function(c){return homeKey(c)===s.k});
+  if(s.k===NOC)return ROWS.some(function(r){return r.gi===gi&&effTokens(r).length===0});
+  return groupCodes(gi).indexOf(s.k)>-1;
+}
+function gcard(gi){
+  var codes=groupCodes(gi),rs=ROWS.filter(function(r){return r.gi===gi}),unc=rs.filter(function(r){return effTokens(r).length===0}).length;
+  var ad='<select data-addc="'+gi+'" data-fk="ad'+gi+'" aria-label="Add a course to '+esc(gName(gi))+'"><option value="">Choose a course</option>'+courseList().filter(function(c){return codes.indexOf(c)<0}).map(function(c){return '<option value="'+esc(c)+'">'+esc(clabel(c,true))+'</option>'}).join("")+'</select>';
+  return '<article class="gc'+(isHl(gi)?' hl':'')+'" data-g="'+gi+'"><div class="gt"><div class="tt"'+(S.v==="live"?' data-t="g" data-k="'+gi+'" title="Trace in the Sankey"':'')+'><b>'+esc(gName(gi))+'</b><span class="m">'+rs.length+' competencies'+(unc?'<em>'+unc+' without a course</em>':'')+'</span></div></div><div class="chs">'+codes.map(function(c){return chip(gi,c)}).join("")+(hasOJT(gi)?'<span class="ch ojt">On-the-job training</span>':'')+(codes.length||hasOJT(gi)?'':'<span class="nl">No course bound</span>')+'</div><div class="ga"><label>Add course '+ad+'</label><button type="button" class="btn lnk" data-edit="'+gi+'">Edit each competency</button></div></article>';
+}
+function columns(){
+  return OCCS.map(function(o,oi){
+    var gs=occGroups(oi),n=0;gs.forEach(function(gi){n+=ROWS.filter(function(r){return r.gi===gi}).length});
+    var hc=homeCodes(oi);
+    return '<section class="oc k'+(oi%3)+'" aria-label="'+esc(o.n)+'"><header><h2>'+esc(o.n)+'</h2><p>'+gs.length+(gs.length===1?' skill group':' skill groups')+' \u00b7 '+n+' competencies \u00b7 '+sumH(hc)+' hours counted here</p></header>'+gs.map(gcard).join("")+'<div class="hcn"><b>Courses counted here ('+hc.length+'):</b> '+(hc.length?esc(hc.join(", ")):'none')+'</div></section>';
+  }).join("");
+}
+function ledgerHtml(){
+  var led=ledgerCodes();
+  var h='<table><thead><tr><th>Course</th><th>Counts toward</th><th style="text-align:right">Hours</th></tr></thead><tbody>';
+  led.forEach(function(c){
+    var hm=homeOf(c);
+    var sel='<select class="opsel '+(hm===null?'un':'k'+(hm%3))+'" data-home="'+esc(c)+'" data-fk="hm'+esc(c)+'" aria-label="Occupation for '+esc(c)+'"><option value=""'+(hm===null?' selected':'')+'>Unassigned</option>'+OCCS.map(function(o,i){return '<option value="'+i+'"'+(hm===i?' selected':'')+'>'+esc(short(o.n))+'</option>'}).join("")+'</select>';
+    h+='<tr><td>'+esc(c)+(S.sample&&CIDSET.indexOf(c)<0?' <span class="tg">Not on CID</span>':'')+(CAT[c]?'':' <span class="tg">Hours unknown</span>')+'</td><td>'+sel+'</td><td class="n"'+(hm===null?' style="color:var(--muted);font-weight:400"':'')+'>'+hoursOf(c)+'</td></tr>';
+  });
+  h+='</tbody></table><div class="bs" style="margin-top:6px">A course counts once, under the occupation you pick. Unassigned courses are not counted.</div>';
+  var more=courseList().filter(function(c){return led.indexOf(c)<0});
+  if(more.length)h+='<label class="addl">Add a course to the ledger <select data-pool="1" data-fk="pool"><option value="">Choose a course</option>'+more.map(function(c){return '<option value="'+esc(c)+'">'+esc(clabel(c,true))+'</option>'}).join("")+'</select></label>';
+  return h;
+}
+function controls(){
+  return '<div class="mig"><label for="mt" style="font-weight:700;color:var(--head);font-size:13px">Count every course toward</label><select id="mt" data-fk="mt">'+OCCS.map(function(o,i){return '<option value="'+i+'"'+(i===S.mt?' selected':'')+'>'+esc(o.n)+'</option>'}).join("")+'</select><button type="button" class="btn pri" data-act="migrate">Assign all courses</button><span class="bs" style="margin:0;font-size:12px;color:var(--muted)">Courses that no skill group uses, like AUTO 207, keep the choice you made in the ledger.</span></div>';
+}
+function side(){
+  var tot=totalHours(),tg=+S.target||558,diff=tot-tg,mx=Math.max(tot,tg,1),unc=uncovered().length;
+  var status=diff===0?"On target":(diff>0?diff+" hours over target":(-diff)+" hours under target");
+  var h='<aside class="panel"><div class="ph"><h2>'+tot+' hours</h2><p>'+status+'</p></div><div class="pb">';
+  h+='<div class="tgl"><label for="tg">Target hours</label><input type="number" id="tg" min="0" step="18" value="'+tg+'"></div>';
+  h+='<div class="gb" role="img" aria-label="'+tot+' of '+tg+' target hours"><i class="'+(diff>0?'over':'')+'" style="width:'+Math.round(tot/mx*100)+'%"></i><span class="tgm" style="left:calc('+(tg/mx*100)+'% - 1px)"></span></div>';
+  h+='<div class="sec">Hours by occupation</div><ul class="oh">';
+  OCCS.forEach(function(o,oi){h+='<li><span>'+esc(o.n)+'</span><b>'+occHours(oi)+'</b></li>'});
+  var un=ledgerCodes().filter(function(c){return homeOf(c)===null});
+  if(un.length)h+='<li style="color:var(--muted)"><span>Unassigned, not counted</span><b>'+sumH(un)+'</b></li>';
+  h+='</ul><div class="bs"><b>'+(ROWS.length-unc)+' of '+ROWS.length+'</b> competencies have a course'+(unc?'. <b>'+unc+'</b> have none':'')+'.</div>';
+  h+=cidNote();
+  h+='<div class="sec">Move courses</div>'+controls();
+  h+='<label class="every"><input type="checkbox" id="every"'+(S.every?' checked':'')+'>Apply a course replacement to every group that uses it</label>';
+  h+=actsHtml();
+  h+='<div class="sec">Course ledger</div>'+ledgerHtml()+'</div></aside>';
+  return h;
+}
+function cidNote(){
+  if(!S.sample)return"";
+  var cnt=ledgerCodes().filter(function(c){return homeOf(c)!==null}),notCid=cnt.filter(function(c){return CIDSET.indexOf(c)<0}),cidOut=CIDSET.filter(function(c){return homeOf(c)===null});
+  var mapped=ledgerCodes().filter(function(c){return homeOf(c)===null&&boundIn(c).length});
+  var h='<div class="bs"><b>CID form:</b> '+CIDTOT+' hours. '+(notCid.length?'Counted but not on the form: '+esc(notCid.join(", "))+'. ':'')+(cidOut.length?'On the form but not counted: '+esc(cidOut.join(", "))+'. ':'')+'</div>';
+  if(mapped.length)h+='<div class="wn">Mapped to competencies but unassigned, so their hours are not counted: '+esc(mapped.join(", "))+'.</div>';
+  return h;
+}
+function actsHtml(){
+  return '<div class="acts"><button type="button" class="btn" data-act="undo"'+(S.hist.length?'':' disabled')+'>Undo</button><button type="button" class="btn" data-act="reset">Reset</button><button type="button" class="btn" data-act="csv">Download sheet CSV</button><button type="button" class="btn" data-act="copy">Copy sheet CSV</button><button type="button" class="btn" data-act="courses">Download course list</button></div><div id="msg" role="status"></div><textarea id="ta" hidden aria-label="CSV text" readonly></textarea>';
+}
+function bar(){
+  var tot=totalHours(),tg=+S.target||558,diff=tot-tg,mx=Math.max(tot,tg,1);
+  var status=diff===0?"On target":(diff>0?diff+" over target":(-diff)+" under target");
+  return '<div class="bar2"><div class="big">'+tot+'<small>hours \u00b7 '+status+'</small></div><div class="tgl"><label for="tg">Target</label><input type="number" id="tg" min="0" step="18" value="'+tg+'"></div><div class="gb" role="img" aria-label="'+tot+' of '+tg+' target hours"><i class="'+(diff>0?'over':'')+'" style="width:'+Math.round(tot/mx*100)+'%"></i><span class="tgm" style="left:calc('+(tg/mx*100)+'% - 1px)"></span></div><div class="mig2"><label for="mt">Count every course toward</label><select id="mt" data-fk="mt">'+OCCS.map(function(o,i){return '<option value="'+i+'"'+(i===S.mt?' selected':'')+'>'+esc(o.n)+'</option>'}).join("")+'</select><button type="button" class="btn pri" data-act="migrate" title="Courses that no skill group uses keep the choice you made in the ledger">Assign all courses</button></div><label class="every"><input type="checkbox" id="every"'+(S.every?' checked':'')+'>Replace in every group</label>'+actsHtml()+'</div>';
+}
+function liveLeft(){
+  var h='<div class="tog sm" role="group" aria-label="Left panel"><button type="button" data-lt="groups" aria-pressed="'+(S.lt==="groups")+'">Skill groups</button><button type="button" data-lt="ledger" aria-pressed="'+(S.lt==="ledger")+'">Course hours</button></div>';
+  if(S.lt==="ledger")return h+'<div class="lcard">'+cidNote()+ledgerHtml()+'</div>';
+  return h+'<div class="cols">'+columns()+'</div>';
+}
+/* ---------- Competencies ---------- */
+function compRows(){
+  var f=S.cf,q=(f.q||"").toLowerCase();
+  return ROWS.filter(function(r){
+    if(f.o!==""&&S.occOf[r.gi]!==+f.o)return false;
+    if(f.g!==""&&r.gi!==+f.g)return false;
+    var t=effTokens(r);
+    if(f.c==="__none"){if(t.length)return false}
+    else if(f.c&&t.indexOf(f.c)<0)return false;
+    if(q&&(r.t+" "+gName(r.gi)).toLowerCase().indexOf(q)<0)return false;
+    return true;
+  });
+}
+function compView(){
+  var rows=compRows(),f=S.cf,picked=pickedRows().length,cl=courseList();
+  var h=bar();
+  h+='<div class="ctl"><select id="cfo" data-fk="cfo" aria-label="Occupation"><option value="">All occupations</option>'+OCCS.map(function(o,i){return '<option value="'+i+'"'+(f.o===String(i)?' selected':'')+'>'+esc(o.n)+'</option>'}).join("")+'</select>';
+  h+='<select id="cfg" data-fk="cfg" aria-label="Skill group"><option value="">All skill groups</option>'+GRPS.map(function(g,i){if(f.o!==""&&S.occOf[i]!==+f.o)return"";return '<option value="'+i+'"'+(f.g===String(i)?' selected':'')+'>'+esc(gName(i))+'</option>'}).join("")+'</select>';
+  h+='<select id="cfc" data-fk="cfc" aria-label="Course"><option value="">All courses</option><option value="__none"'+(f.c==="__none"?' selected':'')+'>No course</option>'+cl.map(function(c){return '<option value="'+esc(c)+'"'+(f.c===c?' selected':'')+'>'+esc(c)+'</option>'}).join("")+'</select>';
+  h+='<input type="search" id="cfq" data-fk="cfq" placeholder="Search competency text" aria-label="Search competencies" value="'+esc(f.q||"")+'"><span class="cnt"><b>'+rows.length+'</b> of '+ROWS.length+' shown</span></div>';
+  h+='<div class="bulk"><b>'+picked+' selected</b><select id="bc" data-fk="bc" aria-label="Course for selected competencies"><option value="">Choose a course</option>'+cl.map(function(c){return '<option value="'+esc(c)+'"'+(S.bc===c?' selected':'')+'>'+esc(clabel(c,true))+'</option>'}).join("")+'<option value="'+esc(OJT)+'"'+(S.bc===OJT?' selected':'')+'>On-the-job training (no hours)</option></select>';
+  h+='<button type="button" class="btn" data-bulk="set">Set as the course</button><button type="button" class="btn" data-bulk="add">Add course</button><button type="button" class="btn" data-bulk="remove">Remove course</button><button type="button" class="btn" data-bulk="clear">Clear course</button><button type="button" class="btn" data-bulk="pickshown">Select all shown</button><button type="button" class="btn" data-bulk="pickclear">Clear selection</button></div>';
+  var ro='<option value="">Set course\u2026</option>'+cl.map(function(c){return '<option value="'+esc(c)+'">'+esc(c+" \u00b7 "+hoursOf(c)+" hrs")+'</option>'}).join("")+'<option value="'+esc(OJT)+'">On-the-job training</option><option value="__none">No course</option>';
+  var allOn=rows.length&&rows.every(function(r){return S.pick[r.i]});
+  h+='<div class="ctw"><table><thead><tr><th><input type="checkbox" data-pickall="1" aria-label="Select all shown"'+(allOn?' checked':'')+'></th><th>#</th><th>Competency</th><th>Skill group</th><th>Course</th></tr></thead><tbody>';
+  rows.forEach(function(r){
+    var toks=effTokens(r),num=String(r.n).replace(/\.0$/,"");
+    var chips=toks.length?toks.map(function(t){
+      var nc=t!==OJT&&S.sample&&CIDSET.indexOf(t)<0;
+      return '<span class="cchip'+(nc?' x':'')+'">'+esc(t)+'<button type="button" data-crm="'+r.i+'" data-code="'+esc(t)+'" aria-label="Remove '+esc(t)+' from competency '+esc(num)+'">\u00d7</button></span>';
+    }).join(""):'<span class="cchip none">No course</span>';
+    h+='<tr><td class="pk"><input type="checkbox" data-pick="'+r.i+'"'+(S.pick[r.i]?' checked':'')+' aria-label="Select competency '+esc(num)+'"></td><td class="n">'+esc(num)+'</td><td>'+esc(r.t)+'</td><td class="gk"><b>'+esc(short(OCCS[S.occOf[r.gi]].n))+'</b>'+esc(gName(r.gi))+'</td><td class="cs"><div class="cchips">'+chips+'</div><select data-cs="'+r.i+'" data-fk="cs'+r.i+'" aria-label="Set course for competency '+esc(num)+'">'+ro+'</select></td></tr>';
+  });
+  if(!rows.length)h+='<tr><td colspan="5" style="color:var(--muted)">No competencies match these filters.</td></tr>';
+  return h+'</tbody></table></div>';
+}
+/* ---------- Sankey ---------- */
+function wrap(s,n){var w=s.split(" "),l=[],cur="";w.forEach(function(x){if((cur+" "+x).trim().length>n&&cur){l.push(cur);cur=x}else cur=(cur+" "+x).trim()});if(cur)l.push(cur);return l}
+function stackH(hs,p,H){var sum=hs.reduce(function(a,b){return a+b},0)+p*(hs.length-1),y=(H-sum)/2,out=[];hs.forEach(function(h){out.push({y:y,h:h});y+=h+p});return out}
+function ordCodes(list){
+  return list.sort(function(a,b){
+    var ra=a===NOC?2:(a===OJT?1:0),rb=b===NOC?2:(b===OJT?1:0);
+    return ra!==rb?ra-rb:ccmp(a,b);
+  });
+}
+function homeKey(c){var h=homeOf(c);return h===null?"u":String(h)}
+function selRows(){
+  var s=S.sel;if(!s)return[];
+  if(s.t==="o")return ROWS.filter(function(r){return S.occOf[r.gi]===+s.k});
+  if(s.t==="g")return ROWS.filter(function(r){return r.gi===+s.k});
+  if(s.t==="h")return ROWS.filter(function(r){return effTokens(r).some(function(c){return c!==OJT&&homeKey(c)===s.k})});
+  if(s.k===NOC)return uncovered();
+  return ROWS.filter(function(r){return effTokens(r).indexOf(s.k)>-1});
+}
+var SKP={full:{W:1120,nx:[190,400,640,900],wo:22,wg:26,wh:24,cnt:true},live:{W:860,nx:[125,285,455,690],wo:15,wg:20,wh:19,cnt:false}};
+var SK={prev:null,raf:0};
+function skModel(){
+  var H=560,pad=[18,12,7,14];
+  var occIdx=OCCS.map(function(o,i){return i}).filter(function(i){return occGroups(i).length}),gIdx=[];
+  occIdx.forEach(function(oi){occGroups(oi).forEach(function(gi){gIdx.push(gi)})});
+  var cw={},gc={};
+  ROWS.forEach(function(r){
+    var t=effTokens(r);if(!t.length)t=[NOC];
+    t.forEach(function(c){var w=1/t.length;cw[c]=(cw[c]||0)+w;var k=r.gi+"|"+c;gc[k]=(gc[k]||0)+w});
+  });
+  allGroups().forEach(function(gi){(S.xtra[gi]||[]).forEach(function(c){var k=gi+"|"+c;if(!gc[k]){gc[k]=1;cw[c]=(cw[c]||0)+1}})});
+  ledgerCodes().forEach(function(c){if(homeOf(c)!==null&&!cw[c])cw[c]=1});
+  var codes=ordCodes(Object.keys(cw));
+  var gv={},ov={};
+  gIdx.forEach(function(gi){var v=0;codes.forEach(function(c){v+=gc[gi+"|"+c]||0});gv[gi]=v;ov[S.occOf[gi]]=(ov[S.occOf[gi]]||0)+v});
+  var tot=0;codes.forEach(function(c){tot+=cw[c]});
+  var k=Math.min((H-pad[0]*(occIdx.length-1))/tot,(H-pad[1]*(gIdx.length-1))/tot,(H-pad[2]*(codes.length-1))/tot);
+  var oP=stackH(occIdx.map(function(oi){return Math.max((ov[oi]||0)*k,4)}),pad[0],H),
+      gP=stackH(gIdx.map(function(gi){return Math.max(gv[gi]*k,4)}),pad[1],H),
+      cH=codes.map(function(c){return Math.max(cw[c]*k,4)}),
+      cP=stackH(cH,pad[2],H);
+  var hkeys=[],hh={};
+  codes.forEach(function(c,ci){
+    if(c===NOC||c===OJT)return;
+    var key=homeKey(c);
+    if(hh[key]==null){hh[key]=0;hkeys.push(key)}
+    hh[key]+=cH[ci];
+  });
+  hkeys.sort(function(a,b){return a==="u"?1:b==="u"?-1:(+a)-(+b)});
+  var hP=stackH(hkeys.map(function(key){return hh[key]}),pad[3],H);
+  var s=S.sel,actG=null,actC=null,actO=null,actL=null;
+  if(s){
+    actG={};actC={};actO={};actL={};
+    gIdx.forEach(function(gi){codes.forEach(function(c){
+      if(!gc[gi+"|"+c])return;
+      var oi=S.occOf[gi];
+      var on=s.t==="o"?oi===+s.k:(s.t==="g"?gi===+s.k:(s.t==="h"?(c!==NOC&&c!==OJT&&homeKey(c)===s.k):c===s.k));
+      if(on){actG[gi]=1;actC[c]=1;actO[oi]=1;actL["g"+gi+"-c"+c]=1;actL["o"+oi+"-g"+gi]=1}
+    })});
+    if(s.t==="c")actC[s.k]=1;
+    if(s.t==="h")codes.forEach(function(c){if(c!==NOC&&c!==OJT&&homeKey(c)===s.k)actC[c]=1});
+  }
+  function st(key){return actL?(actL[key]?" on":" off"):""}
+  var m={nodes:{},nl:[],links:{},ll:[]};
+  function addN(n){m.nodes[n.id]=n;m.nl.push(n)}
+  function addL(l){m.links[l.id]=l;m.ll.push(l)}
+  var oOff={};
+  gIdx.forEach(function(gi,gpos){
+    var oi=S.occOf[gi],opos=occIdx.indexOf(oi);
+    if(oOff[oi]==null)oOff[oi]=oP[opos].y;
+    var w=gv[gi]*k,y0=oOff[oi]+w/2;oOff[oi]+=w;
+    var key="o"+oi+"-g"+gi;
+    addL({id:key,col:0,y0:y0,y1:gP[gpos].y+gP[gpos].h/2,w:Math.max(w,1.5),cls:"l"+(oi%3)+st(key),title:OCCS[oi].n+" to "+gName(gi)+": "+ROWS.filter(function(r){return r.gi===gi}).length+" competencies"});
+  });
+  var inOff=codes.map(function(){return 0});
+  gIdx.forEach(function(gi,gpos){
+    var off=gP[gpos].y,oi=S.occOf[gi];
+    codes.forEach(function(c,ci){
+      var v=gc[gi+"|"+c];if(!v)return;
+      var w=v*k,y0=off+w/2;off+=w;
+      var y1=cP[ci].y+inOff[ci]+w/2;inOff[ci]+=w;
+      var key="g"+gi+"-c"+c;
+      addL({id:key,col:1,y0:y0,y1:y1,w:Math.max(w,1.5),cls:(c===NOC?"lw":"l"+(oi%3))+st(key),title:gName(gi)+" to "+c+": "+(Math.round(v*10)/10)+" competencies"});
+    });
+  });
+  var hOff={};
+  codes.forEach(function(c,ci){
+    if(c===NOC||c===OJT)return;
+    var key=homeKey(c),hpos=hkeys.indexOf(key);
+    if(hOff[key]==null)hOff[key]=hP[hpos].y;
+    var w=cH[ci],y0=cP[ci].y+cP[ci].h/2,y1=hOff[key]+w/2;hOff[key]+=w;
+    var lk="c"+c+"-h"+key,on=actC?!!actC[c]:true;
+    addL({id:lk,col:2,y0:y0,y1:y1,w:Math.max(w,1.5),cls:(key==="u"?"lw":"l"+(+key%3))+(actC?(on?" on":" off"):""),title:c+" counts toward "+(key==="u"?"no occupation (unassigned)":OCCS[+key].n)+": "+hoursOf(c)+" hours"});
+  });
+  occIdx.forEach(function(oi,i){
+    var n=0;occGroups(oi).forEach(function(gi){n+=ROWS.filter(function(r){return r.gi===gi}).length});
+    addN({id:"o"+oi,col:0,t:"o",k:String(oi),name:OCCS[oi].n,n:n,cls:"o"+(oi%3),y:oP[i].y,h:oP[i].h,sel:!!(s&&s.t==="o"&&+s.k===oi),dim:!!(actO&&!actO[oi])});
+  });
+  gIdx.forEach(function(gi,i){
+    addN({id:"g"+gi,col:1,t:"g",k:String(gi),name:gName(gi),n:ROWS.filter(function(r){return r.gi===gi}).length,cls:"o"+(S.occOf[gi]%3),y:gP[i].y,h:gP[i].h,sel:!!(s&&s.t==="g"&&+s.k===gi),dim:!!(actG&&!actG[gi])});
+  });
+  var nu=uncovered().length;
+  codes.forEach(function(c,i){
+    var n=c===NOC?nu:ROWS.filter(function(r){return effTokens(r).indexOf(c)>-1}).length;
+    addN({id:"c"+c,col:2,t:"c",k:c,name:c,n:n,hrs:hoursOf(c),noc:c===NOC,ojt:c===OJT,notCid:S.sample&&c!==NOC&&c!==OJT&&CIDSET.indexOf(c)<0,cls:"c",y:cP[i].y,h:cP[i].h,sel:!!(s&&s.t==="c"&&s.k===c),dim:!!(actC&&!actC[c])});
+  });
+  hkeys.forEach(function(key,i){
+    var hrs=0;codes.forEach(function(c){if(c!==NOC&&c!==OJT&&homeKey(c)===key)hrs+=hoursOf(c)});
+    var live=actC?codes.some(function(c){return c!==NOC&&c!==OJT&&homeKey(c)===key&&actC[c]}):true;
+    addN({id:"h"+key,col:3,t:"h",k:key,name:key==="u"?"Unassigned":OCCS[+key].n,hrs:hrs,cls:key==="u"?"wu":"o"+(+key%3),y:hP[i].y,h:hP[i].h,sel:!!(s&&s.t==="h"&&s.k===key),dim:!live});
+  });
+  return m;
+}
+function skSig(m){
+  return m.nl.map(function(n){return n.id+":"+Math.round(n.y*10)+":"+Math.round(n.h*10)}).join("|")+"#"+m.ll.map(function(l){return l.id+":"+Math.round(l.y0*10)+":"+Math.round(l.y1*10)+":"+Math.round(l.w*10)}).join("|");
+}
+function lp(a,b,t){return a+(b-a)*t}
+function skDraw(m,pm,t,mode){
+  var P=SKP[mode],H=560,nw=14,nx=P.nx;
+  var svg='<svg viewBox="0 0 '+P.W+' '+(H+34)+'" role="img" aria-label="Flow from occupation to skill group to course to the occupation that counts its hours"><g transform="translate(0,30)">';
+  svg+='<text class="colh" x="'+(nx[0]+nw)+'" y="-12" text-anchor="end">Occupation</text><text class="colh" x="'+nx[1]+'" y="-12">Skill group</text><text class="colh" x="'+nx[2]+'" y="-12">Course</text><text class="colh" x="'+nx[3]+'" y="-12">Hours counted in</text>';
+  var ls=m.ll.map(function(L){return{L:L,P:pm?pm.links[L.id]:null}});
+  if(pm)pm.ll.forEach(function(Q){if(!m.links[Q.id])ls.push({L:null,P:Q})});
+  ls.forEach(function(e){
+    var L=e.L,Q=e.P,g,op=1;
+    if(L&&Q)g={y0:lp(Q.y0,L.y0,t),y1:lp(Q.y1,L.y1,t),w:lp(Q.w,L.w,t)};
+    else if(L){g=L;op=pm?t:1}
+    else{g=Q;op=1-t}
+    var d=L||Q,xa=nx[d.col]+nw,xb=nx[d.col+1],xm=(xa+xb)/2;
+    svg+='<path class="lk '+d.cls+'" style="opacity:'+op+'" d="M'+xa+','+g.y0+' C'+xm+','+g.y0+' '+xm+','+g.y1+' '+xb+','+g.y1+'" stroke-width="'+g.w+'"><title>'+esc(d.title)+'</title></path>';
+  });
+  var ns=m.nl.map(function(N){return{N:N,P:pm?pm.nodes[N.id]:null}});
+  if(pm)pm.nl.forEach(function(Q){if(!m.nodes[Q.id])ns.push({N:null,P:Q})});
+  ns.forEach(function(e){
+    var N=e.N,Q=e.P,g,op=1;
+    if(N&&Q)g={y:lp(Q.y,N.y,t),h:lp(Q.h,N.h,t)};
+    else if(N){g=N;op=pm?t:1}
+    else{g=Q;op=1-t}
+    var d=N||Q,x=nx[d.col],cy=g.y+g.h/2,cls="nd "+d.cls,lines,anchor="start",tx=x+nw+6,boldLast=false;
+    if(d.col===0){lines=wrap(d.name,P.wo);lines.push(d.n+" competencies");anchor="end";tx=x-8;boldLast=true}
+    else if(d.col===1){lines=wrap(d.name+" ("+d.n+")",P.wg)}
+    else if(d.col===2){
+      var label=d.noc?"No course ("+d.n+")":(d.ojt?OJT+" ("+d.n+")":d.name+(P.cnt?" ("+d.n+")":"")+" \u00b7 "+d.hrs+" hrs"+(d.notCid?" \u2605":""));
+      lines=[label];cls+=(d.notCid?" x":"")+(d.noc?" w":"");
+    }else{
+      lines=wrap(short(d.name)+" \u00b7 "+d.hrs+" hrs",P.wh);boldLast=false;
+    }
+    if(N){if(N.sel)cls+=" sel";if(N.dim)cls+=" dim"}
+    var y0=cy-(lines.length-1)*8+5,tsp=lines.map(function(l,j){return'<tspan x="'+tx+'" dy="'+(j?16:0)+'"'+(boldLast&&j===lines.length-1?' font-weight="700"':'')+'>'+esc(l)+'</tspan>'}).join("");
+    var aria=d.col===0?d.name+", "+d.n+" competencies":(d.col===1?d.name+", "+d.n+" competencies":(d.col===3?d.name+", "+d.hrs+" hours counted":lines[0]));
+    svg+='<g class="'+cls+'" style="opacity:'+op+'" data-t="'+d.t+'" data-k="'+esc(d.k)+'" tabindex="0" role="button" aria-label="'+esc(aria)+'"><rect x="'+x+'" y="'+g.y+'" width="'+nw+'" height="'+g.h+'" rx="3"/><text x="'+tx+'" y="'+y0+'"'+(anchor==="end"?' text-anchor="end"':'')+'>'+tsp+'</text></g>';
+  });
+  return svg+'</g></svg>';
+}
+function paintSankey(mode){
+  var host=$("sk");if(!host)return;
+  var m=skModel(),pm=SK.prev;
+  var reduce=typeof matchMedia==="function"&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(SK.raf&&typeof cancelAnimationFrame==="function")cancelAnimationFrame(SK.raf);
+  SK.raf=0;
+  if(!pm||reduce||typeof requestAnimationFrame!=="function"||skSig(pm)===skSig(m)){
+    host.innerHTML=skDraw(m,null,1,mode);SK.prev=m;return;
+  }
+  var t0=null,D=450;
+  function step(ts){
+    if(t0==null)t0=ts;
+    var u=Math.min(1,(ts-t0)/D),e=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;
+    if(u<1){host.innerHTML=skDraw(m,pm,e,mode);SK.raf=requestAnimationFrame(step)}
+    else{SK.raf=0;host.innerHTML=skDraw(m,null,1,mode)}
+  }
+  SK.prev=m;
+  host.innerHTML=skDraw(m,pm,0,mode);
+  SK.raf=requestAnimationFrame(step);
+}
+function chipsFor(r){return effTokens(r).map(function(c){return '<span class="cc'+(c!==OJT&&S.sample&&CIDSET.indexOf(c)<0?' x':'')+'">'+esc(c)+'</span>'}).join(" ")}
+function flowPanel(){
+  var s=S.sel;
+  if(!s){
+    var h='<aside class="panel"><div class="ph"><h2>'+totalHours()+' hours</h2><p>Select a node to trace its path and list its competencies.</p></div><div class="pb"><ul class="occs">';
+    OCCS.forEach(function(o,oi){
+      var gs=occGroups(oi),n=0;gs.forEach(function(gi){n+=ROWS.filter(function(r){return r.gi===gi}).length});
+      var hc=homeCodes(oi);
+      h+='<li><b>'+esc(o.n)+'</b><br>'+gs.length+(gs.length===1?' skill group':' skill groups')+' \u00b7 '+n+' competencies<br>'+hc.length+(hc.length===1?' course':' courses')+' counted here \u00b7 '+sumH(hc)+' hours</li>';
+    });
+    var u=uncovered().length;
+    if(u)h+='<li><b>'+u+' competencies have no course</b><br>They show as the dashed No course node.</li>';
+    var un=ledgerCodes().filter(function(c){return homeOf(c)===null&&boundIn(c).length});
+    if(un.length)h+='<li><b>Mapped but unassigned</b><br>'+esc(un.join(", "))+': hours not counted.</li>';
+    return h+'</ul></div></aside>';
+  }
+  var rs=selRows(),title,sub;
+  if(s.t==="o"){var oi=+s.k;title=OCCS[oi].n;sub=occGroups(oi).length+' skill groups \u00b7 '+rs.length+' competencies \u00b7 '+occHours(oi)+' hours counted here'}
+  else if(s.t==="g"){var gi=+s.k;title=gName(gi);sub=OCCS[S.occOf[gi]].n+' \u00b7 '+rs.length+' competencies'}
+  else if(s.t==="h"){
+    var hc=s.k==="u"?ledgerCodes().filter(function(c){return homeOf(c)===null&&boundIn(c).length}):homeCodes(+s.k);
+    title=s.k==="u"?"Unassigned":OCCS[+s.k].n;sub=(s.k==="u"?'Not counted \u00b7 ':sumH(hc)+' hours counted \u00b7 ')+hc.length+' courses: '+hc.join(", ");
+  }
+  else if(s.k===NOC){title="No course";sub=rs.length+' competencies have no course. Add or replace a course in the Skill groups panel.'}
+  else{
+    title=s.k;
+    var hm=homeOf(s.k),gl=boundIn(s.k).map(function(g){return gName(g)});
+    sub=(CAT[s.k]?hoursOf(s.k)+' hours \u00b7 ':'')+(hm===null?'unassigned, not counted':'counted in '+OCCS[hm].n)+' \u00b7 '+rs.length+' competencies'+(S.sample&&CIDSET.indexOf(s.k)<0&&s.k!==OJT?' \u00b7 not on the CID form':'')+(gl.length?' \u00b7 bound to '+gl.join(", "):'');
+  }
+  var h2='<aside class="panel"><div class="ph"><h2>'+esc(title)+'</h2><p>'+esc(sub)+'</p></div><div class="pb">';
+  if(!rs.length)h2+='<div style="padding:10px 0;color:var(--muted)">No competencies are mapped here.</div>';
+  h2+='<ul class="cl">';
+  rs.forEach(function(r){
+    var meta=[];
+    if(s.t!=="o")meta.push(OCCS[S.occOf[r.gi]].n);
+    if(s.t!=="g")meta.push(gName(r.gi));
+    h2+='<li><div class="nb o'+(S.occOf[r.gi]%3)+'">'+esc(String(r.n).replace(/\.0$/,""))+'</div><div><div class="ct">'+esc(r.t)+'</div><div class="cm">'+(meta.length?'<span>'+esc(meta.join(" \u00b7 "))+'</span>':'')+chipsFor(r)+'</div></div></li>';
+  });
+  return h2+'</ul></div></aside>';
+}
+function capText(){
+  var s=S.sel;
+  if(!s)return'Change a course on the left and the flow redraws. Click a node, or a group title, to trace it.';
+  var n=selRows().length,name=s.t==="o"?OCCS[+s.k].n:(s.t==="g"?gName(+s.k):(s.t==="h"?(s.k==="u"?"Unassigned":OCCS[+s.k].n):s.k));
+  var rm=(s.t==="c"&&s.k!==NOC&&s.k!==OJT)?' <button type="button" class="btn" data-rmall="'+esc(s.k)+'" style="margin-left:6px;padding:3px 10px;font-size:12px">Remove from every group</button>':'';
+  return'<b>'+esc(name)+'</b> \u00b7 '+n+' competencies. Click it again to clear.'+rm;
+}
+/* ---------- render ---------- */
+function stats(){
+  var tot=totalHours(),unc=uncovered().length,cnt=ledgerCodes().filter(function(c){return homeOf(c)!==null}).length;
+  var s=[[tot,"program hours"],[cnt,"courses counted"],[GRPS.length,"skill groups"],[unc,"competencies without a course"]];
+  $("stats").innerHTML=s.map(function(x){return '<div class="stat"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>'}).join("");
+}
+function restoreFocus(fk){
+  if(fk&&V.querySelectorAll){
+    var els=V.querySelectorAll("[data-fk]");
+    for(var i=0;i<els.length;i++){if(els[i].dataset.fk===fk){els[i].focus();if(els[i].type==="search"&&els[i].setSelectionRange){var L=els[i].value.length;els[i].setSelectionRange(L,L)}break}}
+  }
+}
+function render(){
+  var fk=document.activeElement&&document.activeElement.dataset?document.activeElement.dataset.fk:null;
+  if(S.v==="map"&&SK.raf&&typeof cancelAnimationFrame==="function"){cancelAnimationFrame(SK.raf);SK.raf=0}
+  stats();
+  document.querySelectorAll(".tog button").forEach(function(b){if(b.dataset.v)b.setAttribute("aria-pressed",b.dataset.v===S.v)});
+  $("hint").textContent=S.v==="comp"?"Set the course for each competency on its own, or tick several and apply a course to all of them. A course counts toward hours once, under the occupation you pick in the ledger.":S.v==="live"?"Skill groups stay with their occupation. Change which course a group uses, and choose which occupation each course's hours count toward. A course counts once.":S.v==="flow"?"Band width shows competencies passing through. The last column shows which occupation counts each course's hours. Orange courses are not on the CID form.":"Skill groups stay with their occupation. Use the course ledger to choose which occupation counts each course's hours. A course counts once.";
+  if(S.v==="comp"){V.innerHTML=compView();restoreFocus(fk);return}
+  if(S.v==="flow"){V.innerHTML='<div class="main"><div class="vis"><div id="sk"></div></div>'+flowPanel()+'</div>';paintSankey("full");return}
+  if(S.v==="live"){V.innerHTML=bar()+'<div class="live"><div class="lcol">'+liveLeft()+'</div><div class="lsk"><div class="vis"><div id="sk"></div></div><div class="cap">'+capText()+'</div></div></div>';paintSankey("live");restoreFocus(fk);return}
+  V.innerHTML='<div class="main"><div class="cols">'+columns()+'</div>'+side()+'</div>';
+  restoreFocus(fk);
+}
+/* ---------- export ---------- */
+function courseStr(toks){
+  if(!toks.length)return"";
+  if(toks.length===1&&toks[0]===OJT)return"N/A - On-the-Job Training";
+  var out=[],first=null;
+  toks.forEach(function(t){
+    if(t===OJT){out.push("N/A - On-the-Job Training");return}
+    var m=/^([A-Z]+)\s+(.+)$/.exec(t);
+    if(m&&first===m[1]){out.push(m[2])}
+    else{out.push(t);if(m)first=m[1]}
+  });
+  return out.join("/");
+}
+function q(v){v=String(v==null?"":v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}
+function buildCSV(){
+  var lines=["Occupation,Occupational Skills,Competency #,Competency,Course"];
+  OCCS.forEach(function(o,oi){
+    occGroups(oi).forEach(function(gi){
+      var rs=ROWS.filter(function(r){return r.gi===gi});
+      rs.forEach(function(r){
+        lines.push([o.n,gName(gi)+" - "+rs.length+" Competencies",r.n,r.t,courseStr(effTokens(r))].map(q).join(","));
+      });
+    });
+  });
+  return lines.join("\r\n");
+}
+function buildCourseCSV(){
+  var lines=["Course Code,Course Title,Occupation,Total Course Hours"];
+  ledgerCodes().forEach(function(c){
+    var hm=homeOf(c);if(hm===null)return;
+    lines.push([c,ctitle(c),OCCS[hm].n,hoursOf(c)].map(q).join(","));
+  });
+  return lines.join("\r\n");
+}
+function msg(t,err){var m=$("msg");if(m){m.textContent=t;m.className=err?"err":""}}
+function showTA(csv){var t=$("ta");if(t){t.hidden=false;t.value=csv;t.focus();t.select()}}
+function download(name,csv){
+  try{
+    var a=document.createElement("a");
+    a.href=URL.createObjectURL(new Blob(["\uFEFF"+csv],{type:"text/csv"}));
+    a.download=name;
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    msg("CSV downloaded.");
+  }catch(e){showTA(csv);msg("Download is blocked here. Copy the text below.",1)}
+}
+function doCopy(){
+  var csv=buildCSV();
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(csv).then(function(){msg("CSV copied.")},function(){showTA(csv);msg("Copy is blocked here. Copy the text below.",1)});
+  }else{showTA(csv);msg("Copy the text below.",1)}
+}
+/* ---------- events ---------- */
+document.querySelector(".tog").addEventListener("click",function(e){var b=e.target.closest("button");if(b&&b.dataset.v){S.v=b.dataset.v;render()}});
+function pickNode(n){var same=S.sel&&S.sel.t===n.dataset.t&&S.sel.k===n.dataset.k;S.sel=same?null:{t:n.dataset.t,k:n.dataset.k};render()}
+V.addEventListener("keydown",function(e){
+  if(e.key!=="Enter"&&e.key!==" ")return;
+  var n=e.target.closest&&e.target.closest(".nd");
+  if(n){e.preventDefault();pickNode(n)}
+});
+V.addEventListener("change",function(e){
+  var t=e.target,d=t.dataset||{};
+  if(d.cs!==undefined){
+    if(!t.value)return;
+    push();setRow(+d.cs,t.value==="__none"?[]:[t.value]);save();render();return;
+  }
+  if(d.pick!==undefined){if(t.checked)S.pick[d.pick]=true;else delete S.pick[d.pick];render();return}
+  if(d.pickall!==undefined){compRows().forEach(function(r){if(t.checked)S.pick[r.i]=true;else delete S.pick[r.i]});render();return}
+  if(t.id==="cfo"){S.cf.o=t.value;S.cf.g="";render();return}
+  if(t.id==="cfg"){S.cf.g=t.value;render();return}
+  if(t.id==="cfc"){S.cf.c=t.value;render();return}
+  if(t.id==="bc"){S.bc=t.value;return}
+  if(d.rep!==undefined){
+    var y=t.value==="__rm"?"":t.value;
+    if(y===d.code)return;
+    push();replaceCode(+d.rep,d.code,y);save();render();return;
+  }
+  if(d.addc!==undefined){if(!t.value)return;push();addCode(+t.dataset.addc,t.value);save();render();return}
+  if(d.home!==undefined){push();S.home[d.home]=t.value===""?null:+t.value;save();render();return}
+  if(d.pool!==undefined){if(!t.value)return;push();S.home[t.value]=null;save();render();return}
+  if(t.id==="tg"){S.target=Math.max(0,+t.value||558);save();render();return}
+  if(t.id==="every"){S.every=t.checked;save();render();return}
+  if(t.id==="mt"){S.mt=+t.value;return}
+});
+V.addEventListener("input",function(e){if(e.target.id==="cfq"){S.cf.q=e.target.value;render()}});
+V.addEventListener("click",function(e){
+  var cr=e.target.closest("[data-crm]");
+  if(cr){var ri=+cr.dataset.crm;push();setRow(ri,effTokens(ROWS[ri]).filter(function(c){return c!==cr.dataset.code}));save();render();return}
+  var ed=e.target.closest("[data-edit]");
+  if(ed){S.cf={o:"",g:ed.dataset.edit,c:"",q:""};S.v="comp";render();return}
+  var bk=e.target.closest("[data-bulk]");
+  if(bk){
+    var op=bk.dataset.bulk;
+    if(op==="pickshown"){compRows().forEach(function(r){S.pick[r.i]=true});render();return}
+    if(op==="pickclear"){S.pick={};render();return}
+    if(!pickedRows().length){msg("Tick one or more competencies first.",1);return}
+    if(op!=="clear"&&!S.bc){msg("Choose a course first.",1);return}
+    push();bulkApply(op,S.bc);save();render();return;
+  }
+  var rc=e.target.closest("[data-rmc]");
+  if(rc){push();replaceCode(+rc.dataset.rmc,rc.dataset.code,"");save();render();return}
+  var ra=e.target.closest("[data-rmall]");
+  if(ra){var c=ra.dataset.rmall;push();removeEverywhere(c);if(S.sel&&S.sel.t==="c"&&S.sel.k===c)S.sel=null;save();render();return}
+  var lt=e.target.closest("[data-lt]");
+  if(lt){S.lt=lt.dataset.lt;render();return}
+  var nd=e.target.closest("[data-t]");
+  if(nd){pickNode(nd);return}
+  var b=e.target.closest("[data-act]");if(!b)return;
+  var a=b.dataset.act;
+  if(a==="migrate"){push();assignAll(S.mt);save();render()}
+  else if(a==="undo"){if(S.hist.length){restore(S.hist.pop());save();render()}}
+  else if(a==="reset"){push();S.rep={};S.xtra={};S.cmap={};S.pick={};S.home=defaultHomes();save();render()}
+  else if(a==="csv")download("Saddleback_CourseMapping_revised.csv",buildCSV());
+  else if(a==="courses")download("Saddleback_course_list.csv",buildCourseCSV());
+  else if(a==="copy")doCopy();
+});
+/* ---------- CSV loader ---------- */
+function parseCSV(t){
+  var r=[],row=[],f="",qq=false,i,c;
+  t=t.replace(/^\uFEFF/,"");
+  for(i=0;i<t.length;i++){
+    c=t[i];
+    if(qq){if(c==='"'){if(t[i+1]==='"'){f+='"';i++}else qq=false}else f+=c}
+    else if(c==='"')qq=true;
+    else if(c===","){row.push(f);f=""}
+    else if(c==="\n"||c==="\r"){if(c==="\r"&&t[i+1]==="\n")i++;row.push(f);r.push(row);row=[];f=""}
+    else f+=c;
+  }
+  if(f!==""||row.length){row.push(f);r.push(row)}
+  return r;
+}
+function lmsg(t,err){var m=$("lmsg");m.textContent=t;m.style.color=err?"#B3261E":""}
+function loadCSV(text){
+  var R=parseCSV(text);
+  if(R.length<2){lmsg("That file looks empty.",1);return}
+  var h=R[0].map(function(x){return x.trim()}),ix=function(n){return h.indexOf(n)};
+  var need=["Occupation","Occupational Skills","Competency #","Competency","Course"].filter(function(n){return ix(n)<0});
+  if(need.length){lmsg("Missing columns: "+need.join(", ")+".",1);return}
+  var raw=[];
+  R.slice(1).forEach(function(r){
+    var g=function(n){return(r[ix(n)]||"").trim()};
+    var o=g("Occupation"),sk=g("Occupational Skills"),t=g("Competency"),c=g("Course"),n=g("Competency #");
+    if(!o||!t||!/^\d/.test(n))return;
+    raw.push({o:o,g:sk.replace(/\s*-\s*\d+\s*Compet\w*/i,"").trim(),n:n,t:t,c:c});
+  });
+  if(!raw.length){lmsg("No rows have an occupation, a numbered competency, and a competency text.",1);return}
+  S.sample=false;setData(raw);render();
+  lmsg("Loaded "+raw.length+" competencies.");
+}
+$("csv").addEventListener("change",function(e){
+  var f=e.target.files[0];if(!f)return;
+  var rd=new FileReader();
+  rd.onload=function(){loadCSV(String(rd.result))};
+  rd.onerror=function(){lmsg("Couldn't read that file.",1)};
+  rd.readAsText(f);
+});
+setData(fromSample());load();render();
+</script>
