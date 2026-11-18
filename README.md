@@ -1,5 +1,7 @@
 # LAUNCH Apprenticeship OC: Mapping Tools
 
+**Live site:** https://launchapprenticeshipoc.github.io/launchapprenticeshipOC/
+
 Browser-based tools for mapping community college programs and courses to apprenticeship standards. They support regional apprenticeship work with the LAUNCH Apprenticeship Network in Orange County, California.
 
 Each tool is one self-contained `index.html` file in its own folder. There is nothing to install and no build step.
@@ -30,13 +32,6 @@ launchapprenticeshipOC/
     └── Saddleback_Starfish/
         └── index.html            Production Technician pathway planner
 ```
-
-## Using the tools
-
-- **Online:** open any live page above.
-- **Locally:** clone the repo and open a tool's `index.html` in a current browser (Chrome, Edge, Firefox, or Safari).
-- **Fonts and theme:** headings and body text use Barlow, loaded from Google Fonts. Offline, pages fall back to Arial Narrow and system fonts. Pages follow the viewer's light or dark setting.
-- **Saved edits:** edits in the Course Mapper are saved in your browser's local storage. They stay on your machine and are not sent anywhere.
 
 ## Saddleback Course Mapper
 
@@ -93,7 +88,7 @@ An interactive planner for the Production Technician apprenticeship at Saddlebac
 
 ## Data and file formats
 
-Sample data in each tool is a snapshot of Smartsheet sheets and program documents from fall 2026. To refresh it, export the sheet from Smartsheet with File, Export, Export sheet to CSV, then load the CSV using the file input in the tool's notes section.
+Sample data is a point-in-time snapshot and does not update on its own. It comes from Smartsheet sheets and program documents from fall 2026. To refresh it, export the sheet from Smartsheet with File, Export, Export sheet to CSV, then load the CSV using the file input in the tool's notes section.
 
 **CHW and Allied Health Pathways** expects these columns:
 
@@ -107,7 +102,7 @@ Rows with a blank `Occupation` are left out of the visual. Fill `Standard Status
 
 `Occupation`, `Occupational Skills`, `Competency #`, `Competency`, `Course`
 
-Put cross-listed courses in one cell, such as `AUTO 105/107`. A and B courses are separate courses, such as `AUTO 104A` and `AUTO 104B`. A cell of `N/A - On-the-Job Training` marks a competency taught on the job.
+A and B courses are separate courses, such as `AUTO 104A` and `AUTO 104B`. A cell of `N/A - On-the-Job Training` marks a competency taught on the job.
 
 ## Adding a pathway or a tool
 
@@ -126,7 +121,3 @@ All tools follow the LAUNCH design board:
 - **Type:** Barlow Condensed Bold for headlines and Barlow for body text.
 - **Gradient:** the wordmark gradient is used only as a thin band.
 - **Logos:** the tools do not reproduce the LAUNCH wordmark or the California Community Colleges logo. Add the official logo file on white where you need it.
-
-## Known limitations
-
-- Sample data is a point-in-time snapshot and does not update on its own.
