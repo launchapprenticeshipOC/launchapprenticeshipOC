@@ -127,16 +127,6 @@ All tools follow the LAUNCH design board:
 - **Gradient:** the wordmark gradient is used only as a thin band.
 - **Logos:** the tools do not reproduce the LAUNCH wordmark or the California Community Colleges logo. Add the official logo file on white where you need it.
 
-## Known limits
+## Known limitations
 
 - Sample data is a point-in-time snapshot and does not update on its own.
-- AUTO 208 appears in the module pivot and the sheet but not on the Saddleback catalog page used for course units. Its 3 units come from the pivot.
-- LEA names and sector groupings come from the sheets as read.
-
-## Published data
-
-Everything embedded in these pages is visible to anyone with the link. Keep Smartsheet links, contact details, and names of individual employees or apprentices out of the files.
-
-## License
-
-Add a license here before sharing the repo widely.
