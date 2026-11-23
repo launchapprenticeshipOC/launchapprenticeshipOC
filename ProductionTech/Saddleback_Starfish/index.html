@@ -12,7 +12,7 @@
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
   --navy:#1F4171; --deep:#032F6E; --sky:#29AAE1; --orange:#FAAB1A;
-  --bg:#F4F7FB; --surface:#FFFFFF; --ink:#1E293B; --muted:#475569; --line:#D5DEE8;
+  --bg:#F4F7FB; --surface:#FFFFFF; --ink:#1E293B; --muted:#334155; --line:#D5DEE8;
   --tint:#E6F4FB; --tint-line:#B9CCE0;
   --cover-bg:#1F4171; --cover-ink:#FFFFFF;
   --conf-bg:#FFF1CC; --conf-ink:#7A4B00; --conf-line:#E0A21B;
@@ -42,7 +42,7 @@
 }
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Barlow,"Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.5}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Barlow,"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.5}
 h1,h2,h3{font-family:"Barlow Condensed",Barlow,Arial,sans-serif;margin:0;line-height:1.1;font-weight:700}
 button,select,input{font:inherit;color:inherit}
 button{cursor:pointer}
@@ -52,8 +52,8 @@ header.top{background:var(--navy);color:#fff}
 header.top .wrap{display:flex;align-items:center;gap:24px;padding-top:18px;padding-bottom:18px;flex-wrap:wrap}
 .logo{background:#fff;border-radius:10px;padding:6px 10px;display:flex}
 .logo img{width:170px;height:auto;display:block}
-header.top h1{font-size:34px;letter-spacing:0.2px}
-header.top p{margin:2px 0 0;color:#DCE8F5;font-size:15px}
+header.top h1{font-size:2.125rem;letter-spacing:0.2px}
+header.top p{margin:2px 0 0;color:#DCE8F5;font-size:0.9375rem}
 .stripe{height:6px;background:linear-gradient(90deg,var(--navy) 0 50%,var(--sky) 50% 83%,var(--orange) 83% 100%)}
 .intro{padding:22px 0 8px;max-width:760px;color:var(--muted)}
 .people{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 14px}
@@ -61,10 +61,10 @@ header.top p{margin:2px 0 0;color:#DCE8F5;font-size:15px}
 .person[aria-pressed="true"]{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
 :root[data-theme="dark"] .person[aria-pressed="true"]{border-color:var(--sky);box-shadow:inset 0 0 0 1px var(--sky)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .person[aria-pressed="true"]{border-color:var(--sky);box-shadow:inset 0 0 0 1px var(--sky)}}
-.person b{font-family:"Barlow Condensed",Barlow,Arial,sans-serif;font-size:26px;display:block;line-height:1.1}
-.person span{color:var(--muted);font-size:14px}
-.work{display:grid;grid-template-columns:1fr 1fr;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:16px;font-size:15px}
-.work h3{font-size:18px;margin-bottom:4px}
+.person b{font-family:"Barlow Condensed",Barlow,Arial,sans-serif;font-size:1.625rem;display:block;line-height:1.1}
+.person span{color:var(--muted);font-size:0.875rem}
+.work{display:grid;grid-template-columns:1fr 1fr;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:16px;font-size:0.9375rem}
+.work h3{font-size:1.125rem;margin-bottom:4px}
 .work p{margin:0;color:var(--muted)}
 .presets{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}
 .presets .label{font-weight:600;margin-right:4px}
@@ -73,68 +73,68 @@ header.top p{margin:2px 0 0;color:#DCE8F5;font-size:15px}
 :root[data-theme="dark"] .preset[aria-pressed="true"]{background:var(--sky);color:#06233F;border-color:var(--sky)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .preset[aria-pressed="true"]{background:var(--sky);color:#06233F;border-color:var(--sky)}}
 .presets:empty{display:none}
-.presetnote{color:var(--muted);font-size:14px;margin:-8px 0 16px}
+.presetnote{color:var(--muted);font-size:0.875rem;margin:-8px 0 16px}
 .status{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:20px}
-.verdict{font-size:18px;font-weight:600;margin:0 0 12px}
+.verdict{font-size:1.125rem;font-weight:600;margin:0 0 12px}
 .verdict.ok{color:var(--ok-ink)}
 .verdict.bad{color:var(--err-ink)}
 .meas{display:grid;grid-template-columns:1.1fr 1.4fr 1.2fr;gap:22px}
-.meas h3{font-size:18px;margin-bottom:6px}
+.meas h3{font-size:1.125rem;margin-bottom:6px}
 .bar{height:12px;background:var(--line);border-radius:6px;overflow:hidden;position:relative}
 .bar i{display:block;height:100%;background:var(--navy);border-radius:6px;transition:width .2s}
 :root[data-theme="dark"] .bar i{background:var(--sky)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bar i{background:var(--sky)}}
 .bar.short i{background:var(--orange)}
-.small{font-size:14px;color:var(--muted)}
+.small{font-size:0.875rem;color:var(--muted)}
 .years{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .dots{display:flex;gap:6px;margin-bottom:6px}
-.dot{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;border:2px solid var(--line)}
+.dot{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8125rem;border:2px solid var(--line)}
 .dot.cover{background:var(--cover-bg);color:var(--cover-ink);border-color:var(--cover-bg)}
 .dot.confirm{background:var(--conf-bg);color:var(--conf-ink);border:2px dashed var(--conf-line)}
 .dot.none{background:transparent;color:var(--none-ink);border:2px dashed var(--muted)}
 .main{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:22px;align-items:start}
-.panel h2{font-size:26px;margin-bottom:4px}
+.panel h2{font-size:1.625rem;margin-bottom:4px}
 .lane{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:14px;overflow:hidden}
 .lane header{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:10px 16px;background:var(--tint);border-bottom:1px solid var(--tint-line)}
-.lane header h3{font-size:22px}
+.lane header h3{font-size:1.375rem}
 .lane header span{font-weight:600}
 .lane header span.low{color:var(--err-ink)}
 .row{display:grid;grid-template-columns:1fr auto;gap:6px 14px;padding:10px 16px;border-top:1px solid var(--line);align-items:center}
 .row:first-of-type{border-top:0}
 .row .name b{font-weight:700}
-.row .meta{font-size:14px;color:var(--muted)}
+.row .meta{font-size:0.875rem;color:var(--muted)}
 .tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 select{background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:4px 8px}
 .link{background:none;border:0;padding:4px 2px;color:var(--navy);text-decoration:underline;font-weight:500}
 :root[data-theme="dark"] .link{color:var(--sky)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .link{color:var(--sky)}}
-.tag{display:inline-block;font-size:12.5px;font-weight:600;border-radius:6px;padding:1px 7px;margin-left:6px;border:1.5px dashed var(--conf-line);background:var(--conf-bg);color:var(--conf-ink)}
-.issue{grid-column:1 / -1;font-size:14px;border-radius:8px;padding:4px 10px}
+.tag{display:inline-block;font-size:0.7812rem;font-weight:600;border-radius:6px;padding:1px 7px;margin-left:6px;border:1.5px dashed var(--conf-line);background:var(--conf-bg);color:var(--conf-ink)}
+.issue{grid-column:1 / -1;font-size:0.875rem;border-radius:8px;padding:4px 10px}
 .issue.warn{background:var(--conf-bg);color:var(--conf-ink)}
 .issue.err{background:var(--err-bg);color:var(--err-ink)}
 .issue.info{background:var(--tint);color:var(--muted)}
-.empty{padding:14px 16px;color:var(--muted);font-size:15px}
+.empty{padding:14px 16px;color:var(--muted);font-size:0.9375rem}
 .comp{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 16px 10px;position:sticky;top:12px}
 .crow{padding:12px 0;border-top:1px solid var(--line)}
 .crow:first-of-type{border-top:0}
 .chead{display:flex;gap:10px;align-items:flex-start}
 .chead .dot{flex:none}
 .chead b{display:block;line-height:1.2}
-.state{font-size:13.5px;font-weight:600}
+.state{font-size:0.8438rem;font-weight:600}
 .state.cover{color:var(--ok-ink)}
 .state.confirm{color:var(--conf-ink)}
 .state.none{color:var(--err-ink)}
-.ctext{font-size:14px;color:var(--muted);margin:4px 0 6px}
+.ctext{font-size:0.875rem;color:var(--muted);margin:4px 0 6px}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
-.chip{font-size:13.5px;font-weight:600;border-radius:6px;padding:2px 8px;background:var(--cover-bg);color:var(--cover-ink);border:1.5px solid var(--cover-bg)}
+.chip{font-size:0.8438rem;font-weight:600;border-radius:6px;padding:2px 8px;background:var(--cover-bg);color:var(--cover-ink);border:1.5px solid var(--cover-bg)}
 .chip.confirm{background:var(--conf-bg);color:var(--conf-ink);border:1.5px dashed var(--conf-line)}
 .alts{margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
-.alt{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:4px 0;font-size:14px}
+.alt{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:4px 0;font-size:0.875rem}
 .alt .yr{display:flex;gap:4px}
-.mini{border:1.5px solid var(--tint-line);background:var(--tint);border-radius:6px;padding:1px 8px;font-size:13px;font-weight:600}
-.legend{font-size:13.5px;color:var(--muted);margin:6px 0 0}
+.mini{border:1.5px solid var(--tint-line);background:var(--tint);border-radius:6px;padding:1px 8px;font-size:0.8125rem;font-weight:600}
+.legend{font-size:0.8438rem;color:var(--muted);margin:6px 0 0}
 section.catalog{margin:30px 0 10px}
-section.catalog h2{font-size:30px;margin-bottom:4px}
+section.catalog h2{font-size:1.875rem;margin-bottom:4px}
 .filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
 .filters input{flex:1 1 220px;min-width:180px;background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:7px 12px}
 .fchip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 14px;font-weight:500}
@@ -147,11 +147,11 @@ details.c:first-child{border-top:0}
 details.c summary{list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center;padding:11px 16px;cursor:pointer}
 details.c summary::-webkit-details-marker{display:none}
 details.c summary .t b{font-weight:700}
-details.c summary .r{display:flex;gap:10px;align-items:center;white-space:nowrap;font-size:14px;color:var(--muted)}
+details.c summary .r{display:flex;gap:10px;align-items:center;white-space:nowrap;font-size:0.875rem;color:var(--muted)}
 .inplan{font-weight:600;color:var(--ok-ink);background:var(--ok-bg);border-radius:6px;padding:1px 8px}
 .body{padding:2px 16px 16px;display:grid;gap:8px}
 .body p{margin:0;max-width:78ch}
-.body .facts{color:var(--muted);font-size:14.5px}
+.body .facts{color:var(--muted);font-size:0.9062rem}
 .body .btns{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .btn{border:1.5px solid var(--navy);background:var(--navy);color:#fff;border-radius:8px;padding:5px 12px;font-weight:600}
 :root[data-theme="dark"] .btn{border-color:var(--sky);background:var(--sky);color:#06233F}
@@ -160,43 +160,43 @@ details.c summary .r{display:flex;gap:10px;align-items:center;white-space:nowrap
 :root[data-theme="dark"] .btn.ghost{color:var(--sky)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.ghost{color:var(--sky)}}
 details.q{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 18px;margin:20px 0}
-details.q summary{font-family:"Barlow Condensed",Barlow,Arial,sans-serif;font-weight:700;font-size:24px;cursor:pointer}
+details.q summary{font-family:"Barlow Condensed",Barlow,Arial,sans-serif;font-weight:700;font-size:1.5rem;cursor:pointer}
 details.q ul{margin:10px 0 0;padding-left:20px}
 details.q li{margin:6px 0}
-footer.foot{padding:10px 0 40px;color:var(--muted);font-size:14px;max-width:900px}
+footer.foot{padding:10px 0 40px;color:var(--muted);font-size:0.875rem;max-width:900px}
 footer.foot strong{color:var(--ink)}
-.ed{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;margin-top:8px;padding:10px 12px;background:var(--tint);border:1px solid var(--tint-line);border-radius:8px;font-size:14px}
+.ed{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;margin-top:8px;padding:10px 12px;background:var(--tint);border:1px solid var(--tint-line);border-radius:8px;font-size:0.875rem}
 .ed label{min-width:0}
 .maptools{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center}
 .maptext{width:100%;margin-top:6px;background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:8px;padding:8px;font:13px/1.4 ui-monospace,Menlo,Consolas,monospace}
 [hidden]{display:none !important}
-.mh3{font-size:24px;margin:26px 0 8px}
+.mh3{font-size:1.5rem;margin:26px 0 8px}
 .terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
 .term{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
-.term h4{font-family:"Barlow Condensed",Barlow,Arial,sans-serif;font-size:21px;margin:0 0 6px}
+.term h4{font-family:"Barlow Condensed",Barlow,Arial,sans-serif;font-size:1.3125rem;margin:0 0 6px}
 .term ul{list-style:none;margin:0;padding:0}
-.term li{padding:6px 0;border-top:1px solid var(--line);font-size:15px}
+.term li{padding:6px 0;border-top:1px solid var(--line);font-size:0.9375rem}
 .term li:first-child{border-top:0}
-.term .fitnote{display:block;color:var(--muted);font-size:13.5px}
+.term .fitnote{display:block;color:var(--muted);font-size:0.8438rem}
 .views{display:flex;gap:6px;margin:18px 0 0;border-bottom:2px solid var(--line)}
-.vtab{background:none;border:0;border-bottom:4px solid transparent;padding:8px 16px;font-weight:600;font-size:17px;margin-bottom:-2px;color:var(--muted)}
+.vtab{background:none;border:0;border-bottom:4px solid transparent;padding:8px 16px;font-weight:600;font-size:1.0625rem;margin-bottom:-2px;color:var(--muted)}
 .vtab[aria-pressed="true"]{border-bottom-color:var(--navy);color:var(--ink)}
 :root[data-theme="dark"] .vtab[aria-pressed="true"]{border-bottom-color:var(--sky)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .vtab[aria-pressed="true"]{border-bottom-color:var(--sky)}}
-.mjc h2{font-size:32px;margin:22px 0 4px}
+.mjc h2{font-size:2rem;margin:22px 0 4px}
 .mfacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 18px}
 .mfacts div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
-.mfacts span{display:block;font-size:13.5px;color:var(--muted)}
-.mfacts b{font-size:16px}
+.mfacts span{display:block;font-size:0.8438rem;color:var(--muted)}
+.mfacts b{font-size:1rem}
 .mcompare{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0 12px}
 table.mt{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
 table.mt caption{text-align:left;padding:0 0 8px;font-weight:600}
 table.mt th,table.mt td{padding:10px 14px;text-align:left;vertical-align:top;border-top:1px solid var(--line)}
-table.mt thead th{background:var(--tint);border-top:0;font-size:14.5px}
+table.mt thead th{background:var(--tint);border-top:0;font-size:0.9062rem}
 table.mt td.num{white-space:nowrap}
-.mnote{color:var(--muted);font-size:14.5px;max-width:80ch}
+.mnote{color:var(--muted);font-size:0.9062rem;max-width:80ch}
 .sb{display:block;margin-bottom:4px}
-.sb .fitnote{color:var(--muted);font-size:13.5px}
+.sb .fitnote{color:var(--muted);font-size:0.8438rem}
 @media (max-width: 900px){
   table.mt thead{display:none}
   table.mt,table.mt tbody,table.mt tr,table.mt td{display:block;width:100%}
@@ -208,7 +208,7 @@ table.mt td.num{white-space:nowrap}
   .comp{position:static}
   .meas{grid-template-columns:1fr}
   .work{grid-template-columns:1fr}
-  header.top h1{font-size:28px}
+  header.top h1{font-size:1.75rem}
 }
 @media (prefers-reduced-motion: reduce){*{transition:none !important}}
 @media print{
@@ -216,6 +216,74 @@ table.mt td.num{white-space:nowrap}
   .people,.presets,.filters,.tools,.btns,.alts,.link{display:none}
   .comp{position:static}
 }
+
+html{font-size:19px}
+html[data-ts="2"]{font-size:23px}
+html[data-ts="3"]{font-size:27px}
+body{line-height:1.6}
+:focus-visible{outline:4px solid var(--sky);outline-offset:3px}
+button,select,input{min-height:46px;font-size:1rem}
+select{padding:6px 10px}
+.link{border:2px solid var(--navy);border-radius:8px;padding:6px 14px;text-decoration:none;font-weight:600;background:var(--surface);color:var(--navy);min-height:44px}
+:root[data-theme="dark"] .link{border-color:var(--sky);color:var(--sky)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .link{border-color:var(--sky);color:var(--sky)}}
+.mini{padding:6px 14px;font-size:1rem;min-height:44px}
+.preset,.fchip{min-height:46px;padding:8px 18px;font-size:1rem}
+.vtab{font-size:1.1rem;padding:12px 20px;min-height:52px}
+.tag{font-size:.85rem}
+.chip{font-size:.9rem;padding:3px 10px}
+.dot{width:36px;height:36px;font-size:1rem}
+.btn{padding:8px 16px;font-size:1rem}
+details.c summary{padding:14px 18px}
+details.c summary::after{content:"Show details";font-weight:600;color:var(--navy);white-space:nowrap}
+details.c[open] summary::after{content:"Hide details"}
+:root[data-theme="dark"] details.c summary::after{color:var(--sky)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) details.c summary::after{color:var(--sky)}}
+.textsize{margin-left:auto;display:flex;gap:8px;align-items:center;color:#fff;flex-wrap:wrap}
+.textsize button{background:transparent;border:2px solid #fff;color:#fff;border-radius:8px;padding:4px 14px;font-weight:600}
+.textsize button[aria-pressed="true"]{background:#fff;color:#1F4171}
+.how{font-size:1.6rem;margin:6px 0 6px}
+.steps{margin:18px 0 8px}
+.steps ol{margin:0 0 12px;padding-left:1.4em}
+.steps li{margin:6px 0;font-size:1.05rem}
+.catwho{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0 6px}
+.catmsg{min-height:1.6em;font-weight:600;color:var(--ok-ink);margin:0 0 6px}
+details.c summary{display:grid;grid-template-columns:minmax(0,1fr) 6.5rem 5.5rem 8rem;gap:6px 14px;align-items:center}
+details.c summary .hrs{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink)}
+details.c summary .yr{text-align:center}
+details.c summary::after{text-align:right}
+@media (max-width: 760px){
+  details.c summary{grid-template-columns:6.5rem 1fr auto}
+  details.c summary .t{grid-column:1 / -1}
+  details.c summary .hrs{text-align:left}
+  details.c summary .yr{text-align:left}
+}
+.cidtools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:14px 0}
+.cidhelp{color:var(--muted);max-width:75ch;margin:6px 0 0}
+.cid{background:var(--surface);border:2px solid var(--tint-line);border-radius:12px;overflow:hidden;margin:14px 0 24px}
+.cidband{background:var(--navy);color:#fff;padding:12px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.cidband img{width:150px;height:auto;background:#fff;border-radius:8px;padding:4px 8px;display:block}
+.cidband h2{margin:0;font-size:1.5rem;font-weight:600}
+.cidbody{padding:18px 22px;display:grid;gap:16px}
+.cidbody h3{font-size:1.3rem;margin:4px 0 0}
+.cidbody label{display:flex;gap:10px;align-items:center}
+.cidbody input[type="text"],.cidbody textarea{width:100%;background:var(--surface);color:var(--ink);border:2px solid var(--line);border-radius:8px;padding:8px 12px;font:inherit}
+.cidbody textarea{min-height:90px}
+.cidbody input[type="checkbox"]{width:26px;height:26px;min-height:0;flex:none}
+.cidrow{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
+.cidgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 18px}
+.cidgrid .cap{font-weight:600}
+table.ct{width:100%;border-collapse:collapse;border:2px solid var(--line)}
+table.ct th,table.ct td{padding:10px 14px;text-align:left;border-top:1px solid var(--line)}
+table.ct thead th{background:var(--tint);border-top:0}
+table.ct td.num,table.ct th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.ct tfoot td{font-weight:700;background:var(--tint)}
+.cidfoot{color:var(--muted);font-size:.85rem}
+.maptext2{width:100%;min-height:260px;background:var(--surface);color:var(--ink);border:2px solid var(--line);border-radius:8px;padding:10px;font:13px/1.4 ui-monospace,Menlo,Consolas,monospace}
+@media (max-width: 760px){.cidgrid{grid-template-columns:1fr}}
+@media print{.views,.cidtools,.textsize,.cidhelp,.maptext2{display:none !important}.cid{border:1px solid #000}}
+.main{grid-template-columns:minmax(0,1fr)}
+.comp{position:static}
 </style>
 </head>
 <body>
@@ -226,14 +294,15 @@ table.mt td.num{white-space:nowrap}
       <h1>Production Technician Pathway Planner</h1>
       <p>For Starfish Signs &amp; Graphics and Saddleback College, built on DAS file #99764</p>
     </div>
+    <div class="textsize" role="group" aria-label="Text size"><span>Text size</span><button type="button" data-act="ts" data-size="1" aria-pressed="true">Standard</button><button type="button" data-act="ts" data-size="2" aria-pressed="false">Larger</button><button type="button" data-act="ts" data-size="3" aria-pressed="false">Largest</button></div>
   </div>
 </header>
 <div class="stripe"></div>
 
 <main class="wrap">
-  <nav class="views" aria-label="Pages"><button type="button" class="vtab" data-act="view" data-view="plan" aria-pressed="true">Pathway Planner</button><button type="button" class="vtab" data-act="view" data-view="mjc" aria-pressed="false">Modesto JC Plan</button></nav>
+  <nav class="views" aria-label="Pages"><button type="button" class="vtab" data-act="view" data-view="plan" aria-pressed="true">Pathway Planner</button><button type="button" class="vtab" data-act="view" data-view="comp" aria-pressed="false">Competencies</button><button type="button" class="vtab" data-act="view" data-view="catalog" aria-pressed="false">Course Catalog</button><button type="button" class="vtab" data-act="view" data-view="cid" aria-pressed="false">CID Form</button></nav>
   <div id="view-plan">
-  <p class="intro">Pick an employee, change the courses, and see right away whether the plan still meets the hour minimums and has a course behind each of the six competencies. A plan that does is a valid pathway, so there is room to swap.</p>
+  <div class="steps"><h2 class="how">How This Page Works</h2><ol><li><b>Choose an employee</b> below.</li><li><b>Read the summary box.</b> It tells you if the plan has enough hours and a course for each of the six competencies.</li><li><b>Change any course</b> if you want to try something else. The summary updates right away.</li></ol></div>
 
   <div class="people" id="people" role="group" aria-label="Choose an employee"></div>
   <div id="work"></div>
@@ -245,32 +314,40 @@ table.mt td.num{white-space:nowrap}
   <div class="main">
     <div class="panel">
       <h2>Courses by Year</h2>
-      <p class="small" style="margin:0 0 12px">Move a course to another year or remove it. Use the catalog below or the alternatives beside each competency to add one.</p>
+      <p class="small" style="margin:0 0 12px">Move a course to another year or remove it. To add a course, open the Course Catalog tab.</p>
       <div id="lanes"></div>
     </div>
-    <aside class="panel">
-      <h2>Competencies</h2>
-      <p class="small" style="margin:0 0 10px">Apprentices are signed off on each one on the job. Courses give the related instruction behind it. You can change which courses cover each competency here or in the catalog.</p>
-      <div class="comp" id="comp"></div>
-    </aside>
+
   </div>
 
-  <section class="catalog" aria-labelledby="cat-h">
-    <h2 id="cat-h">Course Catalog</h2>
-    <p class="small" style="margin:0">Descriptions are from the Saddleback course sheets. Hours are weekly lecture plus lab hours times 16 weeks.</p>
-    <div class="filters">
-      <input id="q" type="search" placeholder="Search by code or topic" aria-label="Search courses">
-      <span id="fchips" role="group" aria-label="Filter by department"></span>
-    </div>
-    <div class="courses" id="courses"></div>
-  </section>
 
   <footer class="foot">
     <p><strong>How to read the fit.</strong> A solid chip means the course description supports that competency. A dashed chip means the course likely covers it but its catalog text does not say so, so it needs a check with Saddleback faculty. The fit is a first pass for the college, employer and LAUNCH to confirm.</p>
     <p>Draft for discussion. Competencies and hour rules come from the DAS standards (Attachment B-2) and the program occupation summary.</p>
   </footer>
   </div>
-  <div id="view-mjc" hidden></div>
+  <div id="view-catalog" hidden>
+    <section class="catalog" aria-labelledby="cat-h">
+      <h2 id="cat-h">Course Catalog</h2>
+      <p class="small" style="margin:0 0 6px">Descriptions are from the Saddleback course sheets. Hours are weekly lecture plus lab hours times 16 weeks. Press a course to read its description or add it to a plan.</p>
+      <div class="catwho" id="catwho"></div>
+      <p class="catmsg" id="catmsg" aria-live="polite"></p>
+      <div class="filters">
+        <input id="q" type="search" placeholder="Search by code or topic" aria-label="Search courses">
+        <span id="fchips" role="group" aria-label="Filter by department"></span>
+      </div>
+      <div class="courses" id="courses"></div>
+    </section>
+  </div>
+  <div id="view-comp" hidden>
+    <section class="panel" aria-labelledby="comp-h">
+      <h2 id="comp-h">Competencies</h2>
+      <p class="small" style="margin:0 0 6px">Apprentices are signed off on each one on the job. Courses give the related instruction behind it. You can change which courses cover each competency here or in the catalog.</p>
+      <div class="catwho" id="compwho"></div>
+      <div class="comp" id="comp"></div>
+    </section>
+  </div>
+  <div id="view-cid" hidden></div>
 </main>
 
 <script>
@@ -409,36 +486,10 @@ var PEOPLE = {
       {name:"Draft plan",note:"Draft plan: same first year as Shane, then both CNC courses in year 2. Move, remove or add courses to try alternatives.",plan:{1:["GC 101","MFG 203"],2:["MFG 207","MFG 208"],3:["DR 100","GC 215","MFG 202"]}}
     ]}
 };
-var MJC = {
-  date:"10/8/2026",lea:"Modesto Junior College",program:"LAUNCH Manufacturing: Production Technician",
-  status:"New Local Education Agency",method:"Related Supplemental Instruction Apportionment (RSI)",
-  rows:[
-    {code:"ELTEC 320",title:"Electrical Safety",lo:18,hi:18,match:[]},
-    {code:"ELTEC 208",title:"Fundamentals of Electricity and Electronics",lo:90,hi:90,match:[{c:"ET 133",fit:"Strong match"}]},
-    {code:"ELTEC 232",title:"Intro into PLC: Programmable Logic Controllers",lo:90,hi:90,match:[{c:"ET 250",fit:"Partial match"}]},
-    {code:"SM 331",title:"Sheet Metal and Installation 1",lo:54,hi:54,match:[]},
-    {code:"ELTEC 212",title:"Digital Principles and Circuits",lo:90,hi:90,match:[{c:"ET 114",fit:"Strong match"}]},
-    {code:"ELTEC 223",title:"Industrial Components and Control Devices",lo:90,hi:90,match:[{c:"ET 250",fit:"Partial match"},{c:"ET 255",fit:"Partial match"}]},
-    {code:"ELTEC 226",title:"Motor Controls and Controllers",lo:90,hi:90,match:[{c:"ET 250",fit:"Partial match"}]},
-    {code:"MACH 200D",title:"Intro into Manual Machining",lo:108,hi:108,match:[{c:"MFG 203",fit:"Partial match"}]},
-    {code:"WELD 200",title:"Arc and Gas Welding",lo:90,hi:90,match:[]},
-    {code:"MACH 208",title:"CAD/CAM: Mastercam",lo:72,hi:72,match:[{c:"MFG 208",fit:"Strong match"}]},
-    {code:"ADULT ED/FORKLIFT",title:"Forklift training",lo:8,hi:18,match:[]}
-  ],
-  terms:[
-    {label:"Term 1, Spring 2027",items:[{code:"ELTEC 320",title:"Electrical Safety"},{code:"ELTEC 208",title:"Fundamentals of Electricity and Electronics"}]},
-    {label:"Term 2, Summer 2027",items:[{code:"ELTEC 232",title:"Intro into PLC: Programmable Logic Controllers"}]},
-    {label:"Term 3, Fall 2027",items:[{code:"ELTEC 212",title:"Digital Principles and Circuits"},{code:"ELTEC 223",title:"Industrial Electrical Components and Control Devices"}]},
-    {label:"Term 4, Spring 2028",items:[{code:"ELTEC 226",title:"Motor Controls and Controllers"},{code:"MACH 200D",title:"Intro into Manual Machining"}]},
-    {label:"Term 5, Summer 2028",items:[{code:"MACH 205",title:"Intro into CNC Operations",match:[{c:"MFG 207",fit:"Partial match"}]},{code:"MACH 357",title:"Machine Trades Print Reading",match:[{c:"DR 100",fit:"Partial match"}]}]},
-    {label:"Term 6, Fall 2028",items:[{code:"WELD 200",title:"Arc and Gas Welding"},{code:"MACH 208",title:"CAD/CAM: Mastercam"}]}
-  ],
-  supplemental:["ELTEC 320","ELTEC 208","MACH 205","SM 331/332"]
-};
 var MIN_TOTAL = 468, MIN_YEAR = 144;
 loadFit();
 function clone(p){return {1:p[1].slice(),2:p[2].slice(),3:p[3].slice()};}
-var state = {view:"plan",who:"shane",plan:{shane:clone(PEOPLE.shane.presets[0].plan),thomas:clone(PEOPLE.thomas.presets[0].plan)},preset:{shane:0,thomas:0},alt:null,edit:null,exp:false,dept:"all",q:"",open:{}};
+var state = {view:"plan",who:"shane",plan:{shane:clone(PEOPLE.shane.presets[0].plan),thomas:clone(PEOPLE.thomas.presets[0].plan)},preset:{shane:0,thomas:0},alt:null,edit:null,exp:false,msg:"",dept:"all",q:"",open:{},cidScope:"both",cidText:false,cid:{date:"",progs:["","","",""],links:"",contacts:[["",""],["",""],["",""]],checks:{upd:false,newlea:true,ftes:false,aift:false,rsi:false,other:false,r1:false,r2:false,r3:false}}};
 
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
 function yearOf(who,code){var p=state.plan[who];for(var y=1;y<=3;y++){if(p[y].indexOf(code)>-1)return y;}return 0;}
@@ -506,7 +557,7 @@ function renderStatus(a){
   h+='</div><div class="small" style="margin-top:4px">Minimum '+MIN_YEAR+' each year</div></div>';
   h+='<div><h3>Competencies</h3><div class="dots">';
   a.cov.forEach(function(c){h+='<span class="dot '+(c.status==="cover"?"cover":c.status)+'" title="'+esc(COMP[c.n-1].name)+'">'+c.n+'</span>';});
-  h+='</div><div class="small">'+nCover+' covered'+(nConf?", "+nConf+" to confirm":"")+(nNone?", "+nNone+" without a course":"")+'</div></div></div>';
+  h+='</div><div class="small">'+nCover+' covered'+(nConf?", "+nConf+" to confirm":"")+(nNone?", "+nNone+" without a course":"")+'</div><button class="link" type="button" data-act="view" data-view="comp" style="margin-top:8px">See the Competencies</button></div></div>';
   document.getElementById("status").innerHTML=h;
 }
 function renderLanes(a){
@@ -514,7 +565,7 @@ function renderLanes(a){
   [1,2,3].forEach(function(y){
     var low=a.yh[y]<MIN_YEAR;
     h+='<div class="lane"><header><h3>Year '+y+'</h3><span class="'+(low?"low":"")+'">'+a.yh[y]+' hours'+(low?" (under "+MIN_YEAR+")":"")+'</span></header>';
-    if(!p[y].length){h+='<div class="empty">No courses in this year. Add one from the catalog or from a competency’s alternatives.</div>';}
+    if(!p[y].length){h+='<div class="empty">No courses in this year. Open the Course Catalog tab to add one.</div>';}
     p[y].forEach(function(code){
       var c=BY[code],iss=a.issues[code]||[];
       h+='<div class="row"><div class="name"><b>'+esc(c.code)+'</b> '+esc(c.title)+(c.tag?'<span class="tag" title="'+esc(c.flag)+'">'+c.tag+'</span>':'')+'<div class="meta">'+c.hours+' hours</div></div>';
@@ -585,7 +636,7 @@ function renderCourses(){
     n++;
     var y=yearOf(who,c.code),isOpen=!!state.open[c.code];
     var fits=[];COMP.forEach(function(m){var f=c.fit[m.n];if(f)fits.push('<span class="chip'+(f==="c"?" confirm":"")+'" title="'+esc(m.name)+(f==="c"?" (to confirm)":"")+'">'+m.n+' '+esc(m.name)+'</span>');});
-    h+='<details class="c" data-code="'+esc(c.code)+'"'+(isOpen?" open":"")+'><summary><span class="t"><b>'+esc(c.code)+'</b> '+esc(c.title)+(c.tag?'<span class="tag">'+c.tag+'</span>':'')+'</span><span class="r">'+c.hours+' hours'+(y?'<span class="inplan">Year '+y+'</span>':"")+'</span></summary><div class="body">';
+    h+='<details class="c" data-code="'+esc(c.code)+'"'+(isOpen?" open":"")+'><summary><span class="t"><b>'+esc(c.code)+'</b> '+esc(c.title)+(c.tag?'<span class="tag">'+c.tag+'</span>':'')+'</span><span class="hrs">'+c.hours+' hours</span><span class="yr">'+(y?'<span class="inplan">Year '+y+'</span>':"")+'</span></summary><div class="body">';
     h+='<p>'+esc(c.desc)+'</p>';
     h+='<div class="facts">'+c.units+(c.units===1?" unit":" units")+', '+c.lec+' lecture and '+c.lab+' lab hours a week, '+c.hours+' hours over 16 weeks.</div>';
     var rec=c.needs.map(function(nd){return (nd.kind==="prereq"?"Required: ":"Recommended: ")+nd.label;});
@@ -603,74 +654,106 @@ function renderCourses(){
   if(!n)h='<div class="empty">No courses match. Clear the search or pick another department.</div>';
   document.getElementById("courses").innerHTML=h;
 }
-function mjcHours(r){return r.lo===r.hi?r.lo+" hours":r.lo+" to "+r.hi+" hours";}
-function mjcRow(code){var u=String(code).toUpperCase();for(var i=0;i<MJC.rows.length;i++){if(MJC.rows[i].code===u)return MJC.rows[i];}return null;}
-function matchHtml(matches,who){
-  var a="",b="";
-  matches.forEach(function(m){
-    var c=BY[m.c],y=yearOf(who,m.c);
-    a+='<span class="sb"><b>'+esc(m.c)+'</b> '+esc(c?c.title:"")+' <span class="fitnote">('+esc(m.fit)+(c?", "+c.hours+" hours":"")+')</span></span>';
-    b+='<span class="sb">'+(y?'<span class="inplan">Year '+y+'</span>':"Not in plan")+'</span>';
-  });
-  return {a:a,b:b};
+var CID_KEY="ptPlannerCid";
+function loadCid(){try{var raw=localStorage.getItem(CID_KEY);if(!raw)return;var m=JSON.parse(raw);if(m&&typeof m==="object"){if(typeof m.date==="string")state.cid.date=m.date;if(Array.isArray(m.progs))state.cid.progs=m.progs.slice(0,4).concat(["","","",""]).slice(0,4).map(String);if(typeof m.links==="string")state.cid.links=m.links;if(Array.isArray(m.contacts))state.cid.contacts=[0,1,2].map(function(i){var c=m.contacts[i]||["",""];return [String(c[0]||""),String(c[1]||"")];});if(m.checks&&typeof m.checks==="object")Object.keys(state.cid.checks).forEach(function(k){if(typeof m.checks[k]==="boolean")state.cid.checks[k]=m.checks[k];});}}catch(e){}}
+function saveCid(){try{localStorage.setItem(CID_KEY,JSON.stringify(state.cid));}catch(e){}}
+function cidCourses(){
+  var codes=[],seen={},who=state.cidScope==="both"?["shane","thomas"]:[state.cidScope];
+  who.forEach(function(w){[1,2,3].forEach(function(y){state.plan[w][y].forEach(function(code){if(!seen[code]){seen[code]=1;codes.push(code);}});});});
+  return codes;
 }
-function renderMjc(){
-  var who=state.who,P=PEOPLE[who],h='<div class="mjc"><h2>Modesto JC Plan</h2>';
-  h+='<p class="mnote">This is the Curriculum Identification (CID) form Modesto submitted on '+MJC.date+', with the term-by-term schedule from the Cal Signs Course Mapper. It is the model CSA wants other colleges to follow.</p>';
-  h+='<div class="mfacts"><div><span>College</span><b>'+esc(MJC.lea)+'</b></div><div><span>Apprenticeship program</span><b>'+esc(MJC.program)+'</b></div><div><span>Form status</span><b>'+esc(MJC.status)+'</b></div><div><span>Funding method</span><b>'+esc(MJC.method)+'</b></div><div><span>Minimum instruction</span><b>144 hours per year of apprenticeship</b></div><div><span>Courses on the form</span><b>'+MJC.rows.length+'</b></div></div>';
-  h+='<div class="mcompare"><span class="small"><b>Compare with</b></span>';
-  Object.keys(PEOPLE).forEach(function(k){h+='<button class="preset" type="button" data-act="mjcwho" data-who="'+k+'" aria-pressed="'+(state.who===k)+'">'+esc(PEOPLE[k].name)+'’s plan</button>';});
+function cidText(codes){
+  var c=state.cid,L=[];
+  L.push("Apprenticeship Curriculum Identification Form");
+  L.push("Date: "+c.date);
+  L.push("Curriculum Update: "+(c.checks.upd?"yes":"no")+"   New Local Education Agency: "+(c.checks.newlea?"yes":"no"));
+  L.push("Local Education Agency: Saddleback College");
+  L.push("Program: LAUNCH Manufacturing: Production Technician");
+  L.push("");L.push("Course Code | Course Title | Total Course Hours");
+  var tot=0;codes.forEach(function(k){var x=BY[k];tot+=x.hours;L.push(x.code+" | "+x.title+" | "+x.hours);});
+  L.push("Total listed hours: "+tot);
+  L.push("");L.push("Academic Programs: "+c.progs.filter(Boolean).join("; "));
+  L.push("Catalog links: "+c.links.replace(/\s+/g," "));
+  var meth=[];if(c.checks.ftes)meth.push("FTES");if(c.checks.aift)meth.push("AIF-T");if(c.checks.rsi)meth.push("RSI");if(c.checks.other)meth.push("Other");
+  L.push("Reimbursement method: "+meth.join(", "));
+  ["Curriculum Contact","Instructional Funding Contact","College Representative"].forEach(function(n,i){L.push(n+": "+c.contacts[i][0]+" "+c.contacts[i][1]);});
+  return L.join("\n");
+}
+function renderCid(){
+  var c=state.cid,codes=cidCourses(),logo=(document.querySelector(".logo img")||{getAttribute:function(){return "";}}).getAttribute("src")||"";
+  var h='<h2 class="mh">CID Form for Saddleback</h2>';
+  h+='<p class="cidhelp">This form fills in from the course plans. Choose whose courses to list, or both, and the table below changes right away. Type in the contacts, programs and links yourself. Your typing stays in this browser.</p>';
+  h+='<div class="cidtools"><span><b>Course list from</b></span>';
+  [["both","Both plans"],["shane","Shane’s plan"],["thomas","Thomas’s plan"]].forEach(function(o){h+='<button class="preset" type="button" data-act="cidscope" data-scope="'+o[0]+'" aria-pressed="'+(state.cidScope===o[0])+'">'+o[1]+'</button>';});
+  h+='<button class="link" type="button" data-act="cidtext" aria-expanded="'+state.cidText+'">'+(state.cidText?"Hide Form as Text":"Show Form as Text")+'</button><button class="link" type="button" data-act="cidprint">Print or Save as PDF</button><button class="link" type="button" data-act="cidclear">Clear My Typing</button></div>';
+  h+='<div class="cid"><div class="cidband">'+(logo?'<img src="'+esc(logo)+'" alt="LAUNCH Apprenticeship Network logo">':'')+'<h2>Apprenticeship Curriculum Identification Form</h2></div><div class="cidbody">';
+  h+='<div class="cidrow"><label for="cid-date"><b>Date</b></label><input id="cid-date" type="text" data-cid="date" value="'+esc(c.date)+'" style="max-width:220px" placeholder="MM/DD/YYYY"><label for="cid-upd"><input id="cid-upd" type="checkbox" data-cidcheck="upd"'+(c.checks.upd?" checked":"")+'>Curriculum Update</label><label for="cid-new"><input id="cid-new" type="checkbox" data-cidcheck="newlea"'+(c.checks.newlea?" checked":"")+'>New Local Education Agency</label></div>';
+  h+='<p style="margin:0">In alignment with the Local Education Agency agreement, <b>Saddleback College</b> will provide related instruction to apprentices registered in the <b>LAUNCH Manufacturing: Production Technician</b> apprenticeship program.</p>';
+  h+='<p style="margin:0">In reviewing the occupational competencies and anticipated on-the-job learning contained in the standards of the program, we are submitting to the apprenticeship committee the following course list, which will be offered to registered apprentices:</p>';
+  var tot=0;
+  h+='<table class="ct"><thead><tr><th scope="col">Course Code</th><th scope="col">Course Title</th><th scope="col" class="num">Total Course Hours</th></tr></thead><tbody>';
+  codes.forEach(function(k){var x=BY[k];tot+=x.hours;h+='<tr><td><b>'+esc(x.code)+'</b></td><td>'+esc(x.title)+'</td><td class="num">'+x.hours+'</td></tr>';});
+  if(!codes.length)h+='<tr><td colspan="3">No courses are in the plan yet.</td></tr>';
+  h+='</tbody><tfoot><tr><td colspan="2">'+codes.length+(codes.length===1?" course":" courses")+' listed</td><td class="num">'+tot+'</td></tr></tfoot></table>';
+  h+='<div><h3>Academic Programs (College Certificate Pathways and/or Degrees)</h3>';
+  for(var i=0;i<4;i++)h+='<label for="cid-prog'+i+'" class="small" style="margin-top:6px"><span style="position:absolute;width:1px;height:1px;overflow:hidden">Academic program '+(i+1)+'</span></label><input id="cid-prog'+i+'" type="text" data-cid="prog'+i+'" value="'+esc(c.progs[i])+'" style="margin-top:6px">';
   h+='</div>';
-  var overlap=0,lo=0,hi=0;
-  MJC.rows.forEach(function(r){ lo+=r.lo; hi+=r.hi; if(r.match.some(function(m){return yearOf(who,m.c)>0;})) overlap++; });
-  h+='<h3 class="mh3">Courses on the CID Form</h3>';
-  h+='<table class="mt"><caption>Modesto courses on the form, with the closest Saddleback course</caption><thead><tr><th scope="col">Modesto course</th><th scope="col">Total hours</th><th scope="col">Closest Saddleback course</th><th scope="col">In '+esc(P.name)+'’s plan?</th></tr></thead><tbody>';
-  MJC.rows.forEach(function(r){
-    h+='<tr><td><b>'+esc(r.code)+'</b> '+esc(r.title)+'</td><td class="num">'+mjcHours(r)+'</td>';
-    if(!r.match.length){h+='<td>No Saddleback match found</td><td>Not applicable</td></tr>';return;}
-    var m=matchHtml(r.match,who);
-    h+='<td>'+m.a+'</td><td>'+m.b+'</td></tr>';
-  });
-  h+='</tbody></table>';
-  h+='<p class="mnote" style="margin-top:12px">'+overlap+' of the '+MJC.rows.length+' form courses have a closest Saddleback match in '+esc(P.name)+'’s plan. The form lists '+lo+' to '+hi+' hours in all, against '+analyze(who).total+' hours in '+esc(P.name)+'’s plan. Modesto’s list leans toward electronics, machining and welding, while this plan follows the six competencies and the work '+esc(P.name)+' does.</p>';
-  h+='<h3 class="mh3">Term-by-Term Schedule</h3>';
-  h+='<div class="terms">';
-  MJC.terms.forEach(function(t){
-    h+='<div class="term"><h4>'+esc(t.label)+'</h4><ul>';
-    t.items.forEach(function(it){
-      var row=mjcRow(it.code),matches=it.match||(row?row.match:[]);
-      h+='<li><b>'+esc(it.code)+'</b> '+esc(it.title);
-      if(!row)h+=' <span class="tag">Not on the CID form</span>';
-      if(matches.length){h+='<span class="fitnote">Closest Saddleback: '+matches.map(function(m){return esc(m.c)+(yearOf(who,m.c)?" (in plan)":"");}).join(", ")+'</span>';}
-      h+='</li>';
-    });
-    h+='</ul></div>';
-  });
-  h+='</div>';
-  h+='<p class="mnote" style="margin-top:12px">Recommended as supplemental courses for success in the advanced courses: '+esc(MJC.supplemental.join(", "))+'.</p>';
-  h+='<p class="mnote">The schedule and the form differ in a few places. MACH 205 and MACH 357 are in the schedule but not on the form. SM 331 and the forklift training are on the form but not in the six terms, and SM 331 appears as a supplemental course. The form’s second page names the college as Modesto JC and does not check a funding method, while page 1 checks RSI apportionment. The Saddleback matches are a first pass from the course descriptions.</p></div>';
-  document.getElementById("view-mjc").innerHTML=h;
+  h+='<div><h3>Link(s) to Catalog Listings for All Relevant Courses Offered</h3><textarea id="cid-links" data-cid="links" aria-label="Catalog links">'+esc(c.links)+'</textarea></div>';
+  h+='<p style="margin:0">Apprentices are provided a minimum of <b>144 hours</b> of instruction per year of apprenticeship. In consultation with the program sponsor and whereas agreed upon by the committee, supplemental courses may be provided to individual apprentices benefiting from remedial or advanced education in alignment with the approved standards and professional pathway.</p>';
+  h+='<div><p style="margin:0 0 8px"><b>Saddleback College</b> intends to seek reimbursement for providing this instruction using the following method:</p><div class="cidgrid">';
+  [["ftes","Full-Time Equivalent Student Apportionment (FTES)"],["rsi","Related Supplemental Instruction Apportionment (RSI)"],["aift","Apprenticeship Innovation Funding for Training (AIF-T)"],["other","Other (May include grants, private funding, or other methods)"]].forEach(function(o){h+='<label for="cid-'+o[0]+'"><input id="cid-'+o[0]+'" type="checkbox" data-cidcheck="'+o[0]+'"'+(c.checks[o[0]]?" checked":"")+'>'+o[1]+'</label>';});
+  h+='</div></div>';
+  h+='<div><h3>Primary Contact(s) for Local Education Agency Program</h3><div class="cidgrid"><span class="cap">Name</span><span class="cap">Email</span>';
+  ["Curriculum Contact","Instructional Funding Contact","College Representative"].forEach(function(n,i){h+='<label for="cid-cn'+i+'" style="display:block"><span class="small">'+n+'</span><input id="cid-cn'+i+'" type="text" data-cid="cn'+i+'" value="'+esc(c.contacts[i][0])+'"></label><label for="cid-ce'+i+'" style="display:block"><span class="small">'+n+' email</span><input id="cid-ce'+i+'" type="text" data-cid="ce'+i+'" value="'+esc(c.contacts[i][1])+'"></label>';});
+  h+='</div></div>';
+  h+='<div><h3>Review by Program Sponsor</h3><div style="display:grid;gap:8px">';
+  [["r1","The curriculum Matches Existing Standards (Adding LEA Only)"],["r2","The curriculum requires a committee review of course titles and descriptions for standards alignment (Content and Hours Align with Existing Standards, but course titles and descriptions are new)"],["r3","The curriculum requires DAS-24 filing"]].forEach(function(o){h+='<label for="cid-'+o[0]+'"><input id="cid-'+o[0]+'" type="checkbox" data-cidcheck="'+o[0]+'"'+(c.checks[o[0]]?" checked":"")+'>'+o[1]+'</label>';});
+  h+='</div></div><p class="cidfoot">April 2026 Update</p></div></div>';
+  if(state.cidText)h+='<label class="small" for="cidtxt">Select all and copy to paste into the official form.</label><textarea id="cidtxt" class="maptext2" readonly>'+esc(cidText(codes))+'</textarea>';
+  document.getElementById("view-cid").innerHTML=h;
 }
 function applyView(){
-  var isPlan=state.view==="plan";
-  document.getElementById("view-plan").hidden=!isPlan;
-  document.getElementById("view-mjc").hidden=isPlan;
+  var v=state.view;
+  document.getElementById("view-plan").hidden=v!=="plan";
+  document.getElementById("view-catalog").hidden=v!=="catalog";
+  document.getElementById("view-cid").hidden=v!=="cid";
+  document.getElementById("view-comp").hidden=v!=="comp";
   var tabs=document.querySelectorAll(".vtab");
-  for(var i=0;i<tabs.length;i++){tabs[i].setAttribute("aria-pressed",String(tabs[i].getAttribute("data-view")===state.view));}
-  if(!isPlan)renderMjc();
+  for(var i=0;i<tabs.length;i++){tabs[i].setAttribute("aria-pressed",String(tabs[i].getAttribute("data-view")===v));}
+  if(v==="cid")renderCid();
 }
 function setView(v,fromHash){
-  state.view=v==="mjc"?"mjc":"plan";
-  if(!fromHash){var hh=state.view==="mjc"?"mjc":state.who;try{history.replaceState(null,"","#"+hh);}catch(e){try{location.hash=hh;}catch(e2){}}}
+  state.view=(v==="catalog"||v==="cid"||v==="comp")?v:"plan";
+  if(!fromHash){var hh=state.view==="plan"?state.who:state.view;try{history.replaceState(null,"","#"+hh);}catch(e){try{location.hash=hh;}catch(e2){}}}
   if(state.view==="plan")renderAll();else applyView();
+  try{window.scrollTo(0,0);}catch(e3){}
+}
+function renderCatWho(){
+  var h='<span><b>Adding courses for</b></span>';
+  Object.keys(PEOPLE).forEach(function(k){h+='<button class="preset" type="button" data-act="catwho" data-who="'+k+'" aria-pressed="'+(state.who===k)+'">'+esc(PEOPLE[k].name)+'</button>';});
+  h+='<button class="link" type="button" data-act="view" data-view="plan">See the Plan</button>';
+  document.getElementById("catwho").innerHTML=h;
+  document.getElementById("catmsg").textContent=state.msg||"";
+}
+function renderCompWho(){
+  var h='<span><b>Showing the plan for</b></span>';
+  Object.keys(PEOPLE).forEach(function(k){h+='<button class="preset" type="button" data-act="compwho" data-who="'+k+'" aria-pressed="'+(state.who===k)+'">'+esc(PEOPLE[k].name)+'</button>';});
+  h+='<button class="link" type="button" data-act="view" data-view="plan">See the Plan</button>';
+  document.getElementById("compwho").innerHTML=h;
+}
+function setSize(n){
+  n=String(n);document.documentElement.setAttribute("data-ts",n);
+  var b=document.querySelectorAll('[data-act="ts"]');
+  for(var i=0;i<b.length;i++){b[i].setAttribute("aria-pressed",String(b[i].getAttribute("data-size")===n));}
+  try{localStorage.setItem("ptPlannerTs",n);}catch(e){}
 }
 function renderAll(){
   var a=analyze(state.who);
-  renderPeople();renderPresets();renderStatus(a);renderLanes(a);renderComp(a);renderFilters();renderCourses();applyView();
+  renderPeople();renderPresets();renderStatus(a);renderLanes(a);renderComp(a);renderFilters();renderCourses();renderCatWho();renderCompWho();applyView();
 }
 function renderPlanOnly(){
   var a=analyze(state.who);
-  renderPresets();renderStatus(a);renderLanes(a);renderComp(a);renderCourses();
+  renderPresets();renderStatus(a);renderLanes(a);renderComp(a);renderCourses();renderCatWho();renderCompWho();
 }
 function setWho(w,fromHash){
   if(!PEOPLE[w])return;state.who=w;state.view="plan";state.alt=null;
@@ -682,12 +765,18 @@ document.addEventListener("click",function(e){
   if(act==="who"){setWho(t.getAttribute("data-who"));}
   else if(act==="preset"){var i=+t.getAttribute("data-i");state.plan[who]=clone(PEOPLE[who].presets[i].plan);state.preset[who]=i;state.alt=null;renderPlanOnly();}
   else if(act==="reset"){state.plan[who]=clone(PEOPLE[who].presets[0].plan);state.preset[who]=0;state.alt=null;renderPlanOnly();}
-  else if(act==="remove"){removeFrom(who,t.getAttribute("data-code"));state.preset[who]=-1;renderPlanOnly();}
-  else if(act==="add"){place(who,t.getAttribute("data-code"),+t.getAttribute("data-year"));renderPlanOnly();}
+  else if(act==="remove"){var rc=t.getAttribute("data-code");removeFrom(who,rc);state.preset[who]=-1;state.msg=rc+" was removed from "+PEOPLE[who].name+"’s plan.";renderPlanOnly();}
+  else if(act==="add"){var ac=t.getAttribute("data-code"),ay=+t.getAttribute("data-year");place(who,ac,ay);state.msg=ac+" was added to "+PEOPLE[who].name+"’s plan, year "+ay+".";renderPlanOnly();}
+  else if(act==="ts"){setSize(t.getAttribute("data-size"));}
+  else if(act==="cidscope"){state.cidScope=t.getAttribute("data-scope");renderCid();}
+  else if(act==="cidtext"){state.cidText=!state.cidText;renderCid();}
+  else if(act==="cidprint"){try{window.print();}catch(e){}}
+  else if(act==="cidclear"){state.cid.date="";state.cid.progs=["","","",""];state.cid.links="";state.cid.contacts=[["",""],["",""],["",""]];Object.keys(state.cid.checks).forEach(function(k){state.cid.checks[k]=(k==="newlea");});saveCid();renderCid();}
+  else if(act==="compwho"){state.who=t.getAttribute("data-who");state.alt=null;state.edit=null;renderAll();}
+  else if(act==="catwho"){state.who=t.getAttribute("data-who");state.alt=null;state.msg="";renderAll();}
   else if(act==="alt"){var n=+t.getAttribute("data-n");state.alt=state.alt===n?null:n;renderComp(analyze(who));}
   else if(act==="dept"){state.dept=t.getAttribute("data-dept");renderFilters();renderCourses();}
   else if(act==="view"){setView(t.getAttribute("data-view"));}
-  else if(act==="mjcwho"){state.who=t.getAttribute("data-who");renderMjc();}
   else if(act==="edit"){var en=+t.getAttribute("data-n");state.edit=state.edit===en?null:en;renderComp(analyze(who));}
   else if(act==="exp"){state.exp=!state.exp;renderComp(analyze(who));}
   else if(act==="resetfit"){resetFit();renderPlanOnly();}
@@ -695,14 +784,27 @@ document.addEventListener("click",function(e){
 document.addEventListener("change",function(e){
   var t=e.target;if(!t.getAttribute)return;var act=t.getAttribute("data-act");
   if(act==="move"){place(state.who,t.getAttribute("data-code"),+t.value);renderPlanOnly();}
+  else if(t.getAttribute("data-cidcheck")){state.cid.checks[t.getAttribute("data-cidcheck")]=!!t.checked;saveCid();if(state.cidText)renderCid();}
   else if(act==="setfit"){var keep=t.id;setFit(t.getAttribute("data-code"),+t.getAttribute("data-n"),t.value);renderPlanOnly();var again=document.getElementById(keep);if(again)again.focus();}
 });
 document.getElementById("q").addEventListener("input",function(e){state.q=e.target.value;renderCourses();});
+document.addEventListener("input",function(e){
+  var t=e.target;if(!t||!t.getAttribute)return;var k=t.getAttribute("data-cid");if(!k)return;
+  var c=state.cid;
+  if(k==="date")c.date=t.value;else if(k==="links")c.links=t.value;
+  else if(k.indexOf("prog")===0)c.progs[+k.slice(4)]=t.value;
+  else if(k.indexOf("cn")===0)c.contacts[+k.slice(2)][0]=t.value;
+  else if(k.indexOf("ce")===0)c.contacts[+k.slice(2)][1]=t.value;
+  saveCid();
+});
 document.getElementById("courses").addEventListener("toggle",function(e){
   var d=e.target;if(d&&d.tagName==="DETAILS"){state.open[d.getAttribute("data-code")]=d.open;}
 },true);
-window.addEventListener("hashchange",function(){var h=location.hash.replace("#","");if(h==="mjc"){setView("mjc",true);}else if(PEOPLE[h]&&(h!==state.who||state.view!=="plan"))setWho(h,true);});
-var start=location.hash.replace("#","");if(PEOPLE[start])state.who=start;if(start==="mjc")state.view="mjc";
+window.addEventListener("hashchange",function(){var h=location.hash.replace("#","");if(h==="catalog"||h==="cid"||h==="comp"){setView(h,true);}else if(PEOPLE[h]&&(h!==state.who||state.view!=="plan"))setWho(h,true);});
+var start=location.hash.replace("#","");if(PEOPLE[start])state.who=start;if(start==="catalog"||start==="cid"||start==="comp")state.view=start;
+loadCid();
+var tsStart="1";try{tsStart=localStorage.getItem("ptPlannerTs")||"1";}catch(e){}
+setSize(tsStart);
 renderAll();
 })();
 </script>
