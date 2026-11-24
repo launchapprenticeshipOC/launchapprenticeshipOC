@@ -9,253 +9,134 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --sky:#29AAE1; --blue:#247EB2; --deep:#1F4171; --navy:#032F6E; --orange:#FAAB1A; --gold:#FCB501;
+  --sky:#29AAE1; --blue:#247EB2; --deep:#1F4171; --navy:#032F6E; --orange:#FAAB1A;
   --bg:#ffffff; --ink:#032F6E; --head:#1F4171; --muted:#4A5C78; --card:#ffffff; --line:#D3E2EE; --tint:#EAF5FC; --tint2:#CFE8F7; --link:#1F4171;
-  --g0:#1F4171; --g1:#247EB2; --g2:#29AAE1; --nv:#032F6E;
+  --g0:#1F4171; --g1:#247EB2; --g2:#29AAE1; --g3:#FAAB1A;
   --display:"Barlow Condensed","Arial Narrow","Roboto Condensed",Impact,sans-serif;
   --body:"Barlow","Segoe UI",Roboto,Arial,sans-serif;
 }
 @media (prefers-color-scheme: dark){
-  :root{--bg:#06162C;--ink:#FFFFFF;--head:#FFFFFF;--muted:#B7C8DE;--card:#0C2441;--line:#274A74;--tint:#10305A;--tint2:#18457D;--link:#8CCBEA;--g0:#29AAE1;--g1:#247EB2;--g2:#8CCBEA;--nv:#B7C8DE}
+  :root{--bg:#06162C;--ink:#FFFFFF;--head:#FFFFFF;--muted:#B7C8DE;--card:#0C2441;--line:#274A74;--tint:#10305A;--tint2:#18457D;--link:#8CCBEA;--g0:#29AAE1;--g1:#247EB2;--g2:#8CCBEA;--g3:#FAAB1A}
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45}
 a{color:var(--link)}
-a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1120px;margin:0 auto;padding:22px 28px 48px}
-.bar{height:8px;border-radius:4px;background:linear-gradient(90deg,#29AAE1,#247EB2,#1F4171);margin-bottom:26px}
-.eyebrow{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:var(--blue)}
+button,input{font-family:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:18px 24px 32px}
+.bar{height:6px;border-radius:3px;background:linear-gradient(90deg,#29AAE1,#247EB2,#1F4171);margin-bottom:16px}
+.top{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:flex-end;justify-content:space-between}
+.eyebrow{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--blue)}
 @media (prefers-color-scheme: dark){.eyebrow{color:var(--sky)}}
-.hero{display:block}
-h1{font-family:var(--display);font-weight:700;font-size:clamp(42px,8vw,76px);line-height:.98;margin:6px 0 14px;color:var(--head)}
-.lede{max-width:60ch;margin:0;font-size:19px;color:var(--muted)}
-nav.jump{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0}
-nav.jump a{font-weight:700;font-size:14px;text-decoration:none;color:var(--head);border:2px solid var(--line);border-radius:999px;padding:5px 14px}
-nav.jump a:hover{background:var(--tint)}
-section{margin-top:46px}
-h2{font-family:var(--display);font-weight:700;font-size:34px;line-height:1.05;margin:0 0 6px;color:var(--head);display:flex;align-items:center;gap:14px}
-h2::after{content:"";flex:1;height:3px;background:var(--line);border-radius:2px}
-.sub{margin:0 0 18px;color:var(--muted);max-width:70ch}
-.group{margin-top:26px}
-.group:first-of-type{margin-top:8px}
-.gh{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;margin:0 0 12px;padding-left:12px;border-left:8px solid var(--orange)}
-.gh h3{font-family:var(--display);font-weight:700;font-size:28px;line-height:1.05;margin:0;color:var(--head)}
-.gh p{margin:0;color:var(--muted);font-size:15px}
-.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:18px}
-.tool{display:flex;flex-direction:column;border:1px solid var(--line);border-top:8px solid var(--deep);border-radius:0 0 14px 14px;background:var(--card);padding:16px 18px 16px}
-.tool.c2{border-top-color:var(--blue)}
-.tool.c3{border-top-color:var(--sky)}
-.tool.c4{border-top-color:var(--orange)}
-.tool .no{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.tool h4{font-family:var(--display);font-weight:700;font-size:28px;line-height:1.05;margin:2px 0 8px;color:var(--head)}
-.tool p{margin:0 0 10px}
-.tool .meta{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin-bottom:12px}
-.tool code.path{font-family:Consolas,"Courier New",monospace;font-size:13px;background:var(--tint);color:var(--head);padding:2px 8px;border-radius:6px}
-.asof{font-size:13px;font-weight:700;color:var(--muted)}
-.open{display:inline-block;font-weight:700;text-decoration:none;background:var(--orange);color:var(--navy);padding:8px 18px;border-radius:10px;border:2px solid var(--orange)}
-.open:hover{background:transparent;color:var(--head);border-color:var(--orange)}
-.tool .act{margin-top:auto;padding-top:6px}
-details{margin:6px 0 12px;border-top:1px solid var(--line);padding-top:8px}
-summary{cursor:pointer;font-weight:700;color:var(--head)}
-details ul{margin:8px 0 0;padding-left:20px}
-details li{margin:4px 0}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px}
-.step{position:relative;border:1px solid var(--line);border-top:8px solid var(--g0);border-radius:0 0 12px 12px;background:var(--card);padding:12px 16px 14px}
-.step:nth-child(2){border-top-color:var(--g1)}
-.step:nth-child(3){border-top-color:var(--g2)}
-.step:nth-child(4){border-top-color:var(--orange)}
-.step .n{font-family:var(--display);font-weight:700;font-size:40px;line-height:1;color:var(--head)}
-.step h3{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.05;margin:2px 0 4px;color:var(--head)}
-.step p{margin:0;color:var(--muted);font-size:15px}
-.step:not(:last-child)::after{content:"\203A";position:absolute;right:-14px;top:42%;font-size:30px;font-weight:700;line-height:1;color:var(--blue)}
-@media (prefers-color-scheme: dark){.step:not(:last-child)::after{color:var(--sky)}}
-.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
-.box{border:1px solid var(--line);border-left:6px solid var(--blue);border-radius:0 12px 12px 0;padding:12px 16px;background:var(--card)}
-.box h3{font-family:var(--display);font-size:22px;margin:0 0 4px;color:var(--head)}
-.box p{margin:0;color:var(--muted);font-size:15px}
-pre{background:var(--tint);color:var(--head);border-radius:12px;padding:14px 18px;overflow:auto;font-family:Consolas,"Courier New",monospace;font-size:13.5px;line-height:1.55;margin:0}
-.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
-table{width:100%;border-collapse:collapse;min-width:640px;font-size:15px}
-th{background:var(--deep);color:#fff;text-align:left;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;padding:9px 12px}
-td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
-td code,.codes code{font-family:Consolas,"Courier New",monospace;font-size:13px;background:var(--tint);color:var(--head);padding:1px 6px;border-radius:5px;white-space:nowrap}
-.codes{display:flex;flex-wrap:wrap;gap:5px}
-.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-.sw{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
-.sw i{display:block;height:64px}
-.sw div{padding:8px 12px 10px;font-size:14px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,5vw,50px);line-height:1;margin:2px 0 6px;color:var(--head)}
+.lede{margin:0;color:var(--muted);max-width:58ch}
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;font-size:13px;font-weight:700;color:var(--head)}
+.chain span{display:inline-flex;align-items:center;gap:6px;background:var(--tint);border-radius:999px;padding:3px 12px 3px 9px}
+.chain svg{width:14px;height:14px;flex:none}
+.chain i{font-style:normal;color:var(--blue)}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;margin:16px 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{font-weight:700;font-size:13.5px;padding:5px 13px;border-radius:999px;border:2px solid var(--line);background:transparent;color:var(--head);cursor:pointer}
+.chips button b{font-family:var(--display);font-size:15px;margin-left:5px;color:var(--muted)}
+.chips button[aria-pressed="true"]{background:var(--deep);border-color:var(--deep);color:#fff}
+.chips button[aria-pressed="true"] b{color:#CFE8F7}
+@media (prefers-color-scheme: dark){.chips button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue)}}
+.search{position:relative;flex:1 1 220px;max-width:320px}
+.search input{width:100%;font-size:14.5px;padding:7px 12px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:16px;align-items:start}
+.gl{margin:12px 0 6px;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.gl:first-child{margin-top:0}
+.list{display:grid;gap:8px}
+.item{display:grid;grid-template-columns:6px 38px minmax(0,1fr) auto;gap:0 12px;align-items:center;width:100%;text-align:left;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);padding:0;cursor:pointer;overflow:hidden}
+.item:hover{background:var(--tint)}
+.item .st{align-self:stretch;background:var(--c,var(--g0))}
+.ico{width:38px;height:38px;border-radius:10px;background:var(--tint);color:var(--head);display:grid;place-items:center;flex:none}
+.ico svg{width:22px;height:22px}
+.item .in{padding:10px 0}
+.item .t{display:block;font-family:var(--display);font-weight:700;font-size:22px;line-height:1.05;color:var(--head)}
+.item .b{display:block;font-size:14px;color:var(--muted);margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.item .m{display:block;margin-top:5px;font-size:12.5px;font-weight:700;color:var(--muted)}
+.item .go{padding-right:14px;font-size:24px;font-weight:700;color:var(--blue)}
+.item[aria-current="true"]{border-color:var(--orange);box-shadow:0 0 0 2px var(--orange) inset;background:var(--tint)}
+.empty{border:2px dashed var(--line);border-radius:12px;padding:18px;text-align:center;color:var(--muted)}
+.empty button{margin-top:8px;font-weight:700;border:2px solid var(--deep);background:transparent;color:var(--head);border-radius:8px;padding:4px 12px;cursor:pointer}
+.detail{position:sticky;top:12px;border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
+.dh{background:var(--deep);color:#fff;padding:12px 18px 12px;display:flex;gap:14px;align-items:flex-start}
+.dh .ico{background:rgba(255,255,255,.14);color:#fff;width:42px;height:42px}
+.dh .ico svg{width:24px;height:24px}
+.dh .g{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#CFE8F7}
+.dh h2{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.05;margin:2px 0 6px}
+.dh .meta{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:13px;color:#DCE9F5}
+.dh code{font-family:Consolas,"Courier New",monospace;font-size:12.5px;background:rgba(255,255,255,.14);padding:1px 8px;border-radius:6px}
+.tabs{display:flex;gap:4px;padding:8px 14px 0;border-bottom:1px solid var(--line)}
+.tabs button{font-weight:700;font-size:14px;padding:6px 14px;border:0;border-bottom:4px solid transparent;background:transparent;color:var(--muted);cursor:pointer}
+.tabs button[aria-selected="true"]{color:var(--head);border-bottom-color:var(--orange)}
+.db{padding:12px 18px 6px;min-height:200px}
+.db p{margin:0 0 10px}
+.db ul{margin:0 0 10px;padding-left:0;list-style:none}
+.db li{padding:6px 0;border-top:1px solid var(--line);font-size:14.5px}
+.db li:first-child{border-top:0}
+.db li b{color:var(--head)}
+.db h3{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px}
+.codes{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:6px}
+code.c,.codes code{font-family:Consolas,"Courier New",monospace;font-size:12.5px;background:var(--tint);color:var(--head);padding:1px 7px;border-radius:5px;white-space:nowrap}
+.da{padding:6px 18px 16px}
+.open{display:inline-block;font-weight:700;text-decoration:none;background:var(--orange);color:var(--navy);padding:9px 22px;border-radius:10px;border:2px solid var(--orange)}
+.open:hover{background:transparent;color:var(--head)}
+.ref{margin-top:18px;border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
+.ref .tabs{background:var(--tint);padding-top:10px}
+.rp{padding:12px 18px 14px}
+.rp p{margin:0 0 10px;color:var(--muted);font-size:14.5px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{width:100%;border-collapse:collapse;min-width:600px;font-size:14px}
+th{background:var(--deep);color:#fff;text-align:left;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:7px 10px}
+td{padding:7px 10px;border-top:1px solid var(--line);vertical-align:top}
+pre{margin:0;background:var(--tint);color:var(--head);border-radius:10px;padding:12px 16px;overflow:auto;font-family:Consolas,"Courier New",monospace;font-size:13px;line-height:1.5}
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.sw{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card)}
+.sw i{display:block;height:38px}
+.sw div{padding:5px 10px 7px;font-size:13px}
 .sw b{display:block;color:var(--head)}
-.sw span{font-family:Consolas,"Courier New",monospace;font-size:13px;color:var(--muted)}
-footer{margin-top:50px;padding-top:16px;border-top:4px solid var(--orange);color:var(--muted);font-size:14px;max-width:90ch}
-@media (max-width:820px){.step:not(:last-child)::after{display:none}}
-@media (max-width:640px){.wrap{padding:16px 16px 36px}h2{font-size:28px}}
+.sw span{font-family:Consolas,"Courier New",monospace;font-size:12px;color:var(--muted)}
+footer{margin-top:18px;padding-top:12px;border-top:4px solid var(--orange);color:var(--muted);font-size:13.5px}
+@media (max-width:860px){
+  .wrap{padding:14px 16px 28px}
+  .layout{grid-template-columns:minmax(0,1fr)}
+  .detail{position:static}
+}
+@media (prefers-reduced-motion:no-preference){.item{transition:background .15s,box-shadow .15s}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="bar" role="presentation"></div>
   <!-- Place the official LAUNCH logo file here, on a white background. The wordmark is not retyped on this page. -->
-  <header class="hero">
+  <header class="top">
     <div>
       <div class="eyebrow">LAUNCH Apprenticeship Network &middot; Orange County</div>
       <h1>Apprenticeship Mapping Tools</h1>
-      <p class="lede">Browser-based tools for mapping community college programs and courses to apprenticeship standards. Each tool is a single page, so there is nothing to install.</p>
-      <nav class="jump" aria-label="On this page">
-        <a href="#tools">Tools</a><a href="#fit">How it fits</a><a href="#layout">Repo layout</a><a href="#data">Data formats</a><a href="#design">Design</a>
-      </nav>
+      <p class="lede">Browser-based tools for mapping community college programs and courses to apprenticeship standards. Each one is a single page.</p>
     </div>
+    <div class="chain" id="chain" aria-label="From standards to hours"></div>
   </header>
 
-  <section id="tools">
-    <h2>The tools</h2>
-    <p class="sub">Open a tool below, or expand its details to see what is inside.</p>
+  <div class="toolbar">
+    <div class="chips" role="group" aria-label="Filter tools" id="chips"></div>
+    <div class="search"><input type="search" id="q" placeholder="Search tools" aria-label="Search tools"></div>
+  </div>
 
-    <div class="group">
-      <div class="gh"><h3>Saddleback College</h3><p>Course and pathway planning with Saddleback programs.</p></div>
-      <div class="tools">
+  <main class="layout">
+    <div id="list" class="list-wrap" aria-label="Tools"></div>
+    <aside class="detail" id="detail" aria-live="polite"></aside>
+  </main>
 
-        <article class="tool">
-          <div class="no">Tool 1</div>
-          <h4>Saddleback Course Mapper</h4>
-          <p>Maps Saddleback's automotive courses to occupations and competencies, and shows how program hours change when you swap courses or change which occupation counts a course.</p>
-          <div class="meta"><code class="path">Saddleback/AutomotiveAIXR/</code><span class="asof">Data as of November 16, 2026</span></div>
-          <details>
-            <summary>What is inside</summary>
-            <ul>
-              <li><b>Live view:</b> skill groups beside an animated Sankey chart that redraws on every change.</li>
-              <li><b>Course mapper:</b> the same editing with a full panel of totals and a course ledger.</li>
-              <li><b>Sankey flow:</b> the chart at full size, with a competency list for the selected node.</li>
-              <li><b>Competencies:</b> set the course for each competency, or tick several and apply a course to all.</li>
-              <li><b>Counting rules:</b> skill groups stay with their occupation. A course counts once, under the occupation you assign it to. Hours are units times 18. Unassigned courses are not counted.</li>
-              <li><b>Exports:</b> a sheet CSV in the sheet's five columns, and a course list CSV with the CID form's fields.</li>
-            </ul>
-          </details>
-          <div class="act"><a class="open" href="https://launchapprenticeshipoc.github.io/launchapprenticeshipOC/Saddleback/AutomotiveAIXR/index.html">Open the tool</a></div>
-        </article>
-
-        <article class="tool c2">
-          <div class="no">Tool 2</div>
-          <h4>Production Technician Pathway Planner</h4>
-          <p>Plans course pathways for the Production Technician apprenticeship at Saddleback, checked against the standards' competencies.</p>
-          <div class="meta"><code class="path">ProductionTech/Saddleback_Starfish/</code><span class="asof">Data as of the week of November 9, 2026</span></div>
-          <details>
-            <summary>What is inside</summary>
-            <ul>
-              <li>Built on the program standards, DAS file 99764, LAUNCH Industrial Technology &amp; Manufacturing.</li>
-              <li>Shows alternate course pathways for an incumbent-worker plan across Advanced Manufacturing, Graphic Communication, and Electronic Technology.</li>
-              <li>A pathway is valid as long as it meets the standards' competency checklist. The sample related instruction courses are a guide only.</li>
-            </ul>
-          </details>
-          <div class="act"><a class="open" href="https://launchapprenticeshipoc.github.io/launchapprenticeshipOC/ProductionTech/Saddleback_Starfish/index.html">Open the tool</a></div>
-        </article>
-
-      </div>
+  <section class="ref" aria-label="Reference">
+    <div class="tabs" role="tablist" id="rtabs">
+      <button role="tab" type="button" data-r="data" aria-selected="true">Data formats</button>
+      <button role="tab" type="button" data-r="layout" aria-selected="false">Repo layout</button>
+      <button role="tab" type="button" data-r="design" aria-selected="false">Design</button>
     </div>
-
-    <div class="group">
-      <div class="gh"><h3>Regional pathways and standards</h3><p>Orange County colleges and the LAUNCH standards.</p></div>
-      <div class="tools">
-
-        <article class="tool c3">
-          <div class="no">Tool 3</div>
-          <h4>CHW and Allied Health Pathways</h4>
-          <p>Matches Orange County college programs to the Community Health Worker standard and related allied health and behavioral health standards.</p>
-          <div class="meta"><code class="path">CHWPathways/</code><span class="asof">Data as of October 28, 2026</span></div>
-          <details>
-            <summary>What is inside</summary>
-            <ul>
-              <li><b>Overview:</b> a grid of occupations by colleges, with program counts and dots for the types present.</li>
-              <li><b>By occupation:</b> each standard's DAS number, O*NET and RAPIDS codes, status, and LEA colleges, with programs by college.</li>
-              <li><b>By college:</b> everything one college offers, grouped by LAUNCH occupation.</li>
-              <li><b>Template mode:</b> load a Smartsheet CSV for another pathway, then set the title and focus occupation.</li>
-            </ul>
-          </details>
-          <div class="act"><a class="open" href="https://launchapprenticeshipoc.github.io/launchapprenticeshipOC/CHWPathways/index.html">Open the tool</a></div>
-        </article>
-
-        <article class="tool c4">
-          <div class="no">Tool 4</div>
-          <h4>DAS Approved Standards</h4>
-          <p>Browses the LAUNCH apprenticeship standards by program, occupation, and LEA college.</p>
-          <div class="meta"><code class="path">DASapprovedStandards/</code><span class="asof">Data as of October 28, 2026</span></div>
-          <details>
-            <summary>What is inside</summary>
-            <ul>
-              <li><b>Overview:</b> one tile per program, grouped by sector, with its DAS file number and a status bar.</li>
-              <li><b>By program:</b> each occupation with O*NET and RAPIDS codes, status, progress, and LEA colleges.</li>
-              <li><b>By LEA college:</b> every occupation a college is an LEA for.</li>
-              <li><b>Search and filter:</b> by occupation, code, DAS number, or college, and by status.</li>
-            </ul>
-          </details>
-          <div class="act"><a class="open" href="https://launchapprenticeshipoc.github.io/launchapprenticeshipOC/DASapprovedStandards/index.html">Open the tool</a></div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="fit">
-    <h2>How it fits together</h2>
-    <p class="sub">The tools follow one chain, from the standard to the hours a college counts.</p>
-    <div class="steps">
-      <div class="step"><div class="n">1</div><h3>Standards</h3><p>LAUNCH occupations with their DAS numbers, O*NET codes, and RAPIDS codes.</p></div>
-      <div class="step"><div class="n">2</div><h3>Competencies</h3><p>Skill groups and the competencies each one covers.</p></div>
-      <div class="step"><div class="n">3</div><h3>Courses</h3><p>College courses mapped to those competencies.</p></div>
-      <div class="step"><div class="n">4</div><h3>Hours</h3><p>Course hours, counted once, under one occupation.</p></div>
-    </div>
-  </section>
-
-  <section id="layout">
-    <h2>Repo layout</h2>
-    <pre>launchapprenticeshipOC/
-├── index.html                    this page
-├── README.md
-├── Saddleback/
-│   └── AutomotiveAIXR/
-│       └── index.html            Saddleback Course Mapper
-├── ProductionTech/
-│   └── Saddleback_Starfish/
-│       └── index.html            Production Technician pathway planner
-├── CHWPathways/
-│   └── index.html                CHW and allied health pathways
-└── DASapprovedStandards/
-    └── index.html                LAUNCH apprenticeship standards</pre>
-  </section>
-
-  <section id="data">
-    <h2>Data and file formats</h2>
-    <p class="sub">Sample data is a point-in-time snapshot and does not update on its own. It comes from Smartsheet sheets and program documents from fall 2026. To refresh it, export the sheet from Smartsheet with File, Export, Export sheet to CSV, then load the CSV with the file input in the tool's notes section.</p>
-    <div class="tw">
-      <table>
-        <thead><tr><th>Tool</th><th>Expected columns</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><b>Saddleback Course Mapper</b></td>
-            <td><div class="codes"><code>Occupation</code><code>Occupational Skills</code><code>Competency #</code><code>Competency</code><code>Course</code></div></td>
-            <td>A and B courses are separate, such as <code>AUTO 104A</code> and <code>AUTO 104B</code>. <code>N/A - On-the-Job Training</code> marks a competency taught on the job.</td>
-          </tr>
-          <tr>
-            <td><b>CHW and Allied Health Pathways</b></td>
-            <td><div class="codes"><code>College</code><code>Pathway</code><code>Control Number</code><code>Program</code><code>Award</code><code>Units</code><code>LAUNCH Standard</code><code>O*NET Code</code><code>RAPIDS Code</code><code>Occupation</code></div><p style="margin:8px 0 4px;color:var(--muted);font-size:14px">Optional:</p><div class="codes"><code>Relationship</code><code>Standard Status</code><code>Standard LEAs</code><code>Occupation Note</code></div></td>
-            <td>Rows with a blank <code>Occupation</code> are left out. Fill the three standard columns once per occupation, on its first row. Relationship is Nearest match, Feeder, or Pending COCI.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="design">
-    <h2>Design conventions</h2>
-    <p class="sub">All tools follow the LAUNCH design board. Orange and sky are used as fills, not as text on white. Headlines use Barlow Condensed Bold and body text uses Barlow. The wordmark gradient appears only as a thin band.</p>
-    <div class="swatches">
-      <div class="sw"><i style="background:#29AAE1"></i><div><b>LAUNCH Sky</b><span>#29AAE1</span></div></div>
-      <div class="sw"><i style="background:#247EB2"></i><div><b>LAUNCH Blue</b><span>#247EB2</span></div></div>
-      <div class="sw"><i style="background:#1F4171"></i><div><b>LAUNCH Deep Blue</b><span>#1F4171</span></div></div>
-      <div class="sw"><i style="background:#032F6E"></i><div><b>CCC Navy</b><span>#032F6E</span></div></div>
-      <div class="sw"><i style="background:#FAAB1A"></i><div><b>LAUNCH Orange</b><span>#FAAB1A</span></div></div>
-      <div class="sw"><i style="background:#FCB501"></i><div><b>CCC Gold</b><span>#FCB501</span></div></div>
-    </div>
+    <div class="rp" id="rpanel"></div>
   </section>
 
   <footer>
@@ -263,5 +144,136 @@ footer{margin-top:50px;padding-top:16px;border-top:4px solid var(--orange);color
     Developed by Danielle Alarid.
   </footer>
 </div>
+
+<script>
+var BASE="https://launchapprenticeshipoc.github.io/launchapprenticeshipOC/";
+var TOOLS=[
+{id:"mapper",group:"Saddleback",c:"--g0",title:"Saddleback Course Mapper",
+ blurb:"Map automotive courses to occupations and competencies, and see how program hours change.",
+ desc:"Maps Saddleback's automotive courses to occupations and competencies, and shows how program hours change when you swap courses or change which occupation counts a course.",
+ path:"Saddleback/AutomotiveAIXR/",asof:"Data as of November 16, 2026",
+ views:[["Live view","Skill groups beside an animated Sankey chart that redraws on every change."],["Course mapper","The same editing with a full panel of totals and a course ledger."],["Sankey flow","The chart at full size, with a competency list for the selected node."],["Modules","The program's modules, Mod 2 to Mod 4, with each course and its hours."],["Competencies","Set the course for each competency, or tick several and apply a course to all."]],
+ data:'<h3>Expected columns</h3><div class="codes"><code>Occupation</code><code>Occupational Skills</code><code>Competency #</code><code>Competency</code><code>Course</code></div><p>A and B courses are separate, such as <code class="c">AUTO 104A</code> and <code class="c">AUTO 104B</code>. <code class="c">N/A - On-the-Job Training</code> marks a competency taught on the job.</p><h3>How it counts</h3><ul><li>Skill groups stay with their occupation.</li><li>A course counts once, under the occupation you assign it to. Unassigned courses are not counted.</li><li>Hours are units times 18.</li></ul><h3>Exports</h3><p>A sheet CSV in the sheet\'s five columns, and a course list CSV with the CID form\'s fields.</p>'},
+{id:"prodtech",group:"Saddleback",c:"--g1",title:"Production Technician Pathway Planner",
+ blurb:"Plan course pathways for the Production Technician apprenticeship at Saddleback.",
+ desc:"Plans course pathways for the Production Technician apprenticeship at Saddleback, checked against the standards' competencies.",
+ path:"ProductionTech/Saddleback_Starfish/",asof:"Data as of the week of November 9, 2026",
+ views:[["Standards","Built on the program standards, DAS file 99764, LAUNCH Industrial Technology & Manufacturing."],["Pathways","Shows alternate course pathways for an incumbent-worker plan across Advanced Manufacturing, Graphic Communication, and Electronic Technology."],["Validity","A pathway is valid as long as it meets the standards' competency checklist. The sample related instruction courses are a guide only."]],
+ data:'<h3>Built on</h3><p>The program standards, DAS file 99764, LAUNCH Industrial Technology &amp; Manufacturing.</p>'},
+{id:"chw",group:"Regional",c:"--g2",title:"CHW and Allied Health Pathways",
+ blurb:"Match Orange County college programs to the Community Health Worker and related standards.",
+ desc:"Matches Orange County college programs to the Community Health Worker standard and related allied health and behavioral health standards.",
+ path:"CHWPathways/",asof:"Data as of October 28, 2026",
+ views:[["Overview","A grid of occupations by colleges, with program counts and dots for the types present."],["By occupation","Each standard's DAS number, O*NET and RAPIDS codes, status, and LEA colleges, with programs by college."],["By college","Everything one college offers, grouped by LAUNCH occupation."],["Template mode","Load a Smartsheet CSV for another pathway, then set the title and focus occupation."]],
+ data:'<h3>Expected columns</h3><div class="codes"><code>College</code><code>Pathway</code><code>Control Number</code><code>Program</code><code>Award</code><code>Units</code><code>LAUNCH Standard</code><code>O*NET Code</code><code>RAPIDS Code</code><code>Occupation</code></div><h3>Optional</h3><div class="codes"><code>Relationship</code><code>Standard Status</code><code>Standard LEAs</code><code>Occupation Note</code></div><p>Rows with a blank <code class="c">Occupation</code> are left out. Fill the three standard columns once per occupation, on its first row. Relationship is Nearest match, Feeder, or Pending COCI.</p>'},
+{id:"das",group:"Regional",c:"--g3",title:"DAS Approved Standards",
+ blurb:"Browse the LAUNCH apprenticeship standards by program, occupation, and LEA college.",
+ desc:"Browses the LAUNCH apprenticeship standards by program, occupation, and LEA college.",
+ path:"DASapprovedStandards/",asof:"Data as of October 28, 2026",
+ views:[["Overview","One tile per program, grouped by sector, with its DAS file number and a status bar."],["By program","Each occupation with O*NET and RAPIDS codes, status, progress, and LEA colleges."],["By LEA college","Every occupation a college is an LEA for."],["Search and filter","By occupation, code, DAS number, or college, and by status."]],
+ data:'<h3>Built from</h3><p>The LAUNCH Standards sheet in Smartsheet.</p>'}
+];
+function ic(inner){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'+inner+'</svg>'}
+var ICONS={
+ mapper:ic('<rect x="3" y="4" width="3.5" height="6" rx="1"/><rect x="3" y="14" width="3.5" height="6" rx="1"/><rect x="17.5" y="9" width="3.5" height="6" rx="1"/><path d="M6.5 7c5 0 5 5 11 5M6.5 17c5 0 5-5 11-5"/>'),
+ prodtech:ic('<circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="6.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/>'),
+ chw:ic('<path d="M12 20.5s-7.5-4.5-7.5-10.2A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.7c0 5.7-7.5 10.2-7.5 10.2z"/><path d="M12 10.5v4M10 12.5h4"/>'),
+ das:ic('<rect x="5" y="4.5" width="14" height="16.5" rx="2"/><path d="M9 4.5V3.5h6v1"/><path d="M8.8 13l2.3 2.3 4.2-4.6"/>'),
+ list:ic('<path d="M9 7h11M9 12h11M9 17h11"/><circle cx="4.8" cy="7" r="1"/><circle cx="4.8" cy="12" r="1"/><circle cx="4.8" cy="17" r="1"/>'),
+ book:ic('<path d="M4 5.5A2 2 0 0 1 6 4h13v14H6a2 2 0 0 0-2 2z"/><path d="M4 20a2 2 0 0 0 2 2h13"/>'),
+ clock:ic('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>')
+};
+var CHAIN=[["das","Standards"],["list","Competencies"],["book","Courses"],["clock","Hours"]];
+var GROUPS=[["Saddleback","Saddleback College"],["Regional","Regional pathways and standards"]];
+var S={f:"All",q:"",sel:"mapper",tab:"inside",r:"data"};
+function $(i){return document.getElementById(i)}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function url(t){return BASE+t.path+"index.html"}
+function shown(){
+  var q=S.q.trim().toLowerCase();
+  return TOOLS.filter(function(t){
+    if(S.f!=="All"&&t.group!==S.f)return false;
+    if(!q)return true;
+    var hay=(t.title+" "+t.blurb+" "+t.desc+" "+t.path+" "+t.views.map(function(v){return v.join(" ")}).join(" ")).toLowerCase();
+    return hay.indexOf(q)>-1;
+  });
+}
+function chips(){
+  var opts=["All"].concat(GROUPS.map(function(g){return g[0]}));
+  $("chips").innerHTML=opts.map(function(o){
+    var n=o==="All"?TOOLS.length:TOOLS.filter(function(t){return t.group===o}).length;
+    var label=o==="All"?"All":(o==="Saddleback"?"Saddleback":"Regional");
+    return '<button type="button" data-f="'+o+'" aria-pressed="'+(S.f===o)+'">'+label+'<b>'+n+'</b></button>';
+  }).join("");
+}
+function list(){
+  var rows=shown(),h="";
+  if(!rows.length){
+    $("list").innerHTML='<div class="empty">No tools match your search.<br><button type="button" id="clear">Clear search and filters</button></div>';
+    return rows;
+  }
+  GROUPS.forEach(function(g){
+    var rs=rows.filter(function(t){return t.group===g[0]});
+    if(!rs.length)return;
+    h+='<div class="gl">'+g[1]+'</div><div class="list">';
+    rs.forEach(function(t){
+      h+='<button type="button" class="item" style="--c:var('+t.c+')" data-id="'+t.id+'" aria-current="'+(S.sel===t.id)+'"><span class="st"></span><span class="ico">'+ICONS[t.id]+'</span><span class="in"><span class="t">'+esc(t.title)+'</span><span class="b">'+esc(t.blurb)+'</span><span class="m">'+esc(t.asof)+'</span></span><span class="go" aria-hidden="true">&rsaquo;</span></button>';
+    });
+    h+='</div>';
+  });
+  $("list").innerHTML=h;
+  return rows;
+}
+function detail(rows){
+  var t=TOOLS.filter(function(x){return x.id===S.sel})[0];
+  if(!t||(rows&&rows.indexOf(t)<0))t=(rows&&rows[0])||null;
+  if(!t){$("detail").innerHTML='<div class="db"><p style="color:var(--muted)">Select a tool to see what it does.</p></div>';return}
+  S.sel=t.id;
+  var inside='<p>'+esc(t.desc)+'</p><ul>'+t.views.map(function(v){return '<li><b>'+esc(v[0])+'</b> '+esc(v[1])+'</li>'}).join("")+'</ul>';
+  $("detail").innerHTML='<div class="dh"><span class="ico">'+ICONS[t.id]+'</span><div><div class="g">'+(t.group==="Saddleback"?"Saddleback College":"Regional pathways and standards")+'</div><h2>'+esc(t.title)+'</h2><div class="meta"><code>'+esc(t.path)+'</code><span>'+esc(t.asof)+'</span></div></div></div>'
+   +'<div class="tabs" role="tablist"><button type="button" role="tab" data-t="inside" aria-selected="'+(S.tab==="inside")+'">What is inside</button><button type="button" role="tab" data-t="data" aria-selected="'+(S.tab==="data")+'">Data</button></div>'
+   +'<div class="db">'+(S.tab==="inside"?inside:t.data)+'</div>'
+   +'<div class="da"><a class="open" href="'+url(t)+'">Open the tool</a></div>';
+}
+function refPanel(){
+  var h="";
+  if(S.r==="data"){
+    h='<p>Sample data is a point-in-time snapshot and does not update on its own. It comes from Smartsheet sheets and program documents from fall 2026. To refresh it, export the sheet from Smartsheet with File, Export, Export sheet to CSV, then load the CSV with the file input in the tool\'s notes section.</p>'
+     +'<div class="tw"><table><thead><tr><th>Tool</th><th>Expected columns</th></tr></thead><tbody>'
+     +'<tr><td><b>Saddleback Course Mapper</b></td><td><div class="codes"><code>Occupation</code><code>Occupational Skills</code><code>Competency #</code><code>Competency</code><code>Course</code></div></td></tr>'
+     +'<tr><td><b>CHW and Allied Health Pathways</b></td><td><div class="codes"><code>College</code><code>Pathway</code><code>Control Number</code><code>Program</code><code>Award</code><code>Units</code><code>LAUNCH Standard</code><code>O*NET Code</code><code>RAPIDS Code</code><code>Occupation</code></div></td></tr>'
+     +'</tbody></table></div>';
+  }else if(S.r==="layout"){
+    h='<pre>launchapprenticeshipOC/\n├── index.html                    this page\n├── README.md\n├── Saddleback/\n│   └── AutomotiveAIXR/\n│       └── index.html            Saddleback Course Mapper\n├── ProductionTech/\n│   └── Saddleback_Starfish/\n│       └── index.html            Production Technician pathway planner\n├── CHWPathways/\n│   └── index.html                CHW and allied health pathways\n└── DASapprovedStandards/\n    └── index.html                LAUNCH apprenticeship standards</pre>';
+  }else{
+    h='<p>All tools follow the LAUNCH design board. Headlines use Barlow Condensed Bold and body text uses Barlow. Orange and sky are used as fills, not as text on white.</p><div class="swatches">'
+     +[["LAUNCH Sky","#29AAE1"],["LAUNCH Blue","#247EB2"],["LAUNCH Deep Blue","#1F4171"],["CCC Navy","#032F6E"],["LAUNCH Orange","#FAAB1A"],["CCC Gold","#FCB501"]].map(function(c){return '<div class="sw"><i style="background:'+c[1]+'"></i><div><b>'+c[0]+'</b><span>'+c[1]+'</span></div></div>'}).join("")+'</div>';
+  }
+  $("rpanel").innerHTML=h;
+  document.querySelectorAll("#rtabs button").forEach(function(b){b.setAttribute("aria-selected",b.dataset.r===S.r)});
+}
+function render(){
+  chips();
+  var rows=list();
+  detail(rows);
+  refPanel();
+  if(location.hash!=="#"+S.sel&&history.replaceState)history.replaceState(null,"","#"+S.sel);
+}
+$("chips").addEventListener("click",function(e){var b=e.target.closest("button");if(b){S.f=b.dataset.f;render()}});
+$("q").addEventListener("input",function(e){S.q=e.target.value;render()});
+$("list").addEventListener("click",function(e){
+  if(e.target.id==="clear"){S.f="All";S.q="";$("q").value="";render();return}
+  var b=e.target.closest(".item");
+  if(b){
+    S.sel=b.dataset.id;S.tab="inside";render();
+    var el=$("detail");
+    if(window.innerWidth<=860&&el.scrollIntoView)el.scrollIntoView({block:"nearest",behavior:window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+  }
+});
+$("detail").addEventListener("click",function(e){var b=e.target.closest("[data-t]");if(b){S.tab=b.dataset.t;render()}});
+$("rtabs").addEventListener("click",function(e){var b=e.target.closest("button");if(b){S.r=b.dataset.r;refPanel()}});
+$("chain").innerHTML=CHAIN.map(function(c,i){return (i?'<i>&rsaquo;</i>':'')+'<span>'+ICONS[c[0]]+c[1]+'</span>'}).join("");
+(function(){var h=(location.hash||"").slice(1);if(TOOLS.some(function(t){return t.id===h}))S.sel=h;render()})();
+</script>
 </body>
 </html>
