@@ -15,22 +15,24 @@ Live pages are published with GitHub Pages at `https://launchapprenticeshipoc.gi
 | Saddleback Course Mapper | [`Saddleback/AutomotiveAIXR/`](https://launchapprenticeshipoc.github.io/launchapprenticeshipOC/Saddleback/AutomotiveAIXR/index.html) | Maps Saddleback's automotive courses to occupations and competencies, and shows how program hours change when you swap courses or change which occupation counts a course. |
 | CHW and Allied Health Pathways | [`CHWPathways/`](https://launchapprenticeshipoc.github.io/launchapprenticeshipOC/CHWPathways/index.html) | Matches Orange County college programs to the Community Health Worker standard and related allied health and behavioral health standards. |
 | DAS Approved Standards | [`DASapprovedStandards/`](https://launchapprenticeshipoc.github.io/launchapprenticeshipOC/DASapprovedStandards/index.html) | Browses the LAUNCH apprenticeship standards by program, occupation, and LEA college. |
-| Production Technician Pathway Planner | [`ProductionTech/Saddleback_Starfish/`](https://launchapprenticeshipoc.github.io/launchapprenticeshipOC/ProductionTech/Saddleback_Starfish/index.html) | Plans course pathways for the Production Technician apprenticeship at Saddleback, checked against the standards' competencies. |
+| Production Technician Pathway Planner | [`Saddleback/ProductionTech/StarfishSG/`](https://launchapprenticeshipoc.github.io/launchapprenticeshipOC/Saddleback/ProductionTech/StarfishSG/index.html) | Plans course pathways for the Production Technician apprenticeship at Saddleback, checked against the standards' competencies. |
 
 ## Repo layout
 
 ```
 launchapprenticeshipOC/
+├── index.html                    this page
+├── README.md
 ├── Saddleback/
-│   └── AutomotiveAIXR/
-│       └── index.html            Saddleback Course Mapper
+│   ├── AutomotiveAIXR/
+│   │   └── index.html            Saddleback Course Mapper
+│   └── ProductionTech/
+│       └── StarfishSG/
+│           └── index.html        Production Technician pathway planner
 ├── CHWPathways/
-│   └── index.html                CHW and allied health pathway map
-├── DASapprovedStandards/
-│   └── index.html                LAUNCH apprenticeship standards
-└── ProductionTech/
-    └── Saddleback_Starfish/
-        └── index.html            Production Technician pathway planner
+│   └── index.html                CHW and allied health pathways
+└── DASapprovedStandards/
+    └── index.html                LAUNCH apprenticeship standards
 ```
 
 ## Saddleback Course Mapper
@@ -42,6 +44,7 @@ Tabs:
 - **Live view:** skill groups on the left and an animated Sankey chart on the right. Every change redraws the chart.
 - **Course mapper:** the same editing with a full panel of totals and a course ledger.
 - **Sankey flow:** the chart at full size, with a competency list for the selected node. The last column shows which occupation counts each course.
+- **Modules:** the program's modules, Mod 2 to Mod 4, with each course, its hours, and the occupation that counts it.
 - **Competencies:** set the course for each competency on its own, or tick several and apply a course to all of them.
 
 How it counts:
