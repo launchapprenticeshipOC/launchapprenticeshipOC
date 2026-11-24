@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -177,19 +176,19 @@ var TOOLS=[
 {id:"prodtech",group:"Saddleback",tile:"t1",title:"Production Technician Pathway Planner",
  blurb:"Plan course pathways for the Production Technician apprenticeship at Saddleback.",
  desc:"Plans course pathways for the Production Technician apprenticeship at Saddleback, checked against the standards' competencies.",
- path:"ProductionTech/Saddleback_Starfish/",asof:"Data as of the week of November 9, 2026",
+ path:"Saddleback/ProductionTech/StarfishSG/",asof:"Data as of the week of November 9, 2026",
  views:[["Standards","Built on the program standards, DAS file 99764, LAUNCH Industrial Technology & Manufacturing."],["Pathways","Shows alternate course pathways for an incumbent-worker plan across Advanced Manufacturing, Graphic Communication, and Electronic Technology."],["Validity","A pathway is valid as long as it meets the standards' competency checklist. The sample related instruction courses are a guide only."]],
  data:'<h3>Built on</h3><p>The program standards, DAS file 99764, LAUNCH Industrial Technology &amp; Manufacturing.</p>'},
 {id:"chw",group:"Regional",tile:"t2",title:"CHW and Allied Health Pathways",
  blurb:"Match Orange County college programs to the Community Health Worker and related standards.",
  desc:"Matches Orange County college programs to the Community Health Worker standard and related allied health and behavioral health standards.",
- path:"CHWPathways/",asof:"Data as of October 28, 2026",
+ path:"CHWPathways/",asof:"Data as of October 28, 2026; healthcare statuses November 24",
  views:[["Overview","A grid of occupations by colleges, with program counts and dots for the types present."],["By occupation","Each standard's DAS number, O*NET and RAPIDS codes, status, and LEA colleges, with programs by college."],["By college","Everything one college offers, grouped by LAUNCH occupation."],["Template mode","Load a Smartsheet CSV for another pathway, then set the title and focus occupation."]],
  data:'<h3>Expected columns</h3><div class="codes"><code>College</code><code>Pathway</code><code>Control Number</code><code>Program</code><code>Award</code><code>Units</code><code>LAUNCH Standard</code><code>O*NET Code</code><code>RAPIDS Code</code><code>Occupation</code></div><h3>Optional</h3><div class="codes"><code>Relationship</code><code>Standard Status</code><code>Standard LEAs</code><code>Occupation Note</code></div><p>Rows with a blank <code class="c">Occupation</code> are left out. Fill the three standard columns once per occupation, on its first row. Relationship is Nearest match, Feeder, or Pending COCI.</p>'},
 {id:"das",group:"Regional",tile:"t3",title:"DAS Approved Standards",
  blurb:"Browse the LAUNCH apprenticeship standards by program, occupation, and LEA college.",
  desc:"Browses the LAUNCH apprenticeship standards by program, occupation, and LEA college.",
- path:"DASapprovedStandards/",asof:"Data as of October 28, 2026",
+ path:"DASapprovedStandards/",asof:"Data as of October 28, 2026; healthcare statuses November 24",
  views:[["Overview","One tile per program, grouped by sector, with its DAS file number and a status bar."],["By program","Each occupation with O*NET and RAPIDS codes, status, progress, and LEA colleges."],["By LEA college","Every occupation a college is an LEA for."],["Search and filter","By occupation, code, DAS number, or college, and by status."]],
  data:'<h3>Built from</h3><p>The LAUNCH Standards sheet in Smartsheet.</p>'}
 ];
@@ -253,7 +252,7 @@ function refPanel(){
      +'<tr><td><b>CHW and Allied Health Pathways</b></td><td><div class="codes"><code>College</code><code>Pathway</code><code>Control Number</code><code>Program</code><code>Award</code><code>Units</code><code>LAUNCH Standard</code><code>O*NET Code</code><code>RAPIDS Code</code><code>Occupation</code></div></td></tr>'
      +'</tbody></table></div>';
   }else if(S.r==="layout"){
-    h='<pre>launchapprenticeshipOC/\n├── index.html                    this page\n├── README.md\n├── Saddleback/\n│   └── AutomotiveAIXR/\n│       └── index.html            Saddleback Course Mapper\n├── ProductionTech/\n│   └── Saddleback_Starfish/\n│       └── index.html            Production Technician pathway planner\n├── CHWPathways/\n│   └── index.html                CHW and allied health pathways\n└── DASapprovedStandards/\n    └── index.html                LAUNCH apprenticeship standards</pre>';
+    h='<pre>launchapprenticeshipOC/\n├── index.html                    this page\n├── README.md\n├── Saddleback/\n│   ├── AutomotiveAIXR/\n│   │   └── index.html            Saddleback Course Mapper\n│   └── ProductionTech/\n│       └── StarfishSG/\n│           └── index.html        Production Technician pathway planner\n├── CHWPathways/\n│   └── index.html                CHW and allied health pathways\n└── DASapprovedStandards/\n    └── index.html                LAUNCH apprenticeship standards</pre>';
   }else{
     h='<p>All tools follow the LAUNCH design board. Orange and sky are used as fills, not as text on white. This page uses a lighter, softer treatment of the same palette.</p><div class="swatches">'
      +[["LAUNCH Sky","#29AAE1"],["LAUNCH Blue","#247EB2"],["LAUNCH Deep Blue","#1F4171"],["CCC Navy","#032F6E"],["LAUNCH Orange","#FAAB1A"],["CCC Gold","#FCB501"]].map(function(c){return '<div class="sw"><i style="background:'+c[1]+'"></i><div><b>'+c[0]+'</b><span>'+c[1]+'</span></div></div>'}).join("")+'</div>';
